@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--周期循环页指示标志布局-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <ImageView
+            android:id="@+id/iv_cycle_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="@dimen/dimen_1"
+            android:layout_marginRight="@dimen/dimen_1"
+            android:contentDescription="@null"/>
+
+</LinearLayout>

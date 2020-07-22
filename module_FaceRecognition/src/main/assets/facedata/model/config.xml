@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<VERSION>"2.1.0"</VERSION>
+<DT_CONFIG_1>"FaceDetect/p_v2.0.param"</DT_CONFIG_1>
+<DT_CONFIG_2>"FaceDetect/r_v2.0.param"</DT_CONFIG_2>
+<DT_CONFIG_3>"FaceDetect/o_v2.0.param"</DT_CONFIG_3>
+<DT_MODEL_1>"FaceDetect/p_v2.0.bin"</DT_MODEL_1>
+<DT_MODEL_2>"FaceDetect/r_v2.0.bin"</DT_MODEL_2>
+<DT_MODEL_3>"FaceDetect/o_v2.0.bin"</DT_MODEL_3>
+<ANA_CONFIG_1>"FaceAnalyze/face_analyze_v2.0.param"</ANA_CONFIG_1>
+<ANA_MODEL_1>"FaceAnalyze/face_analyze_v2.0.bin"</ANA_MODEL_1>
+<ANA_H>25.0</ANA_H>
+<ANA_V>20.0</ANA_V>
+<ANA_O>1.4</ANA_O>
+<EXT_CONFIG_1>"FaceExtract/rec_v2.1.param"</EXT_CONFIG_1>
+<EXT_MODEL_1>"FaceExtract/rec_v2.1.bin"</EXT_MODEL_1>
+<EXT_SIZE>112</EXT_SIZE>
+<AL_CONFIG_1>"FaceAlive/alive_sy_v4_4.param"</AL_CONFIG_1>
+<AL_MODEL_1>"FaceAlive/alive_sy_v4_4.bin"</AL_MODEL_1>
+</opencv_storage>

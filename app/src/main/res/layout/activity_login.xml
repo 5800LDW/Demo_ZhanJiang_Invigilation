@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_Background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
+        android:padding="0dp" />
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@android:color/black"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+
+        <com.tecsun.jc.base.widget.corner.RoundCornerFrameLayout
+            android:id="@+id/btFirst"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:roundBottomLeft="true"
+            app:roundBottomRight="true"
+            app:roundTopLeft="true"
+            app:roundTopRight="true"
+            app:roundedCornerRadius="5dp">
+
+            <com.tecsun.jc.base.widget.corner.RoundCornerLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:background="@drawable/white_base_white_round_selector"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:roundBottomLeft="true"
+                app:roundBottomRight="true"
+                app:roundTopLeft="true"
+                app:roundTopRight="true"
+                app:roundedCornerRadius="5dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/m_icon_admin_login" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:text="管理员登陆"
+                    android:textSize="20dp" />
+
+
+            </com.tecsun.jc.base.widget.corner.RoundCornerLinearLayout>
+
+
+        </com.tecsun.jc.base.widget.corner.RoundCornerFrameLayout>
+
+
+        <com.tecsun.jc.base.widget.corner.RoundCornerFrameLayout
+            android:id="@+id/btSecond"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+
+            app:roundBottomLeft="true"
+            app:roundBottomRight="true"
+            app:roundTopLeft="true"
+            app:roundTopRight="true">
+
+            <com.tecsun.jc.base.widget.corner.RoundCornerLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:background="@drawable/white_base_white_round_selector"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:roundBottomLeft="true"
+                app:roundBottomRight="true"
+                app:roundTopLeft="true"
+                app:roundTopRight="true">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/m_icon_examiner_login" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:text="@string/app_examiner_login"
+                    android:textSize="20dp" />
+
+
+            </com.tecsun.jc.base.widget.corner.RoundCornerLinearLayout>
+
+
+        </com.tecsun.jc.base.widget.corner.RoundCornerFrameLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/llTestingCentre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_25"
+            android:layout_marginLeft="@dimen/dimen_10"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_15"
+                android:textSize="18dp"
+                android:textColor="@color/c_2358ff"
+                android:text="@string/app_current_testing_centre"/>
+            <TextView
+                android:id="@+id/tvSchoolName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:layout_weight="1"
+                tools:text="考场1、考场2"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_10"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/tecsun_logo"
+                android:layout_width="130dp"
+                android:layout_height="28.4dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/tecsunlogo" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="广东德生科技股份有限公司"
+                    android:textColor="#8a8a8a" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="服务电话："
+                    android:textColor="#8a8a8a" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="020-29118711"
+                    android:textColor="#0068b7" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_system_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="当前版本:V1.0.191012"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>
+
+
+

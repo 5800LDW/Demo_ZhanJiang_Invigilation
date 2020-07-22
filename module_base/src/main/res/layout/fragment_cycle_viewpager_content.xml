@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tecsun.jc.base.widget.corner.RoundCornerRelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/layout_viewpager_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:roundBottomRight="true"
+        app:roundBottomLeft="true"
+        app:roundedCornerRadius="5dp"
+        android:background="@drawable/btn_base_bg_bottomwhite_selector">
+
+    <com.tecsun.jc.main.cycle.CycleViewPager
+            android:id="@+id/view_pager_cycle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <LinearLayout
+            android:id="@+id/layout_viewpager_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/dimen_1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimen_3"/>
+
+</com.tecsun.jc.base.widget.corner.RoundCornerRelativeLayout>

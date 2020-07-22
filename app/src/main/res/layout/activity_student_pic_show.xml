@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_all_bg">
+
+
+    <com.tecsun.jc.base.widget.TitleBar style="@style/style_title_bar" />
+
+    <com.tecsun.jc.base.widget.ObservableScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dimen_15"
+                android:layout_gravity="left|center"
+                android:gravity="center|left"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_marginBottom="@dimen/dimen_5"
+                android:text="拍照照片"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@color/c_white"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:visibility="gone"
+                android:minHeight="250dp">
+                <FrameLayout
+                    android:id="@+id/flTakePic"
+                    android:layout_width="240dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:layout_height="320dp">
+                    <ImageView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_take_photo"/>
+
+                    <ImageView
+                        android:id="@+id/img_show_card_selfie_bitmap"
+                        android:layout_width="240dp"
+                        android:layout_height="320dp"
+                        android:scaleType="fitCenter"
+                        />
+
+                </FrameLayout>
+            </LinearLayout>
+
+
+
+            <View style="@style/style_h_line" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textColor="@color/c_1c1c1c"
+                android:textSize="@dimen/dimen_15"
+                android:layout_gravity="left|center"
+                android:gravity="center|left"
+                android:text="本地图片"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@color/c_white"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:minHeight="250dp">
+                <ImageView
+                    android:id="@+id/ivLocalImage"
+                    android:layout_width="240dp"
+                    android:layout_height="320dp"/>
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+    </com.tecsun.jc.base.widget.ObservableScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginLeft="@dimen/dimen_20"
+        android:layout_marginRight="@dimen/dimen_20"
+        android:layout_marginBottom="@dimen/dimen_10"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_change_communication_cancel"
+            style="@style/style_white_btn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:text="@string/base_lbl_cancel"/>
+
+        <Button
+            android:id="@+id/btn_change_communication_confirm"
+            style="@style/style_blue_btn"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:layout_marginLeft="@dimen/dimen_10"
+            android:layout_weight="1"
+            android:text="立刻比对" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginLeft="@dimen/dimen_20"
+        android:layout_marginRight="@dimen/dimen_20"
+        android:layout_marginBottom="@dimen/dimen_10"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/vSFZCompare"
+            style="@style/style_blue_btn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:text="刷身份证比对"/>
+
+        <Button
+            android:id="@+id/vSocialSecurityCardsCompare"
+            style="@style/style_blue_btn"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:layout_marginLeft="@dimen/dimen_10"
+            android:layout_weight="1"
+            android:text="刷社保卡比对" />
+
+    </LinearLayout>
+</LinearLayout>

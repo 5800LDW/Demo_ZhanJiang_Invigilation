@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.tecsun.jc.base.widget.TitleBar style="@style/style_title_bar" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:layout_marginTop="@dimen/item_margin_bar"
+        android:background="@color/c_white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_10">
+
+        <ImageView
+            android:id="@+id/ivPic"
+            android:layout_width="320dp"
+            android:layout_height="387.6dp"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginLeft="@dimen/dimen_15"
+            android:gravity="top"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|top"
+                android:gravity="center_vertical|top"
+                android:text="温馨提示："
+                android:textColor="@color/c_ac7f5d"
+                android:textSize="17dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:text="按照图上插入社保卡。插卡时，请将芯片面朝上方。"
+                android:textColor="@color/c_ac7f5d"
+                android:textSize="17dp" />
+        </LinearLayout>
+
+
+
+
+        <TextView
+            android:id="@+id/tvPlugInCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimen_25"
+            android:gravity="center"
+            android:text="请插入社保卡"
+            android:textColor="@color/red"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/tvReading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimen_25"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="读取中..."
+            android:textColor="@color/c_2358ff"
+            android:textSize="25dp" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+s
+
+    <include
+        android:id="@+id/titlebar"
+        layout="@layout/titlebar"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_powerOn"
+                style="@style/buttonNumberStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button_number_violet_shape"
+                android:onClick="powerOn"
+                android:text="模块上电" />
+
+            <Button
+                android:id="@+id/btn_init"
+                style="@style/buttonNumberStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button_number_violet_shape"
+                android:onClick="init_idcard"
+                android:text="初始化" />
+
+            <Button
+                android:id="@+id/btn_read_info"
+                style="@style/buttonNumberStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button_number_violet_shape"
+                android:onClick="read_info"
+                android:text="读取身份证" />
+
+            <Button
+                android:id="@+id/btn_read_repeate"
+                style="@style/buttonNumberStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button_number_violet_shape"
+                android:onClick="read_repeate"
+                android:text="循环读取" />
+
+            <Button
+                android:id="@+id/btn_stop"
+                style="@style/buttonNumberStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button_number_violet_shape"
+                android:onClick="read_stop"
+                android:text="停止循环" />
+
+            <Button
+                android:id="@+id/btn_powerOff"
+                style="@style/buttonNumberStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button_number_violet_shape"
+                android:onClick="powerOff"
+                android:text="模块下电" />
+
+            <TextView
+                android:id="@+id/tv_idcard_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="TextView" />
+
+            <ImageView
+                android:id="@+id/iv_idcard_pic"
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                android:src="@mipmap/ic_launcher" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

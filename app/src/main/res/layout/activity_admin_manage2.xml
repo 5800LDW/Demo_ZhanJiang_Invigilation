@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_f3f3f3"
+    android:orientation="vertical">
+
+    <com.tecsun.jc.base.widget.TitleBar style="@style/style_title_bar" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll01"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/dimen_5"
+                android:layout_weight="1"
+                android:background="@drawable/white_base_white_round_selector"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/dimen_10">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/m_icon_download"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="下载信息"
+                    android:textColor="@color/c_black"
+                    android:textSize="@dimen/base_9_item_text_size" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll02"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/dimen_5"
+                android:layout_weight="1"
+                android:background="@drawable/white_base_white_round_selector"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/dimen_10">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/m_icon_sign_in"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/app_examiner_login_history"
+                    android:textColor="@color/c_black"
+                    android:textSize="@dimen/base_9_item_text_size" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll03"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/dimen_5"
+                android:layout_weight="1"
+                android:background="@drawable/white_base_white_round_selector"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/dimen_10">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/m_icon_initialize"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/app_initialize_data_title"
+                    android:textColor="@color/c_black"
+                    android:textSize="@dimen/base_9_item_text_size" />
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:id="@+id/ll04"
+                android:layout_width="0dp"
+                android:layout_height="105dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/dimen_5"
+                android:layout_weight="1"
+                android:background="@drawable/white_base_white_round_selector"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/dimen_10">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/m_icon_admin_add_3"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="新增数据"
+                    android:textColor="@color/c_black"
+                    android:textSize="@dimen/base_9_item_text_size" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:orientation="horizontal">
+
+            <com.tecsun.jc.base.widget.diy.OnClickItemView
+                android:id="@+id/ll05"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="@dimen/dimen_5"
+                app:iv_pic="@drawable/base_icon_face_compare_mode"
+                app:text="@string/app_face_compare_mode"
+                />
+
+            <com.tecsun.jc.base.widget.diy.OnClickItemView
+                android:layout_width="0dp"
+                android:visibility="invisible"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/dimen_5"
+                app:iv_pic="@drawable/base_icon_face_compare_mode"
+                app:text="测试"
+                app:text_size="18dp"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+

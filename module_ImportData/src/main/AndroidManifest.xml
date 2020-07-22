@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.module_importdata" >
+    <application>
+        <activity
+            android:name="com.tecsun.demo.import_data.ui.ImportDtaActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+    </application>
+</manifest>

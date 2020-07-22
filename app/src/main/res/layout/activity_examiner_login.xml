@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_white"
+    android:orientation="vertical">
+
+    <com.tecsun.jc.base.widget.TitleBar style="@style/style_title_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/item_margin_bar"
+        android:background="@color/c_white"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="@dimen/dimen_10">
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="320dp"
+            android:layout_gravity="center"
+            android:layout_height="387.6dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:textColor="@color/c_ac7f5d"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="17dp"
+            android:text="温馨：提示按照图上放置身份证获取信息"
+            android:layout_height="wrap_content"/>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+</LinearLayout>
+

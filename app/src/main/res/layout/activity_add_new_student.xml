@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_all_bg">
+
+
+    <com.tecsun.jc.base.widget.TitleBar style="@style/style_title_bar" />
+
+    <com.tecsun.jc.base.widget.ObservableScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/c_white"
+                android:paddingLeft="@dimen/dimen_15"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingRight="@dimen/dimen_15"
+                android:paddingBottom="@dimen/dimen_10">
+
+                <TextView
+                    android:id="@+id/tv_lbl_district_filter"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/must"
+                    android:text="姓名:"
+                    android:textColor="@color/c_1c1c1c"
+                    android:textSize="@dimen/text_16" />
+
+                <com.tecsun.jc.base.widget.ClearEditText
+                    android:id="@+id/etRegisterName"
+                    style="@style/register_style_edit_text"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:hint="请填入姓名"
+                    android:layout_marginLeft="@dimen/dimen_5"
+                    android:layout_toRightOf="@id/tv_lbl_district_filter"
+                    android:textSize="@dimen/text_16"
+                    android:maxLength="10"/>
+
+                <RelativeLayout
+                    android:id="@+id/rl01"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tv_lbl_district_filter"
+                    android:layout_toRightOf="@id/tv_lbl_district_filter"
+                    android:clickable="true">
+
+                    <ImageView
+                        android:id="@+id/iv_district_filter_naw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_open_naw" />
+
+                    <TextView
+                        android:id="@+id/tvExaminer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dimen_10"
+                        android:layout_marginRight="@dimen/dimen_10"
+                        android:layout_toStartOf="@id/iv_district_filter_naw"
+                        android:layout_toLeftOf="@id/iv_district_filter_naw"
+                        android:hint="请填入姓名"
+                        android:textColor="@color/c_1c1c1c"
+                        android:textColorHint="@color/c_8a8a8a"
+                        android:textSize="@dimen/text_16" />
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <View style="@style/style_h_line" />
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/c_white"
+                android:paddingLeft="@dimen/dimen_15"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingRight="@dimen/dimen_15"
+                android:paddingBottom="@dimen/dimen_10">
+
+                <TextView
+                    android:id="@+id/tv_card_category_filter"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/must"
+                    android:text="考点名称:"
+                    android:textColor="@color/c_1c1c1c"
+                    android:textSize="@dimen/text_16" />
+
+                <RelativeLayout
+                    android:id="@+id/rl02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tv_card_category_filter"
+                    android:layout_toRightOf="@id/tv_card_category_filter"
+                    android:clickable="true">
+
+                    <ImageView
+                        android:id="@+id/iv_category_filter_naw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_open_naw" />
+
+                    <TextView
+                        android:id="@+id/tvVenue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dimen_10"
+                        android:layout_marginRight="@dimen/dimen_10"
+                        android:layout_toStartOf="@id/iv_category_filter_naw"
+                        android:layout_toLeftOf="@id/iv_category_filter_naw"
+                        android:hint="@string/app_please_select_venue"
+                        android:textColor="@color/c_1c1c1c"
+                        android:textColorHint="@color/c_8a8a8a"
+                        android:textSize="@dimen/text_16" />
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/c_white"
+                android:paddingLeft="@dimen/dimen_15"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingRight="@dimen/dimen_15"
+                android:paddingBottom="@dimen/dimen_10">
+
+                <TextView
+                    android:id="@+id/tvSFZH"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/must"
+                    android:text="身份证号:"
+                    android:textColor="@color/c_1c1c1c"
+                    android:textSize="@dimen/text_16" />
+
+                <com.tecsun.jc.base.widget.ClearEditText
+                    android:id="@+id/etSFZH"
+                    style="@style/register_style_edit_text"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:hint="请填入身份证号"
+                    android:layout_marginLeft="@dimen/dimen_5"
+                    android:layout_toRightOf="@id/tvSFZH"
+                    android:textSize="@dimen/text_16"
+                    android:maxLength="20"/>
+
+
+
+            </RelativeLayout>
+
+            <View style="@style/style_h_line" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/c_white"
+                android:paddingLeft="@dimen/dimen_15"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingRight="@dimen/dimen_15"
+                android:paddingBottom="@dimen/dimen_10">
+
+                <TextView
+                    android:id="@+id/tvExaminationNO"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:text="准考证号:"
+                    android:textColor="@color/c_1c1c1c"
+                    android:textSize="@dimen/text_16" />
+
+                <com.tecsun.jc.base.widget.ClearEditText
+                    android:id="@+id/etExaminationNO"
+                    style="@style/register_style_edit_text"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:hint="请填入准考证号"
+                    android:layout_marginLeft="@dimen/dimen_5"
+                    android:layout_toRightOf="@id/tvExaminationNO"
+                    android:textSize="@dimen/text_16"
+                    android:maxLength="25"/>
+
+            </RelativeLayout>
+            <View style="@style/style_h_line" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/c_white"
+                android:paddingLeft="@dimen/dimen_15"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingRight="@dimen/dimen_15"
+                android:paddingBottom="@dimen/dimen_10">
+
+                <TextView
+                    android:id="@+id/tvExamRoomNo"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:text="考场号:"
+                    android:textColor="@color/c_1c1c1c"
+                    android:textSize="@dimen/text_16" />
+
+                <com.tecsun.jc.base.widget.ClearEditText
+                    android:id="@+id/etExamRoomNo"
+                    style="@style/register_style_edit_text"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:hint="请填入考场号"
+                    android:layout_marginLeft="@dimen/dimen_5"
+                    android:layout_toRightOf="@id/tvExamRoomNo"
+                    android:textSize="@dimen/text_16"
+                    android:maxLength="25"/>
+
+            </RelativeLayout>
+            <View style="@style/style_h_line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/c_white"
+                android:paddingLeft="@dimen/dimen_15"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingRight="@dimen/dimen_15"
+                android:paddingBottom="@dimen/dimen_10">
+
+                <TextView
+                    android:id="@+id/tvSeatNo"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:text="座位号:"
+                    android:textColor="@color/c_1c1c1c"
+                    android:textSize="@dimen/text_16" />
+
+                <com.tecsun.jc.base.widget.ClearEditText
+                    android:id="@+id/etSeatNo"
+                    style="@style/register_style_edit_text"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:hint="请填入座位号"
+                    android:layout_marginLeft="@dimen/dimen_5"
+                    android:layout_toRightOf="@id/tvSeatNo"
+                    android:textSize="@dimen/text_16"
+                    android:maxLength="25"/>
+
+            </RelativeLayout>
+            <View style="@style/style_h_line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/c_white"
+                android:paddingLeft="@dimen/dimen_15"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingRight="@dimen/dimen_15"
+                android:paddingBottom="@dimen/dimen_10">
+
+                <TextView
+                    android:id="@+id/tvSubject"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:text="科目:"
+                    android:textColor="@color/c_1c1c1c"
+                    android:textSize="@dimen/text_16" />
+
+                <com.tecsun.jc.base.widget.ClearEditText
+                    android:id="@+id/etSubject"
+                    style="@style/register_style_edit_text"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:maxLines="5"
+                    android:hint="请填入科目"
+                    android:singleLine="false"
+                    android:layout_marginLeft="@dimen/dimen_5"
+                    android:layout_toRightOf="@id/tvSubject"
+                    android:textSize="@dimen/text_16"
+                    tools:text="2019年11月23日 09:00-11:00 综合知识和能力素质（通用类专业技术其他类岗位）"/>
+
+            </RelativeLayout>
+            <View style="@style/style_h_line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/c_white"
+                android:paddingLeft="@dimen/dimen_15"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingRight="@dimen/dimen_15"
+                android:visibility="gone"
+                android:paddingBottom="@dimen/dimen_10">
+
+                <TextView
+                    android:id="@+id/tvApplyingMajor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:text="报考专业:"
+                    android:textColor="@color/c_1c1c1c"
+                    android:textSize="@dimen/text_16" />
+
+                <com.tecsun.jc.base.widget.ClearEditText
+                    android:id="@+id/etApplyingMajor"
+                    style="@style/register_style_edit_text"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:hint="请填入报考专业"
+                    android:layout_marginLeft="@dimen/dimen_5"
+                    android:layout_toRightOf="@id/tvApplyingMajor"
+                    android:textSize="@dimen/text_16"
+                    android:maxLength="25"/>
+
+            </RelativeLayout>
+            <View style="@style/style_h_line" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/c_white"
+                android:paddingLeft="@dimen/dimen_15"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingRight="@dimen/dimen_15"
+                android:visibility="gone"
+                android:paddingBottom="@dimen/dimen_10">
+
+                <TextView
+                    android:id="@+id/tvExamTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:text="考试时间:"
+                    android:textColor="@color/c_1c1c1c"
+                    android:textSize="@dimen/text_16" />
+
+                <TextView
+                    android:id="@+id/tvExamTime2"
+                    style="@style/register_style_edit_text"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:hint="请选择考试时间"
+                    android:focusable="false"
+                    android:layout_marginLeft="@dimen/dimen_5"
+                    android:layout_toRightOf="@id/tvExamTime"
+                    android:textSize="@dimen/text_16"
+                    android:maxLength="10"/>
+
+            </RelativeLayout>
+
+            <View style="@style/style_h_line" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/c_white"
+                android:paddingLeft="@dimen/dimen_15"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingRight="@dimen/dimen_15"
+                android:paddingBottom="@dimen/dimen_10">
+
+                <TextView
+                    android:id="@+id/tvPic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:text="图片:"
+                    android:textColor="@color/c_1c1c1c"
+                    android:textSize="@dimen/text_16" />
+
+                <FrameLayout
+                    android:id="@+id/flTakePic"
+                    android:layout_width="150dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="90dp"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:layout_height="200dp">
+                    <ImageView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_take_photo"/>
+
+                    <ImageView
+                        android:id="@+id/img_show_card_selfie_bitmap"
+                        android:layout_width="150dp"
+                        android:layout_height="200dp"
+                        android:scaleType="fitCenter"
+                        />
+
+                </FrameLayout>
+
+            </RelativeLayout>
+            <View style="@style/style_h_line" />
+
+
+
+
+
+        </LinearLayout>
+    </com.tecsun.jc.base.widget.ObservableScrollView>
+
+
+
+
+    <Button
+        android:id="@+id/btnAddStudent"
+        style="@style/style_blue_btn"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/dimen_15"
+        android:onClick="nextStepConfirm"
+        android:text="立刻添加" />
+</LinearLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/ll_title_main"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+        android:visibility="gone">
+
+    <View
+            android:id="@+id/base_title_head_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/c_2358ff"
+            />
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/c_2358ff"
+            android:padding="@dimen/dimen_10"
+            android:gravity="center_vertical">
+
+        <ImageView
+                android:id="@+id/btn_title_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_title_back"
+                android:padding="@dimen/dimen_5"
+                android:contentDescription="@null"/>
+
+        <TextView
+                android:id="@+id/tv_base_title_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/text_20"
+                android:layout_centerHorizontal="true"
+                android:maxLines="1"
+                android:maxLength="8"
+                tools:text="江城人社"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

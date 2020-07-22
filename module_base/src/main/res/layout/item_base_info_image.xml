@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="87.5dp"
+        android:layout_height="@dimen/dimen_70"
+        android:layout_gravity="center">
+
+    <TextView
+            android:id="@+id/tvPic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_base_round_gray_bg"
+            android:gravity="center"
+            android:text="@string/base_item_pic_text"
+            android:textColor="@color/c_cdcdcd"
+            android:textSize="@dimen/dimen_13" />
+
+    <ImageView
+            android:id="@+id/ivPic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+</FrameLayout>

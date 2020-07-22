@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_f3f3f3"
+    android:orientation="vertical">
+
+    <!--    <com.tecsun.jc.base.widget.TitleBar style="@style/style_title_bar" />-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:paddingBottom="@dimen/dimen_15"
+        android:background="@drawable/bg_mine">
+
+        <LinearLayout
+            android:id="@+id/ll_mine_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/dimen_45"
+            android:layout_marginBottom="@dimen/dimen_35"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.tecsun.jc.base.widget.RoundImageView
+                android:id="@+id/iv_mine_avatar"
+                android:layout_width="@dimen/dimen_90"
+                android:layout_height="@dimen/dimen_90"
+                android:layout_marginStart="@dimen/dimen_15"
+                android:layout_marginLeft="@dimen/dimen_15"
+                android:contentDescription="@null"
+                android:scaleType="matrix"
+                android:src="@drawable/ic_default_avatar" />
+
+            <TextView
+                android:id="@+id/tv_not_login"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_80"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_marginLeft="@dimen/dimen_20"
+                android:gravity="center|left"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/text_20"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:id="@+id/rl_mine_user_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10"
+                android:layout_marginLeft="@dimen/dimen_10">
+
+                <TextView
+                    android:id="@+id/tv_mine_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/c_white"
+                    android:textSize="@dimen/text_20"
+                    tools:text="刘老师" />
+
+                <TextView
+                    android:id="@+id/tv_lbl_mine_user_sfzh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_mine_user_name"
+                    android:layout_marginTop="@dimen/dimen_7"
+                    android:textColor="@color/c_f3f3f3"
+                    android:textSize="@dimen/text_14" />
+
+                <TextView
+                    android:id="@+id/tv_lbl_mine_user_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_lbl_mine_user_sfzh"
+                    android:layout_marginTop="@dimen/dimen_3"
+                    android:textColor="@color/c_f3f3f3"
+                    android:textSize="@dimen/text_14" />
+
+                <TextView
+                    android:id="@+id/tv_mine_user_sfzh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/tv_lbl_mine_user_sfzh"
+                    android:layout_marginTop="@dimen/dimen_7"
+                    android:layout_toEndOf="@id/tv_lbl_mine_user_sfzh"
+                    android:layout_toRightOf="@id/tv_lbl_mine_user_sfzh"
+                    android:textColor="@color/c_f3f3f3"
+                    android:textSize="@dimen/text_14"
+                    tools:text="360621******1234" />
+
+                <TextView
+                    android:id="@+id/tv_mine_user_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/tv_lbl_mine_user_card"
+                    android:layout_marginTop="@dimen/dimen_3"
+                    android:layout_toEndOf="@id/tv_lbl_mine_user_card"
+                    android:layout_toRightOf="@id/tv_lbl_mine_user_card"
+                    android:textColor="@color/c_f3f3f3"
+                    android:textSize="@dimen/text_14"
+                    tools:text="沧州医学高等专科学校" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dimen_70"
+            android:layout_marginEnd="@dimen/dimen_20"
+            android:layout_marginRight="@dimen/dimen_20"
+            android:background="@drawable/ic_right_arrow"
+            android:contentDescription="@null"
+            android:visibility="gone" />
+
+        <com.tecsun.jc.base.widget.corner.RoundCornerLinearLayout
+            android:id="@+id/rlChange"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="@dimen/dimen_25"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            app:roundBottomLeft="true"
+            app:roundBottomRight="true"
+            app:roundTopLeft="true"
+            app:roundTopRight="true"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:layout_marginLeft="@dimen/dimen_5"
+            app:roundedCornerRadius="5dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/base_icon_change_identity" />
+        </com.tecsun.jc.base.widget.corner.RoundCornerLinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:orientation="horizontal">
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/ll01"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginRight="@dimen/dimen_5"-->
+<!--                android:layout_weight="1"-->
+<!--                android:background="@drawable/white_base_white_round_selector"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="@dimen/dimen_10">-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="64dp"-->
+<!--                    android:layout_height="64dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:background="@drawable/m_icon_examiner_compare"-->
+<!--                    android:gravity="center" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="@string/app_student_compare_pic"-->
+<!--                    android:textColor="@color/c_black"-->
+<!--                    android:textSize="@dimen/dimen_20" />-->
+<!--            </LinearLayout>-->
+
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/ll02"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginLeft="@dimen/dimen_5"-->
+<!--                android:layout_weight="1"-->
+<!--                android:background="@drawable/white_base_white_round_selector"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="@dimen/dimen_10">-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="64dp"-->
+<!--                    android:layout_height="64dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:background="@drawable/m_icon_examiner_take_the_evidence"-->
+<!--                    android:gravity="center" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="@string/app_student_obtain_evidence"-->
+<!--                    android:textColor="@color/c_black"-->
+<!--                    android:textSize="@dimen/dimen_20" />-->
+
+
+<!--            </LinearLayout>-->
+
+            <com.tecsun.jc.base.widget.diy.OnClickItemView
+                android:id="@+id/ll01"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="@dimen/dimen_5"
+                app:iv_pic="@drawable/m_icon_examiner_compare"
+                app:text="@string/app_student_compare_pic"
+                />
+
+            <com.tecsun.jc.base.widget.diy.OnClickItemView
+                android:id="@+id/ll02"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/dimen_5"
+                app:iv_pic="@drawable/m_icon_examiner_take_the_evidence"
+                app:text="@string/app_student_obtain_evidence"
+                />
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/ll03"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/dimen_5"
+                android:layout_weight="1"
+                android:background="@drawable/white_base_white_round_selector"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/dimen_10">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/m_icon_initialize"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="初始化"
+                    android:textColor="@color/c_black"
+                    android:textSize="@dimen/dimen_20" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@mipmap/ic_launcher"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="下载信息"
+                    android:textColor="@color/c_black"
+                    android:textSize="@dimen/dimen_20" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
+

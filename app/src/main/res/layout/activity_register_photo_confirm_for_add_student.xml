@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/c_black_02"
+              android:orientation="vertical">
+
+    <com.tecsun.jc.base.widget.TitleBar
+            style="@style/style_title_bar"/>
+
+    <ImageView
+            android:id="@+id/iv_confirm_photo"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4.5"
+            android:layout_margin="@dimen/dimen_10"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"/>
+
+    <TextView
+            android:id="@+id/tvRotateTips"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="@dimen/dimen_15"
+            android:textColor="@color/c_484748"
+            android:text="@string/register_photo_tips"
+    />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+        <Button
+                android:id="@+id/btn_cancel"
+                style="@style/style_white_btn"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="@dimen/dimen_15"
+                android:layout_marginLeft="@dimen/dimen_20" />
+
+        <Button
+                android:id="@+id/btConfirm"
+                style="@style/style_blue_btn"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/dimen_15"
+                android:layout_marginRight="@dimen/dimen_20"
+                android:text="确定" />
+
+    </LinearLayout>
+
+</LinearLayout>

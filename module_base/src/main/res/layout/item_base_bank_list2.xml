@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/c_white"
+
+              android:paddingLeft="@dimen/dimen_5"
+              android:layout_marginBottom="@dimen/dimen_item_margin_bottom">
+    <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dimen_10"
+            android:paddingBottom="@dimen/dimen_10">
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+            <TextView
+                    android:id="@+id/tv_bank_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_16"
+                    android:textColor="@color/c_1c1c1c"
+                    android:layout_marginRight="@dimen/dimen_10"
+                    android:layout_marginEnd="@dimen/dimen_10"
+                    tools:text="1.建行吉林市龙潭支行"/>
+        </RelativeLayout>
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_12">
+                    <TextView
+                            android:id="@+id/tv_lbl_bank_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="电话："
+                            android:textColor="@color/c_8a8a8a"
+                            android:textSize="@dimen/text_14"/>
+                    <TextView
+                            android:id="@+id/tv_bank_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/c_2358ff"
+                            android:textSize="@dimen/text_14"
+                            android:autoLink="phone"
+                            tools:text="95555"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="@dimen/dimen_8">
+                    <TextView
+                            android:id="@+id/tv_lbl_bank_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="地址："
+
+                            android:textColor="@color/c_8a8a8a"
+                            android:textSize="@dimen/text_14"/>
+                    <TextView
+                            android:id="@+id/tv_bank_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/c_1c1c1c"
+                            android:textSize="@dimen/text_14"
+                            tools:text="吉林省吉林市龙潭区龙潭路龙潭街龙潭巷龙潭龙潭龙潭龙潭102"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <View
+                android:layout_width="1px"
+                android:layout_height="10dp"/>
+
+        <TextView
+                android:id="@+id/tv_bank_distance"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/text_12"
+                android:drawableLeft="@drawable/ic_card_distance_tip"
+                android:textColor="@color/c_8a8a8a"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignBottom="@+id/tv_bank_name"
+                tools:text="1845.5km"/>
+        <FrameLayout
+                android:id="@+id/flNavigation"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:minWidth="@dimen/dimen_70"
+                android:layout_gravity="center"
+                android:layout_height="match_parent">
+            <ImageView
+                    android:layout_width="45dp"
+                    android:layout_marginLeft="@dimen/dimen_3"
+                    android:layout_height="45dp"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/ic_card_navigation"/>
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

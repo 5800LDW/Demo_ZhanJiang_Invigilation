@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+<!--    <RelativeLayout style="@style/style_match_content">-->
+
+
+<!--        <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:orientation="vertical">-->
+
+<!--&lt;!&ndash;            <com.wonderkiln.camerakit.CameraView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:id="@+id/cameraView"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:adjustViewBounds="true"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:keepScreenOn="true"&ndash;&gt;-->
+<!--&lt;!&ndash;                    camerakit:ckCropOutput="false"&ndash;&gt;-->
+<!--&lt;!&ndash;                    camerakit:ckFacing="back"&ndash;&gt;-->
+<!--&lt;!&ndash;                    camerakit:ckFlash="off"&ndash;&gt;-->
+<!--&lt;!&ndash;                    camerakit:ckFocus="continuous"&ndash;&gt;-->
+<!--&lt;!&ndash;                    camerakit:ckJpegQuality="100"&ndash;&gt;-->
+<!--&lt;!&ndash;                    camerakit:ckMethod="standard"&ndash;&gt;-->
+<!--&lt;!&ndash;                    camerakit:ckPermissions="strict" />&ndash;&gt;-->
+
+<!--            <com.camerakit.CameraKitView-->
+<!--                    android:id="@+id/cameraView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:camera_facing="front"-->
+<!--                    app:camera_flash="off"-->
+<!--                    app:camera_focus="auto"-->
+<!--                    app:camera_imageJpegQuality="100"-->
+<!--                    android:adjustViewBounds="true"/>-->
+<!--        </LinearLayout>-->
+
+
+<!--        <FrameLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:background="@drawable/bg_take_photo_copy"></FrameLayout>-->
+
+<!--        <TextView-->
+<!--                android:id="@+id/zoomView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:gravity="center"-->
+<!--                android:padding="8dp"-->
+<!--                android:textColor="#fff"-->
+<!--                tools:text="Zoom: 1.32x" />-->
+
+<!--        <TextView-->
+<!--                android:id="@+id/tvTakePhoto"-->
+<!--                style="@style/style_wrap_content"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_marginBottom="@dimen/x80"-->
+<!--                android:background="@drawable/ic_take_photo" />-->
+
+<!--        &lt;!&ndash;<com.tecsun.base.view.TitleBar&ndash;&gt;-->
+<!--        &lt;!&ndash;style="@style/TitleBar"/>&ndash;&gt;-->
+<!--        <com.tecsun.jc.base.widget.TitleBar-->
+<!--                android:id="@id/title_bar"-->
+<!--                style="@style/style_title_bar"-->
+<!--                android:layout_height="60dp" />-->
+
+<!--        <TextView-->
+<!--                android:id="@+id/tvTip"-->
+<!--                style="@style/text_golden_35"-->
+<!--                android:layout_below="@id/title_bar"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_marginTop="@dimen/y60"-->
+<!--                android:background="@drawable/bg_take_photo_tip"-->
+<!--                android:text="@string/tip_take_photo"-->
+<!--                android:visibility="gone" />-->
+
+<!--    </RelativeLayout>-->
+</FrameLayout>

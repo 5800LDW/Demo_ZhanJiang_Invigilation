@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorStart">#255aff</color>  -->
+    <color name="colorStart">@color/c_2358ff</color>
+
+    <color name="border_block">#EAEAEA</color>
+</resources>

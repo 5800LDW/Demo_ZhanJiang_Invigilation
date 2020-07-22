@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!--  圆角图片 start -->
+	<attr name="borderRadius" format="dimension" />
+	<attr name="type">
+		<enum name="circle" value="0" />
+		<enum name="round" value="1" />
+	</attr>
+
+	<declare-styleable name="RoundImageView">
+		<attr name="borderRadius" />
+		<attr name="type" />
+		<attr name="borderWidth" format="reference|dimension">
+		</attr>
+		<!-- 	<attr name="borderRadius" format="reference|dimension">
+            </attr> -->
+		<attr name="borderColor" format="reference|color">
+		</attr>
+		<attr name="hoverColor" format="reference|color">
+		</attr>
+	</declare-styleable>
+	<!--  圆角图片 end -->
+</resources>

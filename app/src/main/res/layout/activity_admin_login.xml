@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_f3f3f3"
+    android:orientation="vertical">
+
+    <com.tecsun.jc.base.widget.TitleBar
+        style="@style/style_title_bar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/item_margin_bar"
+        android:background="@color/c_white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/register_style_viewGroup_option2"
+            android:paddingLeft="@dimen/dimen_15">
+
+            <TextView
+                style="@style/style_label"
+                android:layout_width="match_parent"
+                android:layout_weight="6"
+                android:textSize="@dimen/text_15"
+                android:text="账号:"/>
+
+            <com.tecsun.jc.base.widget.ClearEditText
+                android:id="@+id/etRegisterName"
+                style="@style/register_style_edit_text"
+                android:text="admin"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:maxLength="10"/>
+
+        </LinearLayout>
+
+        <include layout="@layout/line_horizontal"/>
+
+        <LinearLayout
+            style="@style/register_style_viewGroup_option2"
+            android:paddingLeft="@dimen/dimen_15">
+
+            <TextView
+                style="@style/style_label"
+                android:layout_width="match_parent"
+                android:layout_weight="6"
+                android:textSize="@dimen/text_15"
+                android:text="登录密码:"/>
+
+            <com.tecsun.jc.base.widget.ClearEditText
+                android:id="@+id/etRegisterNumber"
+                style="@style/register_style_edit_text"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="admin"
+                android:inputType="textPassword"
+                android:maxLength="18"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="@dimen/dimen_30"-->
+    <!--android:layout_marginLeft="@dimen/dimen_20"-->
+    <!--android:layout_marginRight="@dimen/dimen_20"-->
+    <!--android:orientation="horizontal">-->
+
+    <Button
+        android:id="@+id/btn_change_company_confirm"
+        style="@style/register_style_blue_btn"
+        android:text="确定"
+        android:onClick="nextStepConfirm"/>
+
+    <!--</LinearLayout>-->
+
+</LinearLayout>
+

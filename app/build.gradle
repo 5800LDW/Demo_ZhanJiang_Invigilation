@@ -1,0 +1,144 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+android {
+    compileSdkVersion 28
+
+    signingConfigs {
+        //签名文件
+        release {
+            storeFile file("key/tecsun_jc.jks")
+            storePassword "tecsunjc"
+            keyAlias "tecsun_jc"
+            keyPassword "tecsunjc"
+        }
+
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+
+
+
+
+
+    defaultConfig {
+        //版本号需要加上日期
+        def date = new Date().format("yyMMdd" , TimeZone.getTimeZone("GMT+08"))
+
+        applicationId "com.tecsun.jc.demo.zhanjiang.invigilation"
+        minSdkVersion 19
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.2.200721"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+
+
+        //x5内核
+//        ndk {
+//            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+//        }
+//
+//        repositories {
+//            flatDir {
+//                dirs 'libs', '../Lib_M/libs' ,'../Lib_ReadCard/libs','../module_base/libs'   // aar目录
+//            }
+//        }
+
+        ndk {
+            abiFilters  "armeabi-v7a"
+        }
+
+        repositories {
+            flatDir {
+                dirs 'libs', '../Lib_M/libs' ,'../module_ReadCard/libs','../module_base/libs',"../module_FaceRecognition/libs"  // aar目录
+            }
+        }
+
+    }
+    buildTypes {
+        debug {
+            //debug版本也使用release签名
+            signingConfig signingConfigs.release
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+
+        release {
+            //使用release签名
+            signingConfig signingConfigs.release
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs', '../Lib_M/libs' ,'../Lib_ReadCard/libs','../module_base/libs','../module_ImportData/libs'   // aar目录
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            //def date = new Date().format("yyyyMMdd" , TimeZone.getTimeZone("Asia/Shanghai"))
+            if(variant.buildType.name.equals('debug')){
+                def date = new Date().format("yyyyMMdd" , TimeZone.getTimeZone("GMT+08"))
+                outputFileName = "V.${versionName}-debug_${date}.apk"
+            }
+            if(variant.buildType.name.equals('release')){
+//                def date = new Date().format("yyMMdd HH:mm" , TimeZone.getTimeZone("GMT+08"))
+                def date = new Date().format("HH点mm分" , TimeZone.getTimeZone("GMT+08"))
+//                outputFileName = "V.${versionName}_JLMobile_Test.apk"
+                outputFileName = "V.${versionName}_${date}_考试认证Demo.apk"
+//                outputFileName = "V.${versionName}_${date}_JLMobile_生产环境.apk"
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.core:core-ktx:1.1.0-alpha05'
+    implementation project(':module_base')
+    implementation project(':Lib_M')
+    implementation project(':module_ReadCard')
+    implementation project(':module_FaceRecognition')
+    implementation project(':module_ImportData')
+
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    implementation 'me.jessyan:autosize:1.1.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+
+    implementation 'org.litepal.android:java:3.0.0'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+//    implementation files('libs/ysidcard_new.jar')
+}
+
+
+
+
+

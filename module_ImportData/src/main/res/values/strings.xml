@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">module_ImportData</string>
+    <string name="import_data_tips">１.请将后缀为\"xls\"的excel文件放入根目录的\"学生信息\"文件夹下。\n２.重复导入会覆盖上一次的记录。</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:gravity="center">
+
+    <TextView
+            android:id="@+id/tv_top_tab_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_14"
+            android:textColor="@color/c_b4dbff"
+            android:layout_marginBottom="@dimen/dimen_5"
+            tools:text="社保卡业务"/>
+
+    <ImageView
+            android:id="@+id/iv_top_tab_indicator"
+            style="@style/style_tab_indicator"
+            android:visibility="invisible"/>
+
+</LinearLayout>

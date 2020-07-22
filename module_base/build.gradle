@@ -1,0 +1,97 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+
+android {
+    compileSdkVersion 28
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+
+
+//        //x5内核
+//        ndk {
+//            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+//        }
+    }
+
+    buildTypes {
+
+
+        debug {
+            buildConfigField("boolean", "isRelease", "false")
+        }
+
+        release {
+
+            buildConfigField("boolean", "isRelease", "true")
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        lintOptions { abortOnError false }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.core:core-ktx:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    api 'androidx.appcompat:appcompat:1.1.0-alpha04'
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api('com.github.niorgai:StatusBarCompat:2.3.0', {
+        exclude group: 'androidx.appcompat:appcompat'
+        exclude group: 'com.google.android.material:material'
+    })
+    api 'org.greenrobot:eventbus:3.1.1'
+
+    api('com.alibaba:arouter-api:1.4.1', {
+        exclude group: 'androidx.appcompat:appcompat'
+        exclude group: 'com.google.android.material:material'
+    })
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
+    api 'com.google.android.material:material:1.1.0-alpha06'
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
+    api 'com.lzy.net:okgo:3.0.4'
+    api 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.github.ikidou:TypeBuilder:1.0'
+    api 'com.pgyersdk:sdk:3.0.3'
+    api 'com.contrarywind:Android-PickerView:3.2.7'
+    api 'cn.yc:notificationLib:1.0.2'
+
+    compile 'ren.yale.android:cachewebviewlib:2.1.8'
+
+    api 'org.litepal.android:java:3.0.0'
+
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+}

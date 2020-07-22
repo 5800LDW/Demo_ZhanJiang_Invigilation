@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textView2"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.1"
+        android:background="#2c4d3d" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="top|center_horizontal"
+                android:text="人脸演示"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#4e4a4a"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:gravity="top|center_horizontal"
+                android:text="1.4.7"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/number"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="top|center_horizontal"
+                android:text="人数 0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/losttime"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="top|center_horizontal"
+                android:text="耗时 0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/aliveshow"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/actionshow"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/showlive"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:text="活体"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+
+            <Spinner
+                android:id="@+id/aliveflag"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:entries="@array/alive_array"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/showflip"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:text="镜像"
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/hflips"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:entries="@array/flips_array"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="14">
+
+            <SurfaceView
+                android:id="@+id/faceview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/faceimage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="活体门限"
+                android:textColor="#4e4a4a"
+                android:textSize="15sp" />
+
+            <com.example.syka.VerticalSeekBar
+                android:id="@+id/vSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:max="100"
+                android:progress="60" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="60"
+                android:textColor="#4e4a4a"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/showcamera"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="切换"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+
+            <Spinner
+                android:id="@+id/camerafont"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:entries="@array/camera_array"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/showdirect"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="角度"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+
+            <Spinner
+                android:id="@+id/cameradegree"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:entries="@array/direct_array"
+                android:textSize="12sp" />
+        </LinearLayout>
+        
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/capturebmp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="抓图"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/startenroll"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="注册"
+            android:textColor="#080809"
+            android:textSize="25sp" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="批量注册"
+            android:id="@+id/enrollall"
+            android:layout_weight="1"
+            android:textColor="#080809"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/matchinfo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="正在进行人脸识别..."
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#1c24ab"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/clear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="清除"
+            android:textColor="#080809"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/exit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="退出"
+            android:textColor="#080809"
+            android:textSize="25sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_f3f3f3"
+    android:orientation="vertical">
+
+    <com.tecsun.jc.base.widget.TitleBar style="@style/style_title_bar" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dimen_15"
+        android:orientation="vertical">
+
+        <com.tecsun.jc.base.widget.corner.RoundCornerLinearLayout
+            android:id="@+id/rlChange"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:background="@color/white"
+            android:orientation="vertical"
+            app:roundBottomLeft="true"
+            app:roundBottomRight="true"
+            app:roundTopLeft="true"
+            app:roundTopRight="true"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:layout_marginLeft="@dimen/dimen_10"
+            app:roundedCornerRadius="10dp">
+        <include
+            layout="@layout/face_item_online_offline_mode"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/dimen_5"
+            android:layout_marginRight="@dimen/dimen_5"
+            android:layout_height="wrap_content" />
+
+
+
+    </com.tecsun.jc.base.widget.corner.RoundCornerLinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
+

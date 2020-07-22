@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/ll_fragment_service_main"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/c_all_bg">
+
+    <View
+            android:id="@+id/scroll_head_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/c_2358ff"
+            />
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tl_observable_scroll_tab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/c_2358ff"
+                app:tabIndicatorColor="@null"
+                app:tabMode="scrollable"/>
+
+        <FrameLayout
+                android:id="@+id/fl_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+    </FrameLayout>
+
+    <com.tecsun.jc.base.widget.ObservableScrollView
+            android:id="@+id/osv_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+        <LinearLayout
+                android:id="@+id/ll_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+        </LinearLayout>
+
+    </com.tecsun.jc.base.widget.ObservableScrollView>
+
+</LinearLayout>

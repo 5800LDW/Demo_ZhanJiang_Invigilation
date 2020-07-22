@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--顶部15dp圆角白色-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <solid android:color="@color/c_white"/>
+
+    <corners
+        android:topLeftRadius="15dp"
+        android:topRightRadius="15dp"
+        android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="0dp"/>
+
+</shape>

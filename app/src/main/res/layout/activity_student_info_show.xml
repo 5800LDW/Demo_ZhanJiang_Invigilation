@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/c_all_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <com.tecsun.jc.base.widget.TitleBar style="@style/style_title_bar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_40"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dimen_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/card_lbl_apply_information"
+                    android:textColor="@color/c_1c1c1c"
+                    android:textSize="@dimen/text_16" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/c_white">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/dimen_10"
+                    android:paddingRight="@dimen/dimen_10">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dimen_40"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="@dimen/dimen_100"
+                            android:layout_height="wrap_content"
+                            android:text="姓名："
+                            android:textColor="@color/c_4e4e4e"
+                            android:textSize="@dimen/text_16" />
+
+                        <TextView
+                            android:id="@+id/tv_show_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="刘慧"
+                            android:textColor="@color/c_1c1c1c"
+                            android:textSize="@dimen/text_16" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dimen_35"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="@dimen/dimen_100"
+                            android:layout_height="wrap_content"
+                            android:text="性别："
+                            android:textColor="@color/c_4e4e4e"
+                            android:textSize="@dimen/text_16" />
+
+                        <TextView
+                            android:id="@+id/tv_show_sex"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="男"
+                            android:textColor="@color/c_1c1c1c"
+                            android:textSize="@dimen/text_16" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dimen_35"
+                        android:visibility="gone"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="@dimen/dimen_100"
+                            android:layout_height="wrap_content"
+                            android:text="国籍："
+                            android:textColor="@color/c_4e4e4e"
+                            android:textSize="@dimen/text_16" />
+
+                        <TextView
+                            android:id="@+id/tv_show_country"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="中国"
+                            android:textColor="@color/c_1c1c1c"
+                            android:textSize="@dimen/text_16" />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="@dimen/dimen_100"
+                            android:layout_height="@dimen/dimen_35"
+                            android:gravity="center_vertical"
+                            android:text="身份证号："
+                            android:textColor="@color/c_4e4e4e"
+                            android:textSize="@dimen/text_16" />
+
+                        <TextView
+                            android:id="@+id/tv_show_cardid"
+                            android:layout_width="@dimen/dimen_110"
+                            android:layout_height="wrap_content"
+                            android:text="刘慧"
+                            android:textColor="@color/c_1c1c1c"
+                            android:textSize="@dimen/text_16" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dimen_35"
+                        android:visibility="gone"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="@dimen/dimen_100"
+                            android:layout_height="wrap_content"
+                            android:text="出生日期："
+                            android:textColor="@color/c_4e4e4e"
+                            android:textSize="@dimen/text_16" />
+
+                        <TextView
+                            android:id="@+id/tv_show_birthday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="刘慧"
+                            android:textColor="@color/c_1c1c1c"
+                            android:textSize="@dimen/text_16" />
+
+                    </LinearLayout>
+
+
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dimen_35"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="@dimen/dimen_100"
+                            android:layout_height="wrap_content"
+                            android:text="考点名称："
+                            android:textColor="@color/c_4e4e4e"
+                            android:textSize="@dimen/text_16" />
+
+                        <TextView
+                            android:id="@+id/tvSchoolName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="刘慧"
+                            android:textColor="@color/c_1c1c1c"
+                            android:textSize="@dimen/text_16" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="@dimen/dimen_100"
+                            android:layout_height="@dimen/dimen_35"
+                            android:gravity="center_vertical"
+                            android:text="考场号："
+                            android:textColor="@color/c_4e4e4e"
+                            android:textSize="@dimen/text_16" />
+
+                        <TextView
+                            android:id="@+id/tvExamRoomNo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="@color/c_1c1c1c"
+                            android:textSize="@dimen/text_16" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="@dimen/dimen_100"
+                            android:layout_height="@dimen/dimen_35"
+                            android:gravity="center_vertical"
+                            android:text="座位号："
+                            android:textColor="@color/c_4e4e4e"
+                            android:textSize="@dimen/text_16" />
+
+                        <TextView
+                            android:id="@+id/tvSeatNo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="@color/c_1c1c1c"
+                            android:textSize="@dimen/text_16" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="@dimen/dimen_100"
+                            android:layout_height="@dimen/dimen_35"
+                            android:gravity="center_vertical"
+                            android:text="准考证号："
+                            android:textColor="@color/c_4e4e4e"
+                            android:textSize="@dimen/text_16" />
+
+                        <TextView
+                            android:id="@+id/tvExaminationNO"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="124"
+                            android:textColor="@color/c_1c1c1c"
+                            android:textSize="@dimen/text_16" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="@dimen/dimen_100"
+                            android:layout_height="@dimen/dimen_35"
+                            android:gravity="center_vertical"
+                            android:text="报考专业："
+                            android:textColor="@color/c_4e4e4e"
+                            android:textSize="@dimen/text_16" />
+
+                        <TextView
+                            android:id="@+id/tvApplyingMajor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="报考专业"
+                            android:textColor="@color/c_1c1c1c"
+                            android:textSize="@dimen/text_16" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="@dimen/dimen_100"
+                            android:layout_height="@dimen/dimen_35"
+                            android:gravity="center_vertical"
+                            android:text="考试时间："
+                            android:textColor="@color/c_4e4e4e"
+                            android:textSize="@dimen/text_16" />
+
+                        <TextView
+                            android:id="@+id/tvExamTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="@color/c_1c1c1c"
+                            android:textSize="@dimen/text_16" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="@dimen/dimen_100"
+                            android:layout_height="@dimen/dimen_35"
+                            android:gravity="center_vertical"
+                            android:text="科目："
+                            android:textColor="@color/c_4e4e4e"
+                            android:textSize="@dimen/text_16" />
+
+                        <TextView
+                            android:id="@+id/tvSubject"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="@color/c_1c1c1c"
+                            android:textSize="@dimen/text_16"
+                            tools:text="2019年11月23日 09:00-11:00 综合知识和能力素质（通用类专业技术其他类岗位）"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/img_show_card_selfie_bitmap"
+                    android:layout_width="112.5dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:layout_marginRight="@dimen/dimen_10"
+                    android:scaleType="fitCenter" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

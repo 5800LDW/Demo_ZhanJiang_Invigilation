@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+	<com.tecsun.jc.base.widget.TitleBar style="@style/style_title_bar" />
+
+
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/item_margin_bar"
+
+		android:background="@color/c_white"
+		android:orientation="vertical"
+		android:layout_gravity="center"
+		android:gravity="center"
+		android:padding="@dimen/dimen_10">
+
+		<ImageView
+			android:id="@+id/ivPic"
+			android:layout_width="320dp"
+			android:layout_gravity="center"
+			android:layout_height="387.6dp" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_marginTop="@dimen/dimen_20"
+			android:textColor="@color/c_ac7f5d"
+			android:layout_gravity="center"
+			android:gravity="center"
+			android:textSize="17dp"
+			android:text="温馨：提示按照图上放置身份证（放在机器正下方）获取信息"
+			android:layout_height="wrap_content"/>
+		<View
+			android:layout_width="wrap_content"
+			android:layout_height="0dp"
+			android:layout_weight="1" />
+
+		<LinearLayout
+			android:id="@+id/llSkip"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/dimen_10"
+			android:layout_marginLeft="@dimen/dimen_20"
+			android:layout_marginRight="@dimen/dimen_20"
+			android:layout_marginBottom="@dimen/dimen_10"
+			android:visibility="gone"
+			android:orientation="horizontal">
+
+			<Button
+				android:id="@+id/btSkip"
+				style="@style/style_blue_btn"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:text="@string/read_card_skip"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+
+
+
+
+
+
+    <include
+        android:id="@+id/titlebar"
+		android:visibility="gone"
+        layout="@layout/titlebar" />
+
+	<ScrollView
+		android:visibility="gone"
+	    android:id="@+id/scrollView1"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" >
+
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:orientation="vertical" >
+	        
+	        <Button
+				android:id="@+id/btn_powerOn"
+        		android:layout_width="match_parent"
+        		android:layout_height="wrap_content"
+        		android:onClick="powerOn"
+        		style="@style/buttonNumberStyle"
+	    		android:background="@drawable/button_number_violet_shape"
+				android:layout_marginTop="10dp"
+	    		android:layout_marginLeft="10dp"
+	    		android:layout_marginRight="10dp"
+        		android:text="模块上电" />
+
+			<Button
+        		android:id="@+id/btn_init"
+        		android:layout_width="match_parent"
+        		android:layout_height="wrap_content"
+        		android:onClick="init_idcard"
+        		style="@style/buttonNumberStyle"
+	    		android:background="@drawable/button_number_violet_shape"
+	    		android:layout_marginTop="10dp"
+	    		android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"
+        		android:text="初始化" />
+
+			<Button
+				android:id="@+id/btn_read_info"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:onClick="read_info"
+				style="@style/buttonNumberStyle"
+				android:background="@drawable/button_number_violet_shape"
+				android:layout_marginTop="10dp"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"
+				android:text="读取身份证" />
+
+			<Button
+				android:id="@+id/btn_read_repeate"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:onClick="read_repeate"
+				style="@style/buttonNumberStyle"
+				android:background="@drawable/button_number_violet_shape"
+				android:layout_marginTop="10dp"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"
+				android:text="循环读取" />
+
+			<Button
+				android:id="@+id/btn_stop"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				style="@style/buttonNumberStyle"
+				android:background="@drawable/button_number_violet_shape"
+				android:onClick="read_stop"
+				android:layout_marginTop="10dp"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"
+				android:text="停止循环" />
+
+			<Button
+				android:id="@+id/btn_powerOff"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:onClick="powerOff"
+				style="@style/buttonNumberStyle"
+				android:background="@drawable/button_number_violet_shape"
+				android:layout_marginTop="10dp"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"
+				android:text="模块下电" />
+
+			<TextView
+				android:id="@+id/tv_idcard_info"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
+				android:text="TextView" />
+
+			<ImageView
+				android:id="@+id/iv_idcard_pic"
+				android:layout_width="100dp"
+				android:layout_height="120dp"
+				android:src="@mipmap/ic_launcher" />
+	
+	    </LinearLayout>
+
+	</ScrollView>
+  
+</LinearLayout>

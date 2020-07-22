@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="c_all_bg">#f3f3f3</color>
+
+    <color name="c_white">#FFFFFF</color><!--白色 -->
+    <color name="c_8a8a8a">#8a8a8a</color>
+    <color name="c_f3f3f3">#f3f3f3</color>
+    <color name="c_1c1c1c">#1c1c1c</color>
+    <color name="c_e60012">#e60012</color>
+    <!--<color name="c_2358ff">#2358ff</color>-->
+    <color name="c_2358ff">#2591ff</color>
+    <color name="c_btn_click">#037af3</color>
+    <color name="c_23ade5">#23ade5</color>
+    <color name="c_070707">#070707</color>
+    <color name="c_cdcdcd">#cdcdcd</color>
+    <color name="c_797979">#797979</color>
+    <color name="c_b4dbff">#b4dbff</color>
+    <color name="c_f19d36">#f19d36</color>
+    <color name="c_ac59f7">#ac59f7</color>
+    <color name="c_00c3c5">#00c3c5</color>
+    <color name="c_f8494f">#f8494f</color>
+    <color name="c_4e4e4e">#4e4e4e</color>
+    <color name="c_808080">#808080</color>
+    <color name="c_b0000000">#b0000000</color>
+    <color name="c_ff8500">#ff8500</color>
+    <color name="c_eb4c3f">#eb4c3f</color>
+    <color name="c_505050">#505050</color>
+    <color name="c_57bd6a">#57bd6a</color>
+    <color name="c_e5e5e5">#e5e5e5</color>
+    <color name="c_8fc31f">#8fc31f</color>
+    <color name="c_blue_2">#039cda</color>
+
+
+    <color name="colorStart">@color/c_2358ff</color>
+
+    <color name="register_c_normal">@color/c_2358ff</color>
+    <color name="register_gray">@color/c_4e4e4e</color>
+    <!--<color name="c_blue_01">#23ade5</color>-->
+    <color name="c_black_01">#8a8a8a</color>
+    <color name="c_black_03">#1c1c1c</color>
+    <color name="c_black_04">#4e4e4e</color>
+    <!--<color name="c_red_01">#e60012</color>-->
+    <!--<color name="c_gray_01">#e5e5e5</color>-->
+    <!--<color name="c_green">#00a00e</color>-->
+    <!--<color name="c_black">#1c1c1c</color>-->
+    <color name="c_gray">#4e4e4e</color>
+    <color name="c_blue">#23ade5</color>
+    <color name="c_blue_01">#23ade5</color>
+    <color name="c_golden">#ff8500</color>
+    <color name="c_golden_03">#ff8a00</color>
+    <color name="c_golden_01">#f39800</color>
+    <color name="c_golden_02">#ffc15b</color>
+    <color name="c_red">#e60012</color>
+    <color name="c_gray_01">#e5e5e5</color>
+    <color name="c_gray_02">#8a8a8a</color>
+    <color name="c_gray_03">#cecece</color>
+    <color name="c_gray_04">#f3f3f3</color>
+    <color name="c_green">#00a00e</color>
+    <color name="c_red_01">#fe4b4d</color>
+    <color name="c_orange_01">#ff8500</color>
+    <color name="bg_titlbar">#00A0E9</color>
+
+
+
+    <!--dialog中按钮字体颜色 -->
+    <color name="btntextcolor">#ff23ADE5</color>
+    <color name="c_447bf4">#447bf4</color>
+    <color name="c_black">#1c1c1c</color>
+    <color name="c_00000000">#00000000</color>
+    <color name="c_gray_2">#e1e1e1</color>
+    <color name="c_gray_5">#eeeeee</color>
+    <color name="c_blue_1">#23ade5</color>
+    <color name="c_black_02">#f3f3f3</color>
+    <color name="white">#FFFFFF</color><!--白色 -->
+
+    <color name="transparent">#00000000</color><!--透明色 -->
+
+    <color name="darkorange">#FF8C00</color><!--暗桔黄色 -->
+    <color name="red">#FF0000</color><!--红色 -->
+    <color name="c_484748">#484748</color>
+    <color name="c_af815a">#af815a</color>
+    <color name="c_ac7f5d">#eb9a5b</color>
+
+
+    <color name="register_white">#FFFFFF</color>
+
+
+
+
+    <color name="transparency">#00ffffff</color>
+    <color name="lightGray">#99aaaaaa</color>
+    <color name="gray">#9e9e9e</color>
+    <color name="lightGreen">#33da33</color>
+    <color name="lightBlue">#a0eaf1</color>
+    <color name="BlueText">#7491f1</color>
+    <color name="darkGray">#717171</color>
+    <color name="light_pink">#f9eeee</color>
+    <color name="blue">#418eec</color>
+    <color name="blue_btn">#78b0f4</color>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/white"/>
+    <item android:top="25dp" android:left="0dp">
+        <bitmap
+                android:src="@drawable/base_ic_tecsun_background"
+                android:antialias="true"
+                android:dither="true"
+                android:filter="true"
+                android:scaleType="centerCrop"
+                android:tileMode="disabled"/>
+    </item>
+
+</layer-list>

@@ -1,0 +1,249 @@
+<resources>
+    <string name="app_name">腾龙培训考勤</string>
+    
+    <string name="drop_out">再按一次退出应用</string>
+
+
+
+
+    <string name="register_user_name">姓名:</string>
+    <string name="register_user_name_hint">请输入真实姓名</string>
+    <string name="register_user_social_security_number">社会保障号:</string>
+    <string name="register_user_social_security_number_hint">请输入社会保障号/身份证号</string>
+
+    <string name="register_user_pwd">密码:</string>
+    <string name="register_user_pwd_hint">设置您的登录密码</string>
+    <string name="register_user_confirm_pwd">确认密码:</string>
+    <string name="register_user_confirm_pwd_hint">请再次输入您的登录密码</string>
+
+    <string name="register_user_mobile">手机号:</string>
+    <string name="register_user_mobile_hint">请输入手机号码</string>
+
+    <string name="register_change_pwd_tip">请输入6&#8211;15位密码，由数字和字母组成</string>
+
+    <string name="register_next_step">下一步</string>
+    <string name="register_complete">完成</string>
+    <string name="register">注册</string>
+    <string name="register_determine">确定</string>
+    <string name="register_cancel">取消</string>
+    <string name="register_input_user_name">请输入姓名</string>
+    <string name="register_input_user_name_can_not_blank">姓名不能为空格</string>
+
+    <string name="register_input_user_pwd">请输入密码</string>
+    <string name="register_input_user_confirm_pwd">请输入确认密码</string>
+    <string name="register_input_user_mobile">请输入手机号</string>
+
+
+    <string name="register_appointment_tip1">已同意并阅读</string>
+    <string name="register_appointment_tip2">《江城人社用户注册协议》</string>
+    <string name="register_agree_a_deal">我已阅读并同意《江城人社用户注册协议》</string>
+
+    <string name="register_pwd_not_conform_specification">密码不符合规范</string>
+    <string name="register_pwd_different">两次密码输入不一致</string>
+    <string name="register_please_correct_id_num">请输入正确的社保号/身份证号</string>
+    <string name="register_please_correct_mobile">请输入正确的手机号</string>
+
+    <string name="register_filter_vcode">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+
+    <string name="register_agree_a_deal_require">请阅读并确认江城人社用户注册协议</string>
+
+    <string name="register_failed">注册失败！请重新注册</string>
+    <string name="register_sign_fail">签到超时，请重新启动应用</string>
+    <string name="register_tip_network_error">网络加载错误！</string>
+    <string name="register_my_success">恭喜您已注册成功。业务查询还需实名认证。</string>
+    <string name="register_processing">处理中,请稍候...</string>
+    <string name="register_identity_real_name">实名认证</string>
+    <string name="register_apply_take_id_negative_pic_01">拍身份证人像面</string>
+    <string name="register_apply_take_id_positive_pic">拍&#160;身&#160;份&#160;证&#160;国&#160;徽&#160;面</string>
+    <string name="register_apply_take_id_positive_pic_01">拍身份证国徽面</string>
+    <string name="register_confirm_submit">确认提交</string>
+    <string name="register_upload_id_card_pic">上传证件照片</string>
+    <string name="register_tip_network_error2">网络异常，请稍后再试</string>
+
+    <string name="register_tip_pic_upload_failed">图片上传失败</string>
+
+
+    <string name="lbl_china">中华人民共和国</string>
+    <string name="lbl_apply_name_applycard">姓名：\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="lbl_apply_nation_applycard">民族：\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="lbl_apply_country_applycard">国籍：\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="lbl_apply_sex_applycard">性别：\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="apply_country_city_applycard">国籍：\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+
+    <string name="lbl_apply_next_toast">请您核对所有信息，确认无误点击"下一步"\u0020\u0020\</string>
+    <string name="lbl_apply_name">姓名：</string>
+    <string name="lbl_apply_nation">民族：</string>
+    <string name="lbl_apply_country">国籍：</string>
+    <string name="lbl_apply_sex">性别：</string>
+    <string name="lbl_apply_id_num">身份证号：</string>
+    <string name="lbl_apply_birthday">出生日期：</string>
+    <string name="lbl_apply_begins_period">有效期始：</string>
+    <string name="lbl_apply_valid_period">有效期限：</string>
+    <string name="lbl_apply_residence_address">常住详细地址：</string>
+    <string name="lbl_apply_residen_address">户籍详细地址：</string>
+    <string name="lbl_apply_resident_address">常住地址：</string>
+    <string name="whole_account">统筹账户 :</string>
+    <string name="person_account">个人账号 :</string>
+    <string name="search_hospital">输入医院名称搜索</string>
+    <string name="phone_hospital">电话 ：</string>
+    <string name="address_hospital">地址 ：</string>
+    <string name="address_hospital2">户口地址 ：</string>
+    <string name="address_linek_phone">联系手机：</string>
+    <string name="address_postal">通讯地址：</string>
+    <string name="address_postal_hint">请输入通讯地址</string>
+
+    <string name="bus_station">公交 ：</string>
+    <string name="search_history">搜索历史</string>
+    <string name="clear_history">清空</string>
+    <string name="level_hospital">等级 ：</string>
+    <string name="time_hospital">时间 ：</string>
+    <string name="introduction_hospital">简介 ：</string>
+    <string name="name_hospital">医院 ：</string>
+    <string name="name_dept">科室 ：</string>
+    <string name="registration_department">挂号科室 ：</string>
+    <string name="registration_doctor">挂号医生 ：</string>
+    <string name="clinical_time">就诊时间 ：</string>
+    <string name="aggregate">总计 ：</string>
+    <string name="registration_fee">挂号费 ：</string>
+    <string name="fee">诊疗费 ：</string>
+    <string name="apply_country_city">国籍：</string>
+    <string name="apply_country_city_hint">请选择国籍</string>
+    <string name="apply_nature_account">户口性质：</string>
+    <string name="apply_nature_account_hint">请选择户口性质</string>
+    <string name="apply_person_type">人员类别：</string>
+    <string name="apply_person_type_hint">请选择人员类别</string>
+    <string name="apply_person_status">人员状态：</string>
+    <string name="apply_person_status_hint">请选择人员状态</string>
+    <string name="apply_service_bank">服务银行：</string>
+    <string name="issuing_authority">签发机关：</string>
+
+    <string name="btn_next_step">下一步</string>
+    <string name="btn_confirm_commit">确认提交</string>
+    <string name="tip_no_can_apply">此用户无法申请社保卡</string>
+    <string name="tip_no_check_cert_validity">无法确定此证件有效性</string>
+    <string name="tip_pic_upload_failed">图片上传失败</string>
+
+    <string name="take_id_positive_tip">请将身份证国徽面对准框拍摄</string>
+    <string name="take_id_negative_tip">请将身份证人像面对准框拍摄</string>
+    <string name="request_camera_permissions_faild">无法获取摄像头权限，请检查摄像头权限是否打开。</string>
+    <string name="prompt">提示</string>
+    <string name="dismiss">隐藏</string>
+
+    <string name="register_name_inconformity">输入的姓名和身份证不一致</string>
+    <string name="register_sfzh_inconformity">输入的社保号/身份证号和身份证不一致</string>
+
+    <string name="photo_standard">照片规范</string>
+    <string name="photo_standard_00">正确示意图</string>
+    <string name="photo_standard_01">头不能倾斜</string>
+    <string name="photo_standard_02">不能闭眼睛</string>
+    <string name="photo_standard_03">不能戴眼镜</string>
+    <string name="photo_standard_04">头发不能遮住\n眉毛、眼睛或耳朵</string>
+    <string name="photo_standard_05">不能戴帽子\n或饰物拍摄</string>
+    <string name="photo_standard_06">衣服不能与\n背景色相近</string>
+    <string name="choose_phone_album">从手机选择</string>
+    <string name="take_pictures">拍照</string>
+    <string name="photo_confirm">照片确认</string>
+    <string name="tip_take_photo">拍照必须是纯色背景，如：白墙、白挂布等</string>
+
+    <string name="submit">提交</string>
+    <string name="string_out">退出</string>
+    <string name="string_re_check">重新检测</string>
+    <string name="apply_reset_photo">重新拍照</string>
+
+    <string name="name">姓名&#160;：</string>
+    <string name="name1">姓名&#160;：&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="sex1">性别&#160;：&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="sex">性别&#160;：</string>
+    <string name="idcard_no">身份证号&#160;：</string>
+    <string name="phone_num">联系电话&#160;：</string>
+    <string name="company_name">单位名称&#160;：</string>
+    <string name="correspondence_address">通讯地址&#160;：</string>
+    <string name="certification_methods">认证方式&#160;：</string>
+    <string name="certification_channels">认证渠道&#160;：</string>
+    <string name="collected_status">建模状态&#160;：</string>
+    <string name="collected_time">建模时间&#160;：</string>
+    <string name="employees_account">员工帐号&#160;：</string>
+    <string name="idcardno_input_hint">请输入身份证号</string>
+    <string name="name_input_hint">请输入姓名</string>
+    <string name="btn_search">查询</string>
+    <string name="btn_re_collected">重新建模</string>
+    <string name="company_name_01">参保单位：</string>
+    <string name="time">参保时间：</string>
+    <string name="address_tip">如果您的地址不正确请修改为您的新地址</string>
+    <string name="complete_info">请完善以下信息项！</string>
+    <string name="not_complete_info">以下信息为非必填项！</string>
+
+    <string name="register_agreement">江城人社用户注册协议</string>
+
+
+
+    <string name="lbl_sex">性别：</string>
+    <string name="lbl_nation">民族：</string>
+    <string name="lbl_company_name">单位名称</string>
+    <string name="lbl_company">参保单位：</string>
+    <string name="lbl_status">参保状态：</string>
+    <string name="lbl_sb_no">社保卡号：</string>
+    <string name="lbl_communication">通讯地址</string>
+
+
+    <string name="register_photo_tips">若照片显示为反转,请点击此处\"旋转\",再点击确定</string>
+    <string name="register_photo_tips2">若照片需要调整方向,请点击此处\"旋转\",再点击确定</string>
+
+    <string name="card_apply_showimg">图片预览</string>
+    <string name="card_apply_ok">申领信息确认</string>
+    <string name="card_apply_title">社保卡申领</string>
+    <string name="card_apply_lbl_bank_filter">发卡银行：</string>
+    <string name="card_card_company_filter">取卡单位名称：</string>
+    <string name="card_category_filter">卡类别\u0020\u0020\u0020\u0020：</string>
+    <string name="card_apply_lbl_district_filter">所属区县：</string>
+    <string name="card_apply_bank_filter_hint">请选择发卡银行</string>
+    <string name="card_apply_district_filter_hint">请选择所属区县</string>
+    <string name="card_category_hint">请选择卡类别</string>
+    <string name="card_lbl_bank_hint">请选择取卡单位</string>
+
+    <string name="card_apply_Occupation_hint">请选择职业</string>
+    <string name="card_apply_industry_hint">请选择行业</string>
+    <string name="card_apply_personnel_status_hint">请选择人员状态</string>
+    <string name="card_apply_registered_residence_hint">请选择户口性质</string>
+    <string name="card_apply_phone_type_hint">请选择电话类型</string>
+    <string name="card_lbl_personnel_status">人员状态：</string>
+    <string name="card_lbl_registered_residence">户口性质：</string>
+    <string name="card_lbl_phone_type">电话类型：</string>
+    <string name="card_lbl_link_phone">\u0020\u0020\联系电话：</string>
+    <string name="card_lbl_industry">行业\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020：</string>
+    <string name="card_lbl_Occupation">职业\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020：</string>
+
+    <string name="card_lbl_apply_information">基本信息</string>
+    <string name="card_lbl_apply_Receive_information">申领信息</string>
+    <string name="card_lbl_apply_picture">证件照片</string>
+    <string name="card_lbl_ApplyCard_Success">提交成功，请耐心等待审核结果</string>
+    <string name="card_lbl_Back">返回主页</string>
+
+    <string name="app_add_data">新增数据</string>
+
+    </resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

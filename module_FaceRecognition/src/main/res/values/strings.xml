@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">module_FaceRecognition</string>
+
+    <string name="Match">正在进行人脸识别...</string>
+    <string name="Enorll">正在进行人脸注册...</string>
+    <string name="EnorllSuccess">人脸注册成功</string>
+    <string name="MatchSuccess">人脸识别成功</string>
+    <string name="Clear">正在进行人脸清除...</string>
+    <string name="batchEnorll">正在进行批量注册...</string>
+    <string name="captrue">正在进行图像采集...</string>
+    <string-array name="camera_array">
+        <item>后置</item>
+        <item>前置</item>
+    </string-array>
+    <string-array name="flips_array">
+        <item>真人</item>
+        <item>彩色</item>
+        <item>黑白</item>
+        <item>视频</item>
+    </string-array>
+    <string-array name="direct_array">
+        <item>0度</item>
+        <item>90度</item>
+        <item>180度</item>
+        <item>270度</item>
+    </string-array>
+    <string-array name="alive_array">
+        <item>思源</item>
+        <item>ULS</item>
+        <item>关闭</item>
+    </string-array>
+</resources>
