@@ -13,14 +13,14 @@ public class UploadPicParam {
      * sfzh : string
      */
 
-    private String channelcode;
-    private String name;
-    private String picBase64;
+    private String channelcode = "";
+    private String name = "";
+    private String picBase64 = "";
     private int picId;
-    private String picName;
-    private String picPath;
-    private String picType;
-    private String sfzh;
+    private String picName = "";
+    private String picPath = "";
+    private String picType = "";
+    private String sfzh = "";
 
     public String getChannelcode() {
         return channelcode;
@@ -91,7 +91,7 @@ public class UploadPicParam {
         return "UploadPicParam{" +
                 "channelcode='" + channelcode + '\'' +
                 ", name='" + name + '\'' +
-                ", picBase64='" + picBase64 + '\'' +
+//                ", picBase64='" + picBase64 + '\'' +
                 ", picId=" + picId +
                 ", picName='" + picName + '\'' +
                 ", picPath='" + picPath + '\'' +

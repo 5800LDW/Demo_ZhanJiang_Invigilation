@@ -364,11 +364,11 @@ public class DialogUtils {
      * @param pPosttiveListener  确定按钮监听
      * @param pNegativeListener  取消按钮监听
      */
-    public static void showDialog2(@DrawableRes int id,String title, String pMessage, int pPostTextId, int pNegaTextId, DialogInterface.OnClickListener pPosttiveListener, DialogInterface.OnClickListener pNegativeListener,
+    public static void showDialog2(int id ,String title, String pMessage, int pPostTextId, int pNegaTextId, DialogInterface.OnClickListener pPosttiveListener, DialogInterface.OnClickListener pNegativeListener,
                                   Activity activity) {
         if (!activity.isFinishing()) {
             CustomDialog.Builder ibuilder = new CustomDialog.Builder(activity);
-            ibuilder.setTitle(title);
+//            ibuilder.setTitle(title);
             ibuilder.setMessage(pMessage);
 
             ibuilder.setMessageImgId(id);

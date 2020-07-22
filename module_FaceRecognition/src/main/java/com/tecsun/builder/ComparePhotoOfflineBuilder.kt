@@ -198,9 +198,12 @@ object ComparePhotoOfflineBuilder : ICompare {
                     } else {
                         SoundBuilder.playCompareSuccess()
 
+                        activity?.runOnUiThread{
+                            activity?.successCompareBiz()
+                        }
 
 
-                        activity?.successCompareBiz()
+
 
 //                        activity!!.showSuccessMessageDialog("人证比对成功!", iEvents = IEvents {
 //                            val intent = Intent()

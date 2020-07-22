@@ -53,6 +53,9 @@ class JinLinApp : Application(){
 
         @JvmStatic
         var studentDetailsBean: StudentDetailsBean? = null
+
+        @JvmStatic
+        var courseId:Int? = null
     }
 
     override fun onCreate() {

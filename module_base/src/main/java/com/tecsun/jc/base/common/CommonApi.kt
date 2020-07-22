@@ -21,4 +21,12 @@ object CommonApi {
         return BASE_URL_ADDRESS.substring(0, 15)
     }
 
+
+    const val IP = "http://192.168.7.115:8089/tecsun-base-service/"
+
+    const val IP_LIST = IP + "course/list"
+
+    const val URL_UPLOAD_PICTURE = "course/uploadPicture"
+
+    const val URL_SAVE_INFO = "course/savePersonInfo"
 }

@@ -295,7 +295,7 @@ abstract class BaseActivity : AppCompatActivity(), HandlerCallback {
         Handler().postDelayed({finish()},200)
     }
 
-    fun successCompareBiz(){
+    open fun successCompareBiz(){
 
     }
 }

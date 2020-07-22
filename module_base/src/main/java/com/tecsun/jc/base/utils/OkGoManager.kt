@@ -1,5 +1,6 @@
 package com.tecsun.jc.base.utils
 
+import android.provider.SyncStateContract
 import android.util.Log
 import com.google.gson.Gson
 import com.lzy.okgo.OkGo
@@ -31,7 +32,8 @@ class OkGoManager {
     }
 
     fun <T> okGoRequestManage(roadUrl: String, requestParam: String, clz: Class<T>, callback: OkGoRequestCallback<T>) {
-        val requestUrl = CommonApi.BASE_URL_ADDRESS + roadUrl
+//        val requestUrl = CommonApi.BASE_URL_ADDRESS + roadUrl
+        val requestUrl = CommonApi.IP + roadUrl
 
 
         //start 20190517 ldw 0次重连

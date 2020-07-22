@@ -1,18 +1,20 @@
 package com.tecsun.jc.demo.invigilation.zhanjiang.constant;
 
 
+import com.tecsun.jc.base.common.CommonApi;
+
 /**
  * 常量
  */
 public class Constants {
 
-    public static final String IP = "http://192.168.7.115:8089/tecsun-base-service/";
+    public static final String IP = CommonApi.IP;
 
-    public static final String IP_LIST = IP + "course/list";
+    public static final String IP_LIST = CommonApi.IP_LIST;
 
-    public static final String URL_UPLOAD_PICTURE = "course/uploadPicture";
+    public static final String URL_UPLOAD_PICTURE = CommonApi.URL_UPLOAD_PICTURE;
 
-    public static final String URL_SAVE_INFO = "/course/savePersonInfo";
+    public static final String URL_SAVE_INFO = CommonApi.URL_SAVE_INFO;
 
 }
 

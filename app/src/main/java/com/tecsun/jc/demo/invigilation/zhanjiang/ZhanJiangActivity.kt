@@ -7,6 +7,7 @@ import android.view.KeyEvent
 import android.view.View
 import com.alibaba.android.arouter.launcher.ARouter
 import com.tecsun.jc.base.JinLinApp
+import com.tecsun.jc.base.JinLinApp.Companion.courseId
 import com.tecsun.jc.base.base.BaseActivity
 import com.tecsun.jc.base.bean.db.invigilation.bean.ProctorDetailsBean
 import com.tecsun.jc.base.bean.db.invigilation.bean.TestingDetailsBean
@@ -14,6 +15,7 @@ import com.tecsun.jc.base.builder.TakePhotoRecordBuilder
 import com.tecsun.jc.base.builder.sound.SoundBuilder
 import com.tecsun.jc.base.collector.BaseActivityCollector
 import com.tecsun.jc.base.common.BaseConstant
+import com.tecsun.jc.base.dialog.DialogUtils
 import com.tecsun.jc.base.listener.IEvents
 import com.tecsun.jc.base.listener.OkGoRequestCallback
 import com.tecsun.jc.base.utils.*
@@ -135,12 +137,34 @@ class ZhanJiangActivity : BaseActivity() {
                     showToast("请选择培训课程")
                     return
                 }
+
+                courseId = selectDataBean?.id
+
                 DeviceBuilder.skip(this@ZhanJiangActivity, getString(R.string.base_student_sign_in))
             }
 
         })
 
+
+
+
+
+//        showFailDialog("我是测试数据", null)
+
+
     }
+
+//
+//    private fun showFailDialog(msg: String, event: IEvents?) {
+//        DialogUtils.showDialog2(
+//            "上传数据失败",
+//            msg + "", R.string.base_confirm_upload, R.string.base_cancel,
+//            { dialog, which -> event?.biz() },
+//            { dialog, which -> dialog.dismiss() },
+//            this
+//        )
+//    }
+
 
     /***设置默认的人证认证模式*/
     private fun initMode() {

@@ -23,6 +23,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.tecsun.jc.base.JinLinApp
+import com.tecsun.jc.base.bean.db.invigilation.bean.StudentDetailsBean
 import com.tecsun.jc.base.builder.StudentOwnImageBuilder
 import com.tecsun.jc.base.builder.StudentOwnSFZImageBuilder
 import com.tecsun.jc.base.collector.BaseActivityCollector
@@ -36,10 +37,12 @@ import com.tecsun.jc.base.widget.TitleBar
 import com.tecsun.jc.demo.invigilation.R
 import com.tecsun.jc.demo.invigilation.builder.compare.CompareBuilderFactory
 import com.tecsun.jc.demo.invigilation.builder.compare.ICompare
+import com.tecsun.jc.demo.invigilation.util.BitmapUtils2
 import com.tecsun.jc.demo.invigilation.util.MyFileUtil
 import com.tecsun.jc.demo.invigilation.util.constant.Constants
 import com.tecsun.jc.demo.invigilation.zhanjiang.bean.UploadPicEntity
 import com.tecsun.jc.demo.invigilation.zhanjiang.bean.UploadPicParam
+import com.tecsun.jc.demo.invigilation.zhanjiang.bean.UploadResultEntity
 import com.tecsun.jc.demo.invigilation.zhanjiang.bean.UploadResultParam
 import com.tecsun.jc.register.util.constant.Const
 import kotlinx.android.synthetic.main.activity_register_photo_confirm.*
@@ -396,7 +399,7 @@ class PhotoConfirmActivity : MyBaseActivity() {
         var selfBitmap: Bitmap? = null
 
 
-        var studentDetailsBean = CompareBuilderFactory.getStudentDetailsBean()
+        studentDetailsBean = CompareBuilderFactory.getStudentDetailsBean()
         if (studentDetailsBean != null && !studentDetailsBean!!.sfzh.isNullOrBlank()) {
             //拿之前录入学生信息的图片做比对
             var bitmap: Bitmap? = null
@@ -461,10 +464,15 @@ class PhotoConfirmActivity : MyBaseActivity() {
     }
 
 
+    var studentDetailsBean: StudentDetailsBean? = null
     private var sfzhPic: String? = ""
     private var diyPic: String? = ""
 
+    private var sfzhPicParam: UploadPicParam? = null
+    private var diyPicParam: UploadPicParam? = null
+
     fun uploadSFZHPic(activity: MyBaseActivity?, param: UploadPicParam) {
+        sfzhPicParam = param
         OkGoManager.instance.okGoRequestManage(
             com.tecsun.jc.demo.invigilation.zhanjiang.constant.Constants.URL_UPLOAD_PICTURE, param
             , UploadPicEntity::class.java, object : OkGoRequestCallback<UploadPicEntity> {
@@ -473,8 +481,28 @@ class PhotoConfirmActivity : MyBaseActivity() {
                     if (t != null && t.statusCode == "200" && t.data != null && t.data.picId != null) {
                         sfzhPic = t.data.picId.toString()
 
+
+                        //下面进行上传自拍照片
+                        var selfBitmap = BitmapFactory.decodeFile(path)
+                        if (selfBitmap == null) {
+                            showErrorMessageDialog2("自拍图片不存在!")
+                            return
+                        }
+
+                        var param = UploadPicParam()
+                        param.sfzh = studentDetailsBean?.sfzh ?: ""
+                        param.name = studentDetailsBean?.name ?: ""
+                        param.picBase64 = BitmapUtils2.bitmapToBase64(selfBitmap)
+                        LogUtil.e(">>>>>>>>>>>>>>>>>>>>>>  uploadDiyPic param =  $param")
+                        uploadDiyPic(this@PhotoConfirmActivity, param)
+
+
+
                     } else {
-                        //TODO 提示错误, 和询问是否重新上传
+                        // 提示错误, 和询问是否重新上传
+                        showFailDialog(t?.message ?: "", IEvents {
+                            uploadDiyPic(this@PhotoConfirmActivity, param)
+                        })
                     }
 
                     LogUtil.e(">>>>>>>>>>>>>>>>> onSuccess $t")
@@ -482,9 +510,14 @@ class PhotoConfirmActivity : MyBaseActivity() {
 
                 override fun onError(throwable: Throwable?) {
                     activity?.dismissLoadingDialog()
-                    //TODO 提示错误, 和询问是否重新上传
+                    // 提示错误, 和询问是否重新上传
+                    showFailDialog("$throwable", IEvents {
+                        uploadDiyPic(this@PhotoConfirmActivity, param)
+                    })
+
+
                     LogUtil.e(">>>>>>>>>>>>>>>>> throwable $throwable")
-                    activity?.showErrorMessageDialog("$throwable")
+//                    activity?.showErrorMessageDialog("$throwable")
                 }
             })
 
@@ -492,6 +525,7 @@ class PhotoConfirmActivity : MyBaseActivity() {
 
 
     fun uploadDiyPic(activity: MyBaseActivity?, param: UploadPicParam) {
+        diyPicParam = param
         OkGoManager.instance.okGoRequestManage(
             com.tecsun.jc.demo.invigilation.zhanjiang.constant.Constants.URL_UPLOAD_PICTURE, param
             , UploadPicEntity::class.java, object : OkGoRequestCallback<UploadPicEntity> {
@@ -499,8 +533,18 @@ class PhotoConfirmActivity : MyBaseActivity() {
                     activity?.dismissLoadingDialog()
                     if (t != null && t.statusCode == "200" && t.data != null && t.data.picId != null) {
                         diyPic = t.data.picId.toString()
+
+
+
+                        //下面进行最终上传:
+                        uploadConfirmResult2()
+
+
                     } else {
-                        //TODO 提示错误, 和询问是否重新上传
+                        //提示错误, 和询问是否重新上传
+                        showFailDialog(t?.message ?: "", IEvents {
+                            uploadDiyPic(this@PhotoConfirmActivity, param)
+                        })
                     }
 
                     LogUtil.e(">>>>>>>>>>>>>>>>> onSuccess $t")
@@ -508,14 +552,32 @@ class PhotoConfirmActivity : MyBaseActivity() {
 
                 override fun onError(throwable: Throwable?) {
                     activity?.dismissLoadingDialog()
-                    //TODO 提示错误, 和询问是否重新上传
+                    showFailDialog("$throwable", IEvents {
+                        uploadDiyPic(this@PhotoConfirmActivity, param)
+                    })
                     LogUtil.e(">>>>>>>>>>>>>>>>> throwable $throwable")
-                    activity?.showErrorMessageDialog("$throwable")
+//                    activity?.showErrorMessageDialog("$throwable")
                 }
             })
     }
 
-    fun uploadConfirmResult(sfzh: String, cid: String, name: String) {
+
+    private fun uploadConfirmResult2(){
+        uploadConfirmResult(studentDetailsBean?.sfzh?:"", JinLinApp.courseId,
+            studentDetailsBean?.name?:"",
+            IEvents {
+                uploadConfirmResult2()
+            }
+        )
+    }
+
+
+
+
+
+
+
+    fun uploadConfirmResult(sfzh: String, cid: Int?, name: String, event: IEvents) {
         var param = UploadResultParam()
         param.certNo = sfzh
         param.picCert = sfzhPic
@@ -524,20 +586,23 @@ class PhotoConfirmActivity : MyBaseActivity() {
         // "verify": "1:人脸认证成功 0:人脸认证不成功" //
         param.verify = "1"
         try {
-            param.courseId = cid.toInt()
+            param.courseId = cid?:0
         } catch (e: Exception) {
             LogUtil.e(TAG, ">>>>>>>>>>>>>>>>>>>> uploadConfirmResult  Exception = $e")
         }
 
+        LogUtil.e(TAG, ">>>>>>>>>>>>>>>>>>>> uploadConfirmResult  param = $param")
+
         OkGoManager.instance.okGoRequestManage(
             com.tecsun.jc.demo.invigilation.zhanjiang.constant.Constants.URL_SAVE_INFO, param
-            , UploadPicEntity::class.java, object : OkGoRequestCallback<UploadPicEntity> {
-                override fun onSuccess(t: UploadPicEntity) {
+            , UploadResultEntity::class.java, object : OkGoRequestCallback<UploadResultEntity> {
+                override fun onSuccess(t: UploadResultEntity) {
                     dismissLoadingDialog()
                     if (t != null && t.statusCode == "200") {
                         showSuccessMessageDialog(msg = t.message ?: "")
                     } else {
-                        //TODO 提示错误, 和询问是否重新上传
+                        //提示错误, 和询问是否重新上传
+                        showFailDialog(t?.message ?: "", event)
                     }
 
                     LogUtil.e(">>>>>>>>>>>>>>>>> onSuccess $t")
@@ -545,9 +610,10 @@ class PhotoConfirmActivity : MyBaseActivity() {
 
                 override fun onError(throwable: Throwable?) {
                     dismissLoadingDialog()
-                    //TODO 提示错误, 和询问是否重新上传
+                    //提示错误, 和询问是否重新上传
+                    showFailDialog("$throwable", event)
                     LogUtil.e(">>>>>>>>>>>>>>>>> throwable $throwable")
-                    showErrorMessageDialog("$throwable")
+//                    showErrorMessageDialog("$throwable")
                 }
             })
 
@@ -555,16 +621,32 @@ class PhotoConfirmActivity : MyBaseActivity() {
     }
 
 
-    private fun showFailDialog(msg: String,event:IEvents) {
+    private fun showFailDialog(msg: String, event: IEvents) {
         DialogUtils.showDialog2(
-            R.drawable.ic_failed, "上传数据失败",
+            R.drawable.ic_failed,
+            "",
             msg + "", R.string.base_confirm_upload, R.string.base_cancel,
             { dialog, which -> event?.biz() },
-            { dialog, which -> dialog.dismiss() },
+            { dialog, which ->
+                dialog.dismiss()
+                finish()
+            },
             this
         )
     }
 
+    override fun successCompareBiz() {
+        super.successCompareBiz()
+        var param = UploadPicParam()
+        param.sfzh = studentDetailsBean?.sfzh ?: ""
+        param.name = studentDetailsBean?.name ?: ""
+        param.picBase64 = BitmapUtils2.bitmapToBase64(StudentOwnSFZImageBuilder.getSFZBitmap(studentDetailsBean?.sfzh?:""))
+
+        LogUtil.e(">>>>>>>>>>>>>>>>>>>>>>  uploadSFZHPic param =  $param")
+        uploadSFZHPic(this, param)
+
+
+    }
 
 }
 
