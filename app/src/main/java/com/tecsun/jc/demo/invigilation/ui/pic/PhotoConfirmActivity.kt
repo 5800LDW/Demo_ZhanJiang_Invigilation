@@ -26,7 +26,9 @@ import com.tecsun.jc.base.JinLinApp
 import com.tecsun.jc.base.bean.db.invigilation.bean.StudentDetailsBean
 import com.tecsun.jc.base.builder.StudentOwnImageBuilder
 import com.tecsun.jc.base.builder.StudentOwnSFZImageBuilder
+import com.tecsun.jc.base.builder.sound.SoundBuilder
 import com.tecsun.jc.base.collector.BaseActivityCollector
+import com.tecsun.jc.base.common.BaseConstant
 import com.tecsun.jc.base.dialog.DialogUtils
 import com.tecsun.jc.base.listener.IEvents
 import com.tecsun.jc.base.listener.OkGoRequestCallback
@@ -472,6 +474,10 @@ class PhotoConfirmActivity : MyBaseActivity() {
     private var diyPicParam: UploadPicParam? = null
 
     fun uploadSFZHPic(activity: MyBaseActivity?, param: UploadPicParam) {
+
+
+        showLoadingDialog(tipContent = "正在上传身份证照片...")
+
         sfzhPicParam = param
         OkGoManager.instance.okGoRequestManage(
             com.tecsun.jc.demo.invigilation.zhanjiang.constant.Constants.URL_UPLOAD_PICTURE, param
@@ -501,7 +507,7 @@ class PhotoConfirmActivity : MyBaseActivity() {
                     } else {
                         // 提示错误, 和询问是否重新上传
                         showFailDialog(t?.message ?: "", IEvents {
-                            uploadDiyPic(this@PhotoConfirmActivity, param)
+                            uploadSFZHPic(this@PhotoConfirmActivity, param)
                         })
                     }
 
@@ -512,7 +518,7 @@ class PhotoConfirmActivity : MyBaseActivity() {
                     activity?.dismissLoadingDialog()
                     // 提示错误, 和询问是否重新上传
                     showFailDialog("$throwable", IEvents {
-                        uploadDiyPic(this@PhotoConfirmActivity, param)
+                        uploadSFZHPic(this@PhotoConfirmActivity, param)
                     })
 
 
@@ -525,6 +531,9 @@ class PhotoConfirmActivity : MyBaseActivity() {
 
 
     fun uploadDiyPic(activity: MyBaseActivity?, param: UploadPicParam) {
+
+        showLoadingDialog(tipContent = "正在上传拍照照片...")
+
         diyPicParam = param
         OkGoManager.instance.okGoRequestManage(
             com.tecsun.jc.demo.invigilation.zhanjiang.constant.Constants.URL_UPLOAD_PICTURE, param
@@ -563,6 +572,7 @@ class PhotoConfirmActivity : MyBaseActivity() {
 
 
     private fun uploadConfirmResult2(){
+        showLoadingDialog(tipContent = "正在处理数据...")
         uploadConfirmResult(studentDetailsBean?.sfzh?:"", JinLinApp.courseId,
             studentDetailsBean?.name?:"",
             IEvents {
@@ -599,7 +609,13 @@ class PhotoConfirmActivity : MyBaseActivity() {
                 override fun onSuccess(t: UploadResultEntity) {
                     dismissLoadingDialog()
                     if (t != null && t.statusCode == "200") {
-                        showSuccessMessageDialog(msg = t.message ?: "")
+                        showSuccessMessageDialog(msg = t.message ?: "" , iEvents = IEvents{
+                            val intent = Intent()
+                            setResult(Const.EXAMINATION_ROOM_INFO_CODE, intent)
+                            finish()
+
+                        })
+                        SoundBuilder.playCompareSuccess()
                     } else {
                         //提示错误, 和询问是否重新上传
                         showFailDialog(t?.message ?: "", event)
@@ -629,6 +645,8 @@ class PhotoConfirmActivity : MyBaseActivity() {
             { dialog, which -> event?.biz() },
             { dialog, which ->
                 dialog.dismiss()
+                val intent = Intent()
+                setResult(Const.EXAMINATION_ROOM_INFO_CODE, intent)
                 finish()
             },
             this

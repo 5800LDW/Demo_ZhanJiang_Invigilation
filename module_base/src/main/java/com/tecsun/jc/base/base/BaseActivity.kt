@@ -78,7 +78,7 @@ abstract class BaseActivity : AppCompatActivity(), HandlerCallback {
     /**
      * 初始化titlebar控件，可重写
      */
-    private fun initTitleView() {
+    open fun initTitleView() {
         setImmersiveStatusBar()
         val titleBar = findViewById<TitleBar>(R.id.title_bar)
         if (titleBar == null) {

@@ -196,7 +196,8 @@ object ComparePhotoOfflineBuilder : ICompare {
                     } else if (comparisonResult.toInt() < 85) {
                         activity!!.showErrorMessageDialog("相似度过低，人证比对失败！")
                     } else {
-                        SoundBuilder.playCompareSuccess()
+                        //改成在弹出框后发出声音
+//                        SoundBuilder.playCompareSuccess()
 
                         activity?.runOnUiThread{
                             activity?.successCompareBiz()

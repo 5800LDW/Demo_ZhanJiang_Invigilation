@@ -11,10 +11,7 @@ import android.media.AudioManager
 import android.media.MediaPlayer
 import android.media.MediaScannerConnection
 import android.os.*
-import android.view.SurfaceHolder
-import android.view.SurfaceView
-import android.view.View
-import android.view.WindowManager
+import android.view.*
 import android.widget.TextView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.tecsun.jc.base.JinLinApp
@@ -22,13 +19,11 @@ import com.tecsun.jc.base.builder.TakePhotoRecordBuilder
 import com.tecsun.jc.base.common.BaseConstant
 import com.tecsun.jc.base.common.RouterHub
 import com.tecsun.jc.base.listener.HandlerCallback
-import com.tecsun.jc.base.utils.BitmapUtils
-import com.tecsun.jc.base.utils.ImageFactory
-import com.tecsun.jc.base.utils.SafeHandler
-import com.tecsun.jc.base.utils.ToastUtils
+import com.tecsun.jc.base.utils.*
 import com.tecsun.jc.base.utils.log.LogUtil
 import com.tecsun.jc.base.widget.TitleBar
 import com.tecsun.jc.demo.invigilation.R
+import com.tecsun.jc.demo.invigilation.builder.device.DeviceBuilder
 import com.tecsun.jc.demo.invigilation.ui.admin.add.AddNewStudentActivity
 import com.tecsun.jc.demo.invigilation.util.MyFileUtil
 import com.tecsun.jc.demo.invigilation.util.StatusBarUtils
@@ -46,7 +41,10 @@ import java.io.IOException
 @Route(path = RouterHub.ROUTER_APP_TAKE_PHOTO)
 class TakePhotoActivity : MyBaseActivity() {
 
+
     private var resultCode: Int = 0
+
+    private var titleName = "";
 
     var isopen_camara = false
     private var mHandler: Handler? = null
@@ -106,7 +104,23 @@ class TakePhotoActivity : MyBaseActivity() {
 
     override fun setTitleBar(titleBar: TitleBar) {
         //        Drawable rightDrawable = getResources().getDrawable(R.drawable.ic_change_camera);
+
+
+        intent?.let {
+            var title = intent.getStringExtra(BaseConstant.TITLE_NAME)
+            if (!title.isNullOrBlank()) {
+                titleName = title
+                btTakePhoto.text = "开始认证"
+            }
+        }
+
         titleBar.setTitle("拍照")
+        if (!titleName.isNullOrBlank()) {
+            titleBar.setTitle(titleName)
+        }
+
+
+
         if (lastActivity == Constants.COLLECT_PHOTO) {
             titleBar.setTitleColor(resources.getColor(R.color.c_black))
             titleBar.setBackgroundColor(resources.getColor(R.color.white))
@@ -133,7 +147,6 @@ class TakePhotoActivity : MyBaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         svTakePhoto = findViewById(R.id.svTakePhoto)
         tvTakePhoto = findViewById(R.id.tvTakePhoto)
         tvTip = findViewById(R.id.tvTip)
@@ -147,17 +160,6 @@ class TakePhotoActivity : MyBaseActivity() {
         registerListener()
 
         resultCode = intent.getIntExtra(BaseConstant.FILTER_SELECT, 0)
-
-
-        //TODO
-        intent?.let {
-            var title = intent.getStringExtra(BaseConstant.TITLE_NAME)
-            if (!title.isNullOrBlank()) {
-                setTitle(title)
-                btTakePhoto.text = "开始认证"
-            }
-        }
-
 
     }
 
@@ -886,9 +888,37 @@ class TakePhotoActivity : MyBaseActivity() {
 
                 //由于是使用了Arouter跳转到验证身份证的页面,然后从身份证页面跳转到当前页面, 所以使用了下面的方法跳转到showStudentPicActivity
                 ActivityConstant.showStudentPicActivity?.finishForResult()
+
+                //启动刷身份证界面
+                DeviceBuilder.skip(this@TakePhotoActivity, getString(R.string.base_student_sign_in))
+
+
             }
         }
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+
+    override fun initTitleView() {
+        super.initTitleView()
+        val titleBar = findViewById<TitleBar>(com.tecsun.jc.base.R.id.title_bar)
+        titleBar?.setLeftClickListener {
+            KeyboardUtils.hideSoftKeyboard(this)
+            // 处理返回按钮事件
+            this.finish()
+            //启动刷身份证界面
+            DeviceBuilder.skip(this@TakePhotoActivity, getString(R.string.base_student_sign_in))
+        }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN) {
+            this.finish()
+            //启动刷身份证界面
+            DeviceBuilder.skip(this@TakePhotoActivity, getString(R.string.base_student_sign_in))
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
     }
 
 

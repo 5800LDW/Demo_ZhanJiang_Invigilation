@@ -519,6 +519,8 @@ class IdcardActivity_Combine : BaseActivity() {
             activity?.let {
                 isGoAllRight = true
                 stopReadThread()
+
+
                 SoundBuilder.playDiscurnSuccess()
 
 
