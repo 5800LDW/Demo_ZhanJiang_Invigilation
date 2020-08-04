@@ -31,7 +31,7 @@
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="腾龙培训考勤移动终端"
+            android:text="腾龙培训考勤签到"
             android:textColor="@android:color/black"
             android:textSize="30dp"
             android:textStyle="bold" />
@@ -311,6 +311,7 @@
             android:layout_weight="1" />
 
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/dimen_10"
@@ -354,6 +355,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_gravity="center"
             android:gravity="center"

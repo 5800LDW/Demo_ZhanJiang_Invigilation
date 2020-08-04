@@ -46,6 +46,7 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:replace="android:icon,android:theme,android:allowBackup">
 
         <meta-data
@@ -218,12 +219,28 @@
             android:alwaysRetainTaskState="true"
             android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN"/>-->
-<!--                <action android:name="android.intent.action.VIEW"/>-->
-<!--                <category android:name="android.intent.category.LAUNCHER"/>-->
-<!--            </intent-filter>-->
         </activity>
+
+        <activity
+            android:name="com.tecsun.jc.demo.invigilation.zhanjiang.ZhanJiangMainActivity"
+            android:launchMode="singleTop"
+            android:alwaysRetainTaskState="true"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.tecsun.jc.demo.invigilation.zhanjiang.collect_data.PersonDeclareActivity"
+            android:launchMode="singleTop"
+            android:alwaysRetainTaskState="true"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.tecsun.jc.demo.invigilation.zhanjiang.collect_data.StudentRegisterActivity"
+            android:launchMode="singleTop"
+            android:alwaysRetainTaskState="true"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
 
     </application>
 

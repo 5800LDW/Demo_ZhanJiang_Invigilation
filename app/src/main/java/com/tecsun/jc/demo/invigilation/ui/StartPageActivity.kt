@@ -19,6 +19,7 @@ import com.tecsun.jc.base.utils.SafeHandler
 import com.tecsun.jc.base.utils.log.LogUtil
 import com.tecsun.jc.demo.invigilation.R
 import com.tecsun.jc.demo.invigilation.zhanjiang.ZhanJiangActivity
+import com.tecsun.jc.demo.invigilation.zhanjiang.ZhanJiangMainActivity
 import com.tecsun.jc.demo.test.TestBuilder
 
 
@@ -87,7 +88,7 @@ class StartPageActivity : AppCompatActivity(), HandlerCallback {
             1000 -> {
                 val intent = Intent(
                     this@StartPageActivity,
-                    ZhanJiangActivity::class.java
+                    ZhanJiangMainActivity::class.java
                 )
                 startActivity(intent)
                 finish()

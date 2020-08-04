@@ -5,7 +5,9 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.text.TextUtils
 import android.view.View
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -171,10 +173,9 @@ class IdcardActivity_Combine : BaseActivity() {
 
     override fun onStart() {
         super.onStart()
-        if(!titleString.isNullOrBlank() && titleString == getString(R.string.app_add_new_student)){
+        if (!titleString.isNullOrBlank() && titleString == getString(R.string.app_add_new_student)) {
             llSkip.visibility = View.VISIBLE
-        }
-        else{
+        } else {
             llSkip.visibility = View.GONE
         }
     }
@@ -185,6 +186,19 @@ class IdcardActivity_Combine : BaseActivity() {
         intent?.let {
             titleString = intent.getStringExtra("titleName") ?: ""
             titleBar.setTitle(titleString)
+
+
+            if (!TextUtils.isEmpty(titleString) && titleString == resources.getString(R.string.base_person_declare)) {
+                //个人申报
+                titleString = resources.getString(R.string.base_person_declare)
+                //个人申报/ 学员登记 的title都是 读身份证
+                titleBar.setTitle(resources.getString(R.string.base_read_id_card))
+            } else if (!TextUtils.isEmpty(titleString) && titleString == resources.getString(R.string.base_student_register)) {
+                //学员登记
+                titleString = resources.getString(R.string.base_student_register)
+                //学员登记 的title都是 读身份证
+                titleBar.setTitle(resources.getString(R.string.base_read_id_card))
+            }
         }
     }
 
@@ -258,7 +272,8 @@ class IdcardActivity_Combine : BaseActivity() {
         }
         //请刷身份证
         else if (titleString != null && titleString == getString(R.string.app_student_brush_sfz_card)) {
-            forRecordSudentSFZINFO( name,
+            forRecordSudentSFZINFO(
+                name,
                 sex,
                 birthday,
                 nation,
@@ -266,7 +281,8 @@ class IdcardActivity_Combine : BaseActivity() {
                 number,
                 qianfa,
                 effdate,
-                head)
+                head
+            )
         }
 
         //请刷社保卡
@@ -275,11 +291,14 @@ class IdcardActivity_Combine : BaseActivity() {
         }
 
         //学员签到
-        if (titleString != null && titleString == getString(R.string.base_student_sign_in)) {
+        else if (titleString != null && titleString == getString(R.string.base_student_sign_in)) {
             forStudentSingIn(name, sex, birthday, nation, address, number, qianfa, effdate, head)
         }
 
-        else {
+        //个人申报
+        else if (titleString != null && titleString == getString(R.string.base_person_declare)) {
+            forPersonDeclare(name, sex, birthday, nation, address, number, qianfa, effdate, head)
+        } else {
             finish()
         }
     }
@@ -496,7 +515,7 @@ class IdcardActivity_Combine : BaseActivity() {
         )
 
 
-        if(isGoAllRight){
+        if (isGoAllRight) {
             return
         }
 
@@ -507,7 +526,7 @@ class IdcardActivity_Combine : BaseActivity() {
         if (!studentSFZH.isNullOrBlank() && studentSFZH != number) {
             Handler().postDelayed({
                 showToast("身份证号跟该学生的不相同!")
-            },10)
+            }, 10)
 
             return
         }
@@ -524,7 +543,7 @@ class IdcardActivity_Combine : BaseActivity() {
                 SoundBuilder.playDiscurnSuccess()
 
 
-                var studentDetailsBean =  StudentDetailsBean()
+                var studentDetailsBean = StudentDetailsBean()
                 studentDetailsBean.name = name
                 studentDetailsBean.sfzh = number
                 JinLinApp.studentDetailsBean = studentDetailsBean
@@ -534,22 +553,109 @@ class IdcardActivity_Combine : BaseActivity() {
                 ARouter.getInstance().build(RouterHub.ROUTER_APP_TAKE_PHOTO)
                     .withString(
                         STUDENT_SFZH,
-                        number)
-                    .withString(TITLE_NAME,resources.getString(R.string.base_student_Certification))
+                        number
+                    )
+                    .withString(
+                        TITLE_NAME,
+                        resources.getString(R.string.base_student_Certification)
+                    )
                     .greenChannel().navigation()
                 myFinish()
                 return
             }
         }
 
-        if(head == null ||  number == null){
+        if (head == null || number == null) {
             Handler().postDelayed({
                 showToast("读取信息有误!")
-            },10)
+            }, 10)
         }
     }
 
 
+    /**
+     * 个人申报
+     */
+    private fun forPersonDeclare(
+        name: String,
+        sex: String,
+        birthday: String,
+        nation: String,
+        address: String,
+        number: String,
+        qianfa: String,
+        effdate: String,
+        head: Bitmap?
+    ) {
+        LogUtil.e(
+            "Info:",
+            name + "\n" +
+                    sex + "\n" +
+                    birthday + "\n" +
+                    nation + "\n" +
+                    address + "\n" +
+                    number + "\n" +
+                    qianfa + "\n" +
+                    effdate + "\n"
+        )
+
+
+        if (isGoAllRight) {
+            return
+        }
+
+        //过滤身份证不同的;
+        var studentSFZH = intent.getStringExtra(STUDENT_SFZH)
+
+        LogUtil.e(">>>>>>>>>>>>>>>>>>>>> 从intent获取的学生的身份证号信息: $studentSFZH")
+        if (!studentSFZH.isNullOrBlank() && studentSFZH != number) {
+            Handler().postDelayed({
+                showToast("身份证号跟该学生的不相同!")
+            }, 10)
+
+            return
+        }
+
+        //保存学生的身份证图片
+        if (head != null && number != null) {
+            StudentOwnSFZImageBuilder.savePic(head, number)
+
+            activity?.let {
+                isGoAllRight = true
+                stopReadThread()
+
+
+//                SoundBuilder.playDiscurnSuccess()
+
+
+                var studentDetailsBean = StudentDetailsBean()
+                studentDetailsBean.name = name
+                studentDetailsBean.sfzh = number
+                JinLinApp.studentDetailsBean = studentDetailsBean
+
+
+
+                ARouter.getInstance().build(RouterHub.ROUTER_APP_PERSON_DECLARE)
+                    .withString(
+                        STUDENT_SFZH,
+                        number
+                    )
+                    .withString(
+                        TITLE_NAME,
+                        resources.getString(R.string.base_student_Certification)
+                    )
+                    .greenChannel().navigation()
+                myFinish()
+                return
+            }
+        }
+
+        if (head == null || number == null) {
+            Handler().postDelayed({
+                showToast("读取信息有误!")
+            }, 10)
+        }
+    }
 
 
     private fun forRecordSudentSFZINFO(
@@ -576,7 +682,7 @@ class IdcardActivity_Combine : BaseActivity() {
         )
 
 
-        if(isGoAllRight){
+        if (isGoAllRight) {
             return
         }
 
@@ -587,7 +693,7 @@ class IdcardActivity_Combine : BaseActivity() {
         if (!studentSFZH.isNullOrBlank() && studentSFZH != number) {
             Handler().postDelayed({
                 showToast("身份证号跟该学生的不相同!")
-            },10)
+            }, 10)
 
             return
         }
@@ -603,16 +709,17 @@ class IdcardActivity_Combine : BaseActivity() {
                 ARouter.getInstance().build(RouterHub.ROUTER_APP_TAKE_PHOTO)
                     .withString(
                         STUDENT_SFZH,
-                        number).greenChannel().navigation()
+                        number
+                    ).greenChannel().navigation()
                 myFinish()
                 return
             }
         }
 
-        if(head == null ||  number == null){
+        if (head == null || number == null) {
             Handler().postDelayed({
                 showToast("读取信息有误!")
-            },10)
+            }, 10)
         }
     }
 
@@ -686,7 +793,7 @@ class IdcardActivity_Combine : BaseActivity() {
     }
 
     private fun powerOn() {
-        if(isIDCardModulePowerOff?:true){
+        if (isIDCardModulePowerOff ?: true) {
             if (android.os.Build.MODEL.contains("TPS350")) {
                 // PosUtil.setFingerPrintPower(PosUtil.FINGERPRINT_POWER_ON);
             } else if (android.os.Build.MODEL.contains("TPS616")) {
@@ -710,8 +817,7 @@ class IdcardActivity_Combine : BaseActivity() {
             //            // TODO Auto-generated catch block
             //            LogUtil.e(">>>>>>>>>>>>>>>>>>>>. e" + e1.toString());
             //        }
-        }
-        else{
+        } else {
             btn_init?.performClick()
         }
 

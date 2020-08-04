@@ -22,7 +22,10 @@ object CommonApi {
     }
 
 
-    const val IP = "http://192.168.7.115:8089/tecsun-base-service/"
+    //http://61.28.113.182:6726/#/login
+
+//    const val IP = "http://192.168.7.115:8089/tecsun-base-service/"
+    const val IP = "http://61.28.113.182:6726/sisp/"
 
     const val IP_LIST = IP + "course/list"
 

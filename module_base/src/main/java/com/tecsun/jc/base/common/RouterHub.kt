@@ -157,6 +157,14 @@ object RouterHub {
 
     /**导入数据*/
     const val ROUTER_LIB_IMPORT_DATA = "/module_ImportData/ImportDtaActivity"
+
+
+
+    /**个人申报*/
+    const val ROUTER_APP_PERSON_DECLARE = "/MyAPP/PersonDeclareActivity"
+
+    /**学员登记*/
+    const val ROUTER_APP_STUDENT_REGISTER = "/MyAPP/StudentRegisterActivity"
 }
 
 

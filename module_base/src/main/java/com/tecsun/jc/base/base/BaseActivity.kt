@@ -91,7 +91,7 @@ abstract class BaseActivity : AppCompatActivity(), HandlerCallback {
 
         titleBar.setBackgroundColor(resources.getColor(R.color.c_2358ff))
 
-        titleBar.setLeftImageResource(R.drawable.ic_title_back)
+        titleBar.setLeftImageResource(R.drawable.ic_title_back)//base_zhanjiang_back_left //
         titleBar.setLeftTextColor(Color.WHITE)
         titleBar.setLeftClickListener {
             KeyboardUtils.hideSoftKeyboard(this)
@@ -104,6 +104,41 @@ abstract class BaseActivity : AppCompatActivity(), HandlerCallback {
         setTitleBar(titleBar)
 
     }
+
+    fun initTitleView2(){
+
+        setImmersiveStatusBar()
+        val titleBar = findViewById<TitleBar>(R.id.title_bar)
+        if (titleBar == null) {
+            return
+        }
+
+        if (hasKitKat()) {
+            titleBar.setImmersive(true)
+        }
+
+        titleBar.setBackgroundColor(resources.getColor(R.color.c_f0f0f0))
+
+        titleBar.setLeftImageResource(R.drawable.base_zhanjiang_back_left)
+        titleBar.setLeftTextColor(Color.BLACK)
+        titleBar.setLeftClickListener {
+            KeyboardUtils.hideSoftKeyboard(this)
+            // 处理返回按钮事件
+            this.finish()
+        }
+
+        titleBar.setTitleColor(Color.WHITE)
+        titleBar.setSubTitleColor(Color.WHITE)
+        setTitleBar(titleBar)
+
+    }
+
+
+
+
+
+
+
 
     /**
      * 设置沉浸式状态栏

@@ -144,27 +144,7 @@ class ZhanJiangActivity : BaseActivity() {
             }
 
         })
-
-
-
-
-
-//        showFailDialog("我是测试数据", null)
-
-
     }
-
-//
-//    private fun showFailDialog(msg: String, event: IEvents?) {
-//        DialogUtils.showDialog2(
-//            "上传数据失败",
-//            msg + "", R.string.base_confirm_upload, R.string.base_cancel,
-//            { dialog, which -> event?.biz() },
-//            { dialog, which -> dialog.dismiss() },
-//            this
-//        )
-//    }
-
 
     /***设置默认的人证认证模式*/
     private fun initMode() {
@@ -211,39 +191,20 @@ class ZhanJiangActivity : BaseActivity() {
     }
 
 
-    override fun onDestroy() {
-        ARouter.getInstance().destroy()
-        if (EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().unregister(this)
-        }
-        CompareBuilderFactory.doQuitApp()
-        BaseActivityCollector.finishAllActivity()
-        //删除所有的验证人脸时候的"自拍照"
-        TakePhotoRecordBuilder.deleteAllSFZImage()
-        //关闭读取身份证模块的硬件的供电,减少能耗;
-        PowerUtil.readSFZPowerOff()
-        super.onDestroy()
-        ExitUtils.exit()
-    }
-
-    // 用来计算返回键的点击间隔时间
-    private var exitTime: Long = 0
-
-    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN) {
-            if (System.currentTimeMillis() - exitTime > 2000) {
-                //弹出提示，可以有多种方式
-                ToastUtils.showGravityShortToast(this, getString(R.string.drop_out))
-                exitTime = System.currentTimeMillis()
-            } else {
-                finish()
-            }
-            return true
-        }
-        return super.onKeyDown(keyCode, event)
-    }
-
-    //////////////////////////////////////////////////////////////////
+//    override fun onDestroy() {
+//        ARouter.getInstance().destroy()
+//        if (EventBus.getDefault().isRegistered(this)) {
+//            EventBus.getDefault().unregister(this)
+//        }
+//        CompareBuilderFactory.doQuitApp()
+//        BaseActivityCollector.finishAllActivity()
+//        //删除所有的验证人脸时候的"自拍照"
+//        TakePhotoRecordBuilder.deleteAllSFZImage()
+//        //关闭读取身份证模块的硬件的供电,减少能耗;
+//        PowerUtil.readSFZPowerOff()
+//        super.onDestroy()
+//        ExitUtils.exit()
+//    }
 
     private val data = ArrayList<ListBean.DataBean>()
     private fun getList(listener: IEvents?) {
@@ -256,7 +217,9 @@ class ZhanJiangActivity : BaseActivity() {
                     if (t != null && t.statusCode == "200") {
 
                         if (t.data != null && t.data.size > 0) {
-                            data.addAll(t.data)
+                            if(data.size == 0){
+                                data.addAll(t.data)
+                            }
                             listener?.biz()
 
                         } else {

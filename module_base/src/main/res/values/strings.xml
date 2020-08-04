@@ -160,6 +160,10 @@
 
     <string name="base_confirm_upload">重新上传</string>
     <string name="base_cancel">取消</string>
+
+    <string name="base_person_declare">个人申报</string>
+    <string name="base_student_register">学员登记</string>
+    <string name="base_read_id_card">读身份证</string>
 </resources>
 
 
