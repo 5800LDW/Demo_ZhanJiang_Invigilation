@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="arr_dataCulture">
+        <item>初中</item>
+        <item>职高</item>
+        <item>高中</item>
+        <item>中职中技</item>
+        <item>高技</item>
+        <item>大专</item>
+        <item>大学</item>
+        <item>硕士</item>
+        <item>博士</item>
+    </string-array>
+    
+    <string-array name="arr_dataRank">
+        <item>五级</item>
+        <item>四级</item>
+        <item>三级</item>
+        <item>二级</item>
+        <item>一级</item>
+    </string-array>
+
+    <string-array name="arr_dataExamType">
+        <item>正考</item>
+        <item>补考</item>
+    </string-array>
+
+    <string-array name="arr_dataSubject">
+        <item>理论</item>
+        <item>技能</item>
+        <item>综合评审</item>
+    </string-array>
+
+    <string-array name="arr_dataTrain">
+        <item>已参加培训</item>
+        <item>未参加培训</item>
+    </string-array>
+
+
+</resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

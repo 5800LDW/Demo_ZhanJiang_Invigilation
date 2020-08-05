@@ -21,6 +21,7 @@ import com.tecsun.jc.base.base.BaseActivity
 import com.tecsun.jc.base.bean.db.invigilation.bean.ProctorDetailsBean
 import com.tecsun.jc.base.bean.db.invigilation.bean.ReadCardInfoBean
 import com.tecsun.jc.base.bean.db.invigilation.bean.StudentDetailsBean
+import com.tecsun.jc.base.bean.db.invigilation.bean.StudentDetailsBean2
 import com.tecsun.jc.base.builder.ReadCardImageBuilder
 import com.tecsun.jc.base.builder.StudentOwnSFZImageBuilder
 import com.tecsun.jc.base.builder.sound.SoundBuilder
@@ -624,15 +625,17 @@ class IdcardActivity_Combine : BaseActivity() {
                 isGoAllRight = true
                 stopReadThread()
 
-
 //                SoundBuilder.playDiscurnSuccess()
 
 
-                var studentDetailsBean = StudentDetailsBean()
-                studentDetailsBean.name = name
-                studentDetailsBean.sfzh = number
-                JinLinApp.studentDetailsBean = studentDetailsBean
-
+                var studentDetailsBean2 = StudentDetailsBean2()
+                studentDetailsBean2.name = name
+                studentDetailsBean2.sfzh = number
+                studentDetailsBean2.sex = sex
+                studentDetailsBean2.born = birthday
+                studentDetailsBean2.nation = nation
+                JinLinApp.studentDetailsBean = null
+                JinLinApp.studentDetailsBean2 = studentDetailsBean2
 
 
                 ARouter.getInstance().build(RouterHub.ROUTER_APP_PERSON_DECLARE)

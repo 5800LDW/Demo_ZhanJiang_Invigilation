@@ -12,6 +12,7 @@ import com.pgyersdk.crash.PgyCrashManager
 import com.pgyersdk.crash.PgyerCrashObservable
 import com.tecsun.jc.base.bean.db.invigilation.bean.ReadCardInfoBean
 import com.tecsun.jc.base.bean.db.invigilation.bean.StudentDetailsBean
+import com.tecsun.jc.base.bean.db.invigilation.bean.StudentDetailsBean2
 import com.tecsun.jc.base.bean.param.register.ApplyCardParam
 import com.tecsun.jc.base.builder.ActivityLifecycleCallBacksBuilder
 import com.tecsun.jc.base.builder.WebViewCacheSettingBuilder
@@ -53,6 +54,9 @@ class JinLinApp : Application(){
 
         @JvmStatic
         var studentDetailsBean: StudentDetailsBean? = null
+
+        @JvmStatic
+        var studentDetailsBean2: StudentDetailsBean2? = null
 
         @JvmStatic
         var courseId:Int? = null

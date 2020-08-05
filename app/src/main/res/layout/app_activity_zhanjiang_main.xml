@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_f7f7f7">
+
+    <ImageView
+        android:id="@+id/iv_Background"
+        android:layout_width="360dp"
+        android:layout_height="267.5dp"
+        android:layout_gravity="center|top"
+        android:background="@drawable/app_zhanjiang_bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="123dp"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/ll01"
+            style="@style/app_main_item"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/shape_grey_frame"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/app_main_iv_left"
+                android:layout_gravity="center"
+                android:background="@drawable/app_zhanjiang_person_declare" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/app_main_tv_top"
+                    android:text="个人申报" />
+
+                <TextView
+                    style="@style/app_main_tv_bottom"
+                    android:text="广东省职业技能鉴定个人申报" />
+            </LinearLayout>
+
+            <ImageView style="@style/app_main_iv_right" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll02"
+            style="@style/app_main_item"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shape_grey_frame"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/app_main_iv_left"
+                android:layout_gravity="center"
+                android:background="@drawable/app_zhanjiang_student_register" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/app_main_tv_top"
+                    android:text="学员登记" />
+
+                <TextView
+                    style="@style/app_main_tv_bottom"
+                    android:text="贫困劳动力培训项目学员登记" />
+            </LinearLayout>
+
+            <ImageView style="@style/app_main_iv_right" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll03"
+            style="@style/app_main_item"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shape_grey_frame"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/app_main_iv_left"
+                android:layout_gravity="center"
+                android:background="@drawable/app_zhanjiang_sign_in" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/app_main_tv_top"
+                    android:text="考勤签到" />
+
+                <TextView
+                    style="@style/app_main_tv_bottom"
+                    android:text="培训考勤实名认证签到" />
+            </LinearLayout>
+
+            <ImageView style="@style/app_main_iv_right" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="360dp"
+        android:layout_height="73dp"
+        android:layout_gravity="bottom|center"
+        android:background="@drawable/app_zhanjiang_shade" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="15dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/tecsun_logo"
+            android:layout_width="130dp"
+            android:layout_height="28.4dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/app_tecsun_logo2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="广东德生科技股份有限公司"
+                android:textColor="@color/c_8e8e8e"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="服务电话："
+                android:textColor="@color/c_8e8e8e"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="020-29118711"
+                android:textColor="@color/c_2591ff"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</FrameLayout>
+
+
+

@@ -21,6 +21,8 @@ import java.util.Locale;
  */
 public class TimePickerBuilder {
 
+    private String titleText;
+
     private Activity activity;
     private ITimeSelectListener listener;
 
@@ -33,7 +35,15 @@ public class TimePickerBuilder {
      */
     private TimePickerView mTimePickerView;
 
+    public String getTitleText() {
+        return titleText;
 
+    }
+
+    public TimePickerBuilder setTitleText(String titleText) {
+        this.titleText = titleText;
+        return this;
+    }
 
     public Activity getActivity() {
         return activity;
@@ -95,8 +105,8 @@ public class TimePickerBuilder {
             endDate = Calendar.getInstance();
             startDate = Calendar.getInstance();
 //            startDate.set(1950, 0, 1);
-            startDate.set(2017, 0, 1);
-            endDate.set(Calendar.getInstance().get(Calendar.YEAR)+3, 11, 31);
+            startDate.set(1960, 0, 1);
+            endDate.set(Calendar.getInstance().get(Calendar.YEAR), 11, 31);
 
             mTimePickerView = PickerViewUtils.createTimePickerView(activity,
                     new TimePickerView.OnTimeSelectListener() {
@@ -110,7 +120,7 @@ public class TimePickerBuilder {
                                 listener.selectResult(date, v);
                             }
                         }
-                    }, startDate, endDate, true, true, true, false, false, false);
+                    }, startDate, endDate, true, true, true, false, false, false, titleText + "");
         }
 
         if (defaultDate != null) {
@@ -131,7 +141,7 @@ public class TimePickerBuilder {
             mTimePickerView.setDate(Calendar.getInstance());
         }
         //显示
-        if(activity!=null && !activity.isFinishing() && !activity.isDestroyed()){
+        if (activity != null && !activity.isFinishing() && !activity.isDestroyed()) {
             mTimePickerView.show();
         }
 
