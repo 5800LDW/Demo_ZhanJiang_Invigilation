@@ -18,6 +18,8 @@
             <option value="$PROJECT_DIR$/module_ImportData" />
             <option value="$PROJECT_DIR$/module_ReadCard" />
             <option value="$PROJECT_DIR$/module_base" />
+            <option value="$PROJECT_DIR$/module_login" />
+            <option value="$PROJECT_DIR$/module_register" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

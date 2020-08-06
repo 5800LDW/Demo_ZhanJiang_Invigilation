@@ -68,7 +68,7 @@ android {
 
         repositories {
             flatDir {
-                dirs 'libs', '../Lib_M/libs' ,'../module_ReadCard/libs','../module_base/libs',"../module_FaceRecognition/libs"  // aar目录
+                dirs 'libs', '../Lib_M/libs' ,'../module_ReadCard/libs','../module_base/libs',"../module_FaceRecognition/libs",'../module_register/libs' // aar目录
             }
         }
 
@@ -135,7 +135,12 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
-//    implementation files('libs/ysidcard_new.jar')
+//    implementation project(path: ':module_login')
+//    implementation project(path: ':module_register')
+
+//    implementation project(':module_login')
+//    implementation project(':module_register')
+
 }
 
 

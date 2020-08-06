@@ -296,7 +296,7 @@ abstract class BaseActivity : AppCompatActivity(), HandlerCallback {
         }
     }
 
-    fun showToast(string: String){
+   open fun showToast(string: String){
         ToastUtils.showGravityShortToast(JinLinApp.context!!, string)
     }
 
@@ -322,11 +322,11 @@ abstract class BaseActivity : AppCompatActivity(), HandlerCallback {
         OkGoManager.instance.myCancelTag(tag)
     }
 
-    fun myStartActivity(cls:Class<*>){
+    open fun myStartActivity(cls:Class<*>){
         ActivityUtil.startActivity(this,cls,null)
     }
 
-    fun myFinish(){
+    open fun myFinish(){
         Handler().postDelayed({finish()},200)
     }
 

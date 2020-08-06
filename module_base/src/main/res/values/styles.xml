@@ -717,6 +717,12 @@
         <item name="android:windowExitAnimation">@anim/base_dialog_out</item>
     </style>
 
+
+    <style name="Base_Permission_Dialog_Style" parent="popDialogStyleBottom">
+        <item name="android:backgroundDimAmount">0.5</item>
+        <item name="android:windowAnimationStyle">@style/Animation.AppCompat.Dialog</item>
+    </style>
+
 </resources>
 
 

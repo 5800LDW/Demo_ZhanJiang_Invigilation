@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.tecsun.jc.base.widget.TitleBar style="@style/style_title_bar" />
+
+    <com.tecsun.jc.base.widget.ObservableScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/c_fffbf1"
+                android:paddingLeft="10dp"
+                android:paddingTop="15dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:gravity="center|left"
+                    android:text="温馨提示：为了更好的了解及服务你技能鉴定个人申报，请您认真填写以下信息。"
+                    android:textColor="@color/c_e7ac2a"
+                    android:textSize="15dp" />
+
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/base_shape_grey_square">
+
+                <ImageView
+                    android:id="@+id/appDeclarePic"
+                    android:layout_width="140dp"
+                    android:layout_height="172.4581dp"
+                    android:layout_gravity="center" />
+            </FrameLayout>
+
+
+            <include layout="@layout/base_line_grey" />
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="姓名：" />
+
+                <TextView
+                    android:id="@+id/tvDeclareName"
+                    style="@style/base_text_right"
+                    tools:text="刘雪华" />
+            </LinearLayout>
+
+
+            <include layout="@layout/base_line_grey" />
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="性别：" />
+
+                <TextView
+                    android:id="@+id/tvDeclareSex"
+                    style="@style/base_text_right"
+                    tools:text="男" />
+            </LinearLayout>
+
+
+            <include layout="@layout/base_line_grey" />
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="出生年月：" />
+
+                <TextView
+                    android:id="@+id/tvDeclareBirth"
+                    style="@style/base_text_right"
+                    tools:text="1992-10-10" />
+            </LinearLayout>
+
+
+            <include layout="@layout/base_line_grey" />
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="证件类型：" />
+
+                <TextView
+                    android:id="@+id/tvDeclareType"
+                    style="@style/base_text_right"
+                    android:text="身份证" />
+            </LinearLayout>
+
+
+            <include layout="@layout/base_line_grey" />
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="证件号码：" />
+
+                <TextView
+                    android:id="@+id/tvDeclareSfzh"
+                    style="@style/base_text_right"
+                    tools:text="440223199911192222" />
+            </LinearLayout>
+
+            <include layout="@layout/base_line_grey" />
+
+            <LinearLayout
+                android:id="@+id/llCulture"
+                style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="文化程度：" />
+
+                <TextView
+                    android:id="@+id/tvCulture"
+                    style="@style/base_text_right2"
+                    android:hint="请选择文化程度" />
+
+                <ImageView style="@style/base_iv_right" />
+            </LinearLayout>
+
+
+            <include layout="@layout/base_line_grey" />
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="单位名称：" />
+
+                <EditText
+                    android:id="@+id/etDeclareCompany"
+                    style="@style/base_edit_text_right"
+                    android:background="@null"
+                    android:hint="请输入单位名称" />
+
+
+                <ImageView style="@style/base_iv_input_right" />
+
+            </LinearLayout>
+
+
+            <include layout="@layout/base_line_grey" />
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:inputType="number"
+                    android:text="手机号码：" />
+
+                <EditText
+                    android:id="@+id/etDeclarePhone"
+                    style="@style/base_edit_text_right"
+                    android:background="@null"
+                    android:inputType="number"
+                    android:maxLines="20"
+                    android:hint="请输入手机号码" />
+
+                <ImageView style="@style/base_iv_input_right" />
+
+            </LinearLayout>
+
+
+            <include layout="@layout/base_line_grey" />
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="通讯地址：" />
+
+                <EditText
+                    android:id="@+id/etDeclareAddress"
+                    style="@style/base_edit_text_right"
+                    android:background="@null"
+                    android:hint="请输入通讯地址" />
+
+                <ImageView style="@style/base_iv_input_right" />
+
+
+            </LinearLayout>
+
+
+            <include
+                layout="@layout/base_line_grey"
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="申报条件：" />
+
+                <EditText
+                    android:id="@+id/etDeclareCondition"
+                    style="@style/base_edit_text_right"
+                    android:background="@null"
+                    android:hint="请输入申报条件"
+                    android:maxLength="500"
+                    android:maxLines="15" />
+
+                <ImageView style="@style/base_iv_input_right" />
+
+
+            </LinearLayout>
+
+
+            <include layout="@layout/base_line_grey" />
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="申报职业：" />
+
+                <EditText
+                    android:id="@+id/etDeclareProfession"
+                    style="@style/base_edit_text_right"
+                    android:background="@null"
+                    android:hint="请输入申报职业" />
+
+                <ImageView style="@style/base_iv_input_right" />
+            </LinearLayout>
+
+
+            <include layout="@layout/base_line_grey" />
+
+            <LinearLayout
+                android:id="@+id/llRank"
+                style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="申报级别：" />
+
+                <TextView
+                    android:id="@+id/tvRank"
+                    style="@style/base_text_right2"
+                    android:hint="请选择申报级别" />
+
+                <ImageView style="@style/base_iv_right" />
+            </LinearLayout>
+
+            <include layout="@layout/base_line_grey" />
+
+            <LinearLayout
+                android:id="@+id/llExamType"
+                style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="考试类型：" />
+
+                <TextView
+                    android:id="@+id/tvExamType"
+                    style="@style/base_text_right2"
+                    android:hint="请选择考试类型" />
+
+                <ImageView style="@style/base_iv_right" />
+            </LinearLayout>
+
+
+            <include layout="@layout/base_line_grey" />
+
+            <LinearLayout
+                android:id="@+id/llDeclareSubject"
+                style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="考核科目：" />
+
+                <TextView
+                    android:id="@+id/tvDeclareSubject"
+                    style="@style/base_text_right2"
+                    android:hint="请选择考核科目" />
+
+                <ImageView style="@style/base_iv_right" />
+            </LinearLayout>
+
+            <include layout="@layout/base_line_grey" />
+
+            <LinearLayout
+                android:id="@+id/llDeclareTrain"
+                style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="是否参加本职业培训：" />
+
+                <TextView
+                    android:id="@+id/tvDeclareTrain"
+                    style="@style/base_text_right2"
+                    android:hint="请选择" />
+
+                <ImageView style="@style/base_iv_right" />
+            </LinearLayout>
+
+            <!--            <include layout="@layout/base_line_grey" />-->
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="培训时间：" />
+
+                <TextView
+                    android:visibility="invisible"
+                    style="@style/base_text_right2"
+                    android:hint="请选择培训时间" />
+
+                <ImageView
+                    android:visibility="invisible"
+                    android:id="@+id/ivDeclareTrainTime"
+                    style="@style/base_iv_right" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    android:id="@+id/tvDeclareTrainTimeStart"
+                    style="@style/base_text_right2"
+                    android:hint="请选择开始日期" />
+
+                <ImageView
+                    android:id="@+id/ivDeclareTrainTimeStart"
+                    style="@style/base_iv_right" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="至"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/base_item_text_size" />
+
+                <TextView
+                    android:id="@+id/tvDeclareTrainTimeEnd"
+                    style="@style/base_text_right2"
+                    android:hint="请选择结束日期" />
+
+                <ImageView
+                    android:id="@+id/ivDeclareTrainTimeEnd"
+                    style="@style/base_iv_right" />
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="培训学时：" />
+
+                <EditText
+                    android:id="@+id/etDeclareTrainTotalTime"
+                    style="@style/base_edit_text_right"
+                    android:background="@null"
+                    android:inputType="numberDecimal"
+                    android:hint="请输入培训学时" />
+
+                <ImageView style="@style/base_iv_input_right" />
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <include layout="@layout/base_line_grey" />
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="从事本职业工种年限：" />
+
+<!--                <TextView-->
+<!--                    style="@style/base_text_right2"-->
+<!--                    android:hint="请选择工作年限" />-->
+
+<!--                <ImageView-->
+<!--                    style="@style/base_iv_right" />-->
+
+                <EditText
+                    android:id="@+id/teDeclareYear"
+                    style="@style/base_edit_text_right"
+                    android:background="@null"
+                    android:inputType="numberDecimal"
+                    android:hint="请输入" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="年"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"/>
+
+                <ImageView style="@style/base_iv_input_right" />
+            </LinearLayout>
+
+
+
+
+
+
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    android:id="@+id/tvDeclareProfessionStart"
+                    style="@style/base_text_right2"
+                    android:hint="请选择开始年限" />
+
+                <ImageView
+                    android:id="@+id/ivDeclareProfessionStart"
+                    style="@style/base_iv_right" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="至"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/base_item_text_size" />
+
+                <TextView
+                    android:id="@+id/tvDeclareProfessionEnd"
+                    style="@style/base_text_right2"
+                    android:hint="请选择结束年限" />
+
+                <ImageView
+                    android:id="@+id/ivDeclareProfessionEnd"
+                    style="@style/base_iv_right" />
+            </LinearLayout>
+
+
+
+            <include layout="@layout/base_line_grey" />
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="已获职业资格名称：" />
+
+                <EditText
+                    android:id="@+id/etDeclareCertificate"
+                    style="@style/base_edit_text_right"
+                    android:background="@null"
+                    android:hint="请输入资格名称" />
+
+
+                <ImageView style="@style/base_iv_input_right" />
+
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="职业资格等级：" />
+
+                <EditText
+                    android:id="@+id/etDeclareCLevel"
+                    style="@style/base_edit_text_right"
+                    android:background="@null"
+                    android:hint="请输入资格等级" />
+
+
+                <ImageView style="@style/base_iv_input_right" />
+
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="获证日期：" />
+
+                <TextView
+                    android:id="@+id/tvDeclareCertificate"
+                    style="@style/base_text_right2"
+                    android:hint="请选择获证日期" />
+
+                <ImageView
+                    android:id="@+id/ivDeclareCertificate"
+                    style="@style/base_iv_right" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/base_text_item">
+
+                <TextView
+                    style="@style/base_text_left"
+                    android:text="证书号码：" />
+
+                <EditText
+                    android:id="@+id/etDeclareCNum"
+                    style="@style/base_edit_text_right"
+                    android:background="@null"
+                    android:hint="请输入证书号码" />
+
+
+                <ImageView style="@style/base_iv_input_right" />
+            </LinearLayout>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:background="@color/c_f3f3f3">
+
+                <Button
+                    android:id="@+id/btSure"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/btn_blue_10_selector"
+                    android:gravity="center"
+                    android:text="确认提交"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+
+    </com.tecsun.jc.base.widget.ObservableScrollView>
+
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

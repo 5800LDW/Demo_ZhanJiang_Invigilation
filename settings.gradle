@@ -1,2 +1,4 @@
+include ':module_register'
+include ':module_login'
 include ':app', ':Lib_M', ':Lib_ReadSSC', ':module_base', ':module_FaceRecognition', ':module_ReadCard', ':module_ImportData'
 rootProject.name='Demo_ZhanJiang_Invigilation'

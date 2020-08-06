@@ -85,6 +85,7 @@ class ZhanJiangMainActivity : BaseActivity() {
 
         ll02.setOnClickListener(object: SingleClickListener() {
             override fun onSingleClick(v: View?) {
+                DeviceBuilder.skip(this@ZhanJiangMainActivity, getString(R.string.base_student_register))
             }
         })
 

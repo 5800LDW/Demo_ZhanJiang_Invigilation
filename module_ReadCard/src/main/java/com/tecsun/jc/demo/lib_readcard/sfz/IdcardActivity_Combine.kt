@@ -29,6 +29,7 @@ import com.tecsun.jc.base.common.BaseConstant
 import com.tecsun.jc.base.common.BaseConstant.STUDENT_SFZH
 import com.tecsun.jc.base.common.BaseConstant.TITLE_NAME
 import com.tecsun.jc.base.common.RouterHub
+import com.tecsun.jc.base.common.RouterHub.ROUTER_REGISTER_TAKE_ID_CARD_PIC
 import com.tecsun.jc.base.utils.DBFunctionUtil
 import com.tecsun.jc.base.utils.log.LogUtil
 import com.tecsun.jc.base.widget.TitleBar
@@ -298,6 +299,10 @@ class IdcardActivity_Combine : BaseActivity() {
 
         //个人申报
         else if (titleString != null && titleString == getString(R.string.base_person_declare)) {
+            forPersonDeclare(name, sex, birthday, nation, address, number, qianfa, effdate, head)
+        }
+        //学员登记
+        else if (titleString != null && titleString == getString(R.string.base_student_register)) {
             forPersonDeclare(name, sex, birthday, nation, address, number, qianfa, effdate, head)
         } else {
             finish()
@@ -638,7 +643,20 @@ class IdcardActivity_Combine : BaseActivity() {
                 JinLinApp.studentDetailsBean2 = studentDetailsBean2
 
 
-                ARouter.getInstance().build(RouterHub.ROUTER_APP_PERSON_DECLARE)
+                var path = ""
+                //个人申报
+                if (titleString != null && titleString == getString(R.string.base_person_declare)) {
+                    path = RouterHub.ROUTER_APP_PERSON_DECLARE
+                }
+                //学员登记
+                else if (titleString != null && titleString == getString(R.string.base_student_register)) {
+//                    path = RouterHub.ROUTER_APP_STUDENT_REGISTER
+                    path = ROUTER_REGISTER_TAKE_ID_CARD_PIC
+                }
+
+
+//              ARouter.getInstance().build(RouterHub.ROUTER_APP_PERSON_DECLARE)
+                ARouter.getInstance().build(path)
                     .withString(
                         STUDENT_SFZH,
                         number
@@ -648,6 +666,10 @@ class IdcardActivity_Combine : BaseActivity() {
                         resources.getString(R.string.base_student_Certification)
                     )
                     .greenChannel().navigation()
+
+
+
+
                 myFinish()
                 return
             }

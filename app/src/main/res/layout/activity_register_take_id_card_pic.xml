@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_f3f3f3"
+    android:orientation="vertical">
+
+    <com.tecsun.jc.base.widget.TitleBar style="@style/style_title_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dimen_margin_top"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/x30"
+                android:background="@color/register_white"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/dimen_margin_top">
+
+                <ImageView
+                    android:id="@+id/mIvIdNegative"
+                    android:layout_width="@dimen/x921"
+                    android:layout_height="@dimen/y623"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/base_bg_negative_01"
+                    android:contentDescription="@null"
+                    android:onClick="takeIdNegativePic"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/mLlNegative"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:drawableTop="@drawable/ic_register_take_camera"
+                    android:drawablePadding="@dimen/y15"
+                    android:onClick="takeIdNegativePic"
+                    android:text="@string/register_apply_take_id_negative_pic_01"
+                    android:textColor="@color/c_4e4e4e"
+                    android:textSize="@dimen/text_18"
+                    android:visibility="gone" />
+
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/mIvIdNegative"-->
+                <!--                    android:layout_width="@dimen/x921"-->
+                <!--                    android:layout_height="@dimen/y623"-->
+                <!--                    android:layout_alignParentTop="true"-->
+                <!--                    android:layout_centerHorizontal="true"-->
+                <!--                    android:background="@drawable/ic_register_id_card_negative_pic_01"-->
+                <!--                    android:contentDescription="@null"-->
+                <!--                    android:onClick="takeIdNegativePic"-->
+                <!--                    android:scaleType="centerCrop" />-->
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/mLlNegative"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_centerInParent="true"-->
+                <!--                    android:drawablePadding="@dimen/y15"-->
+                <!--                    android:drawableTop="@drawable/ic_register_take_camera"-->
+                <!--                    android:onClick="takeIdNegativePic"-->
+                <!--                    android:text="@string/register_apply_take_id_negative_pic_01"-->
+                <!--                    android:textColor="@color/c_4e4e4e"-->
+                <!--                    android:textSize="@dimen/text_18" />-->
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/register_white"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/x30">
+
+                <ImageView
+                    android:id="@+id/mIvIdPositive"
+                    android:layout_width="@dimen/x921"
+                    android:layout_height="@dimen/y623"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/base_bg_positive_01"
+                    android:contentDescription="@string/register_apply_take_id_positive_pic"
+                    android:onClick="takeIdPositivePic"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/mLlPositive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:drawableTop="@drawable/ic_register_take_camera"
+                    android:drawablePadding="@dimen/y15"
+                    android:onClick="takeIdPositivePic"
+                    android:text="@string/register_apply_take_id_positive_pic_01"
+                    android:textColor="@color/register_gray"
+                    android:textSize="@dimen/text_18"
+                    android:visibility="gone" />
+
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/mIvIdPositive"-->
+                <!--                    android:layout_width="@dimen/x921"-->
+                <!--                    android:layout_height="@dimen/y623"-->
+                <!--                    android:layout_alignParentTop="true"-->
+                <!--                    android:layout_centerHorizontal="true"-->
+                <!--                    android:background="@drawable/ic_register_id_card_positive_pic_01"-->
+                <!--                    android:contentDescription="@string/register_apply_take_id_positive_pic"-->
+                <!--                    android:onClick="takeIdPositivePic"-->
+                <!--                    android:scaleType="centerCrop" />-->
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/mLlPositive"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_centerInParent="true"-->
+                <!--                    android:drawablePadding="@dimen/y15"-->
+                <!--                    android:drawableTop="@drawable/ic_register_take_camera"-->
+                <!--                    android:onClick="takeIdPositivePic"-->
+                <!--                    android:text="@string/register_apply_take_id_positive_pic_01"-->
+                <!--                    android:textColor="@color/register_gray"-->
+                <!--                    android:textSize="@dimen/text_18" />-->
+
+            </RelativeLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_marginTop="@dimen/x70"
+                android:layout_marginEnd="@dimen/dimen_20">
+
+                <Button
+                    android:id="@+id/btNextNormal"
+                    style="@style/style_blue_btn"
+                    android:layout_width="match_parent"
+                    android:onClick="applySubmit"
+                    android:text="@string/btn_next_step" />
+                <Button
+                    android:id="@+id/btNotNext"
+                    style="@style/style_blue_btn"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/bg_base_btn_enable_r4"
+                    android:text="@string/btn_next_step" />
+            </FrameLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

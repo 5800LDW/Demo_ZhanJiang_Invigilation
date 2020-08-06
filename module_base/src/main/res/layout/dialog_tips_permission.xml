@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout -->
+<!--       -->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="vertical">-->
+
+<!--    <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="1" />-->
+
+    <com.tecsun.jc.base.widget.corner.RoundCornerLinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_round_white_bg"
+            android:gravity="center"
+            android:minHeight="170dp"
+            android:orientation="vertical"
+            app:roundBottomLeft="true"
+            app:roundBottomRight="true"
+            app:roundTopLeft="true"
+            app:roundTopRight="true"
+            app:roundedCornerRadius="10dp">
+
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:layout_marginBottom="@dimen/dimen_15"
+                android:gravity="center"
+                android:text="权限申请"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/dimen_20"
+                android:textStyle="bold" />
+
+        <TextView
+                android:id="@+id/tvContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="25dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dimen_10"
+                android:paddingRight="@dimen/dimen_10"
+                tools:text="在设置-应用-江城人社-权限中开启相机权限"
+                android:textColor="@color/c_787878"
+                android:textSize="@dimen/dimen_15" />
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:visibility="gone"
+                android:background="@color/c_f3f3f3" />
+
+        <com.tecsun.jc.base.builder.DrawLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/c_f3f3f3">
+
+            <Button
+                    android:id="@+id/vLeft"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/white_base_white_rectangle_selector"
+                    android:text="取消"
+                    android:textColor="@android:color/black"
+
+                    android:textSize="18dp" />
+
+            <Button
+                    android:id="@+id/vRight"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/white_base_white_rectangle_selector"
+                    android:text="去设置"
+                    android:textColor="@color/c_2358ff"
+                    android:textSize="18dp" />
+        </com.tecsun.jc.base.builder.DrawLinearLayout>
+
+
+    </com.tecsun.jc.base.widget.corner.RoundCornerLinearLayout>
+
+<!--    <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="1" />-->
+<!--</LinearLayout>-->
