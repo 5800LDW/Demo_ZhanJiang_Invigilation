@@ -23,17 +23,11 @@ object ResultFailTipsBuilder {
 
     var recognitionDialog: AppCompatDialog? = null
 
-    private var isShowing = false
-
-    fun checkShowing(): Boolean {
-        return isShowing
-    }
-
     fun showFailDialog(activity: BaseActivity, recognitionText: String) {
-        if (doNotShow) {
-            dismissTipsDialog()
-            return
-        }
+
+        LogUtil.e(TAG, ">>>>>>>>>>>1")
+        dismissTipsDialog()
+        LogUtil.e(TAG, ">>>>>>>>>>>2")
 
         if (activity != null && !activity.isFinishing) {
             dismissTipsDialog()
@@ -58,6 +52,8 @@ object ResultFailTipsBuilder {
                     dismissTipsDialog()
                 }
 
+                LogUtil.e(TAG, ">>>>>>>>>>>3")
+
                 val btnCancel = recognitionDialog!!.findViewById<TextView>(R.id.btnCancel)
                 btnCancel?.text = "返回主页"
                 btnCancel?.setOnClickListener(object : SingleClickListener() {
@@ -75,15 +71,19 @@ object ResultFailTipsBuilder {
                     }
                 })
 
+                LogUtil.e(TAG, ">>>>>>>>>>>4")
+
+                var tvFailTitle = recognitionDialog!!.findViewById<TextView>(R.id.tvFailTitle)
+                tvFailTitle?.text = "信息提交失败，请重新提交"
 
             }
             if (recognitionDialog != null) {
                 try {
+                    LogUtil.e(TAG, ">>>>>>>>>>>5")
                     recognitionDialog!!.show()
                 } catch (e: Exception) {
                     LogUtil.e(TAG, ">>>>>>>>>>>>>>> $e")
                 }
-                isShowing = true;
 
                 val tvFailContent = recognitionDialog!!.findViewById<TextView>(R.id.tvFailContent)
                 tvFailContent!!.text = ""
@@ -95,14 +95,12 @@ object ResultFailTipsBuilder {
 
     fun dismissTipsDialog() {
         if (recognitionDialog != null) {
-            isShowing = false
             recognitionDialog!!.dismiss()
+            recognitionDialog = null
         }
     }
 
-    private var doNotShow = false;
     fun dismissTipsDialogAndRelease() {
-        doNotShow = true;
         dismissTipsDialog()
         if (recognitionDialog != null) {
             recognitionDialog = null;

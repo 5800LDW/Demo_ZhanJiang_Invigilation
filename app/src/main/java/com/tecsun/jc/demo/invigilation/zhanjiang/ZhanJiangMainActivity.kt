@@ -29,6 +29,7 @@ import com.tecsun.jc.demo.invigilation.builder.device.DeviceBuilder
 import com.tecsun.jc.demo.invigilation.ui.FilterItemActivity
 import com.tecsun.jc.demo.invigilation.ui.admin.AdminLoginActivity
 import com.tecsun.jc.demo.invigilation.zhanjiang.bean.ListBean
+import com.tecsun.jc.demo.invigilation.zhanjiang.builder.DictionariesInfoBuilder
 import com.tecsun.jc.demo.invigilation.zhanjiang.constant.Constants.IP_LIST
 import com.tecsun.jc.demo.lib_readcard.util.PowerUtil
 import com.tecsun.jc.register.util.constant.Const
@@ -92,6 +93,8 @@ class ZhanJiangMainActivity : BaseActivity() {
                 myStartActivity(ZhanJiangActivity::class.java)
             }
         })
+
+        DictionariesInfoBuilder.getAll()
 
     }
 

@@ -4,10 +4,6 @@ import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import android.view.*
-import android.view.animation.Animation
-import android.view.animation.AnimationSet
-import android.view.animation.LinearInterpolator
-import android.view.animation.RotateAnimation
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatDialog
@@ -24,17 +20,11 @@ object ResultSuccessTipsBuilder {
 
     var recognitionDialog: AppCompatDialog? = null
 
-    private var isShowing = false
-
-    fun checkShowing(): Boolean {
-        return isShowing
-    }
-
     fun showSuccessDialog(activity: BaseActivity) {
-        if (doNotShow) {
-            dismissTipsDialog()
-            return
-        }
+        LogUtil.e(TAG, ">>>>>>>>>>>1")
+        dismissTipsDialog()
+
+        LogUtil.e(TAG, ">>>>>>>>>>>2")
 
         if (activity != null && !activity.isFinishing) {
             dismissTipsDialog()
@@ -59,6 +49,7 @@ object ResultSuccessTipsBuilder {
 //                appDialogLoadingFL!!.setOnClickListener { v: View? ->
 //                    recognitionDialog!!.dismiss()
 //                }
+                LogUtil.e(TAG, ">>>>>>>>>>>3")
 
                 recognitionDialog!!.findViewById<TextView>(R.id.btnCancel)?.visibility = View.GONE
                 recognitionDialog!!.findViewById<TextView>(R.id.tvFailContent)?.visibility =
@@ -67,9 +58,17 @@ object ResultSuccessTipsBuilder {
                 recognitionDialog!!.findViewById<View>(R.id.v2)?.visibility = View.VISIBLE
                 recognitionDialog!!.findViewById<View>(R.id.v3)?.visibility = View.GONE
 
-                val ivTipIcon = recognitionDialog!!.findViewById<ImageView>(R.id.ivTipIcon)
-                ivTipIcon?.background =
-                    activity?.resources.getDrawable(R.drawable.base_zhanjiang_tips_success)
+//                val ivTipIcon = recognitionDialog!!.findViewById<ImageView>(R.id.ivTipIcon)
+//                ivTipIcon?.background =
+//                    activity?.resources.getDrawable(R.drawable.base_zhanjiang_tips_success)
+
+
+                recognitionDialog!!.findViewById<ImageView>(R.id.ivTipIcon)?.visibility = View.GONE
+                recognitionDialog!!.findViewById<ImageView>(R.id.ivTipIcon2)?.visibility =
+                    View.VISIBLE
+
+
+                LogUtil.e(TAG, ">>>>>>>>>>>4")
 
                 val tvFailTitle =
                     recognitionDialog?.findViewById<TextView>(R.id.tvFailTitle)
@@ -86,30 +85,28 @@ object ResultSuccessTipsBuilder {
                     }
                 })
 
+                LogUtil.e(TAG, ">>>>>>>>>>>5")
 
             }
             if (recognitionDialog != null) {
                 try {
+                    LogUtil.e(TAG, ">>>>>>>>>>>6")
                     recognitionDialog!!.show()
                 } catch (e: Exception) {
                     LogUtil.e(TAG, ">>>>>>>>>>>>>>> $e")
                 }
-                isShowing = true
             }
         }
     }
 
     fun dismissTipsDialog() {
         if (recognitionDialog != null) {
-            isShowing = false
             recognitionDialog!!.dismiss()
             recognitionDialog = null
         }
     }
 
-    private var doNotShow = false;
     fun dismissTipsDialogAndRelease() {
-        doNotShow = true;
         dismissTipsDialog()
         if (recognitionDialog != null) {
             recognitionDialog = null

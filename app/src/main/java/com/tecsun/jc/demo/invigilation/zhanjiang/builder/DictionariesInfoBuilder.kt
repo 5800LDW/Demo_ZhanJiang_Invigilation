@@ -31,8 +31,24 @@ object DictionariesInfoBuilder {
     //考核科目，数据字典编码：APPLY_SUBJECT
     val data_APPLY_SUBJECT = HashMap<String, String>()
 
+    fun getAll(){
+        if(data_CERT_TYPE.size == 0){
+            getCERT_TYPE(null)
+        }
+        if(data_EDU.size == 0){
+            getEDU(null)
+        }
+        if(data_APPLY_LEVEL.size == 0){
+            getAPPLY_LEVEL(null)
+        }
+        if(data_APPLY_SUBJECT.size == 0){
+            getAPPLY_SUBJECT(null)
+        }
 
-    fun getCERT_TYPE(biz2: IEvents2) {
+    }
+
+
+    fun getCERT_TYPE(biz2: IEvents2?) {
         OkGoManager.instance.okGoRequestManageForGet(
             URL_DICTIONARIES + "CERT_TYPE",
             DictionariesInfoEntity::class.java,
@@ -60,7 +76,7 @@ object DictionariesInfoBuilder {
             })
     }
 
-    fun getEDU(biz2: IEvents2) {
+    fun getEDU(biz2: IEvents2?) {
         OkGoManager.instance.okGoRequestManageForGet(
             URL_DICTIONARIES + "EDU",
             DictionariesInfoEntity::class.java,
@@ -87,7 +103,7 @@ object DictionariesInfoBuilder {
             })
     }
 
-    fun getAPPLY_LEVEL(biz2: IEvents2) {
+    fun getAPPLY_LEVEL(biz2: IEvents2?) {
         OkGoManager.instance.okGoRequestManageForGet(
             URL_DICTIONARIES + "APPLY_LEVEL",
             DictionariesInfoEntity::class.java,
@@ -116,7 +132,7 @@ object DictionariesInfoBuilder {
 
 
 
-    fun getAPPLY_SUBJECT(biz2: IEvents2) {
+    fun getAPPLY_SUBJECT(biz2: IEvents2?) {
         OkGoManager.instance.okGoRequestManageForGet(
             URL_DICTIONARIES + "APPLY_SUBJECT",
             DictionariesInfoEntity::class.java,

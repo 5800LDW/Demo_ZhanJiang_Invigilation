@@ -18,7 +18,9 @@ import com.tecsun.jc.base.common.RouterHub
 import com.tecsun.jc.base.listener.IEvents
 import com.tecsun.jc.base.listener.IEvents2
 import com.tecsun.jc.base.listener.OkGoRequestCallback
+import com.tecsun.jc.base.utils.BaseRegexUtil
 import com.tecsun.jc.base.utils.OkGoManager
+import com.tecsun.jc.base.utils.ToastUtils
 import com.tecsun.jc.base.utils.log.LogUtil
 import com.tecsun.jc.base.utils.time.TimeUtil
 import com.tecsun.jc.base.widget.SingleClickListener
@@ -114,6 +116,8 @@ class PersonDeclareActivity : BaseActivity() {
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
+
+        DictionariesInfoBuilder.getAll()
 
         initTime()
 
@@ -470,6 +474,11 @@ class PersonDeclareActivity : BaseActivity() {
             return;
         }
 
+        if (!BaseRegexUtil.isMobile(etDeclarePhone.text.toString())) {
+            showToast("请输入正确的手机号码")
+            return
+        }
+
         if (etDeclareAddress.text.isNullOrBlank()) {
             showToast("通讯地址不能为空")
             return;
@@ -550,8 +559,17 @@ class PersonDeclareActivity : BaseActivity() {
 
     private fun declareNow() {
         var param = DeclareParam()
+
+        //通讯地址
         param.address = etDeclareAddress.text.toString()
+
+        //出生年月
         param.birth = tvDeclareBirth.text.toString()
+            .replaceFirst("-", "年")
+            .replaceFirst("-", "月") + "日"
+
+        //身份证号
+        param.certNo = tvDeclareSfzh.text.toString()
 
 
         //证件类型，数据字典编码：CERT_TYPE
@@ -567,6 +585,7 @@ class PersonDeclareActivity : BaseActivity() {
 
                 override fun failBiz(str: String) {
                     dismissLoadingDialog()
+                    LogUtil.e(TAG,">>>>>>>>>.1")
                     showErrorDialog(str)
                 }
             })
@@ -574,15 +593,19 @@ class PersonDeclareActivity : BaseActivity() {
         }
         //证件类型，数据字典编码：CERT_TYPE
         if (DictionariesInfoBuilder.data_CERT_TYPE.contains(tvDeclareType.text?.toString() ?: "")) {
-            param.certNo = DictionariesInfoBuilder.data_CERT_TYPE[tvDeclareType.text.toString()]
-            LogUtil.e(TAG, ">>>>>>>>>> ${tvDeclareType.text?.toString() ?: ""}  : ${param.certNo}")
+            param.certType = DictionariesInfoBuilder.data_CERT_TYPE[tvDeclareType.text.toString()]
+            LogUtil.e(
+                TAG,
+                ">>>>>>>>>> ${tvDeclareType.text?.toString() ?: ""}  : ${param.certType}"
+            )
         } else {
-            param.certNo = ""
+            param.certType = ""
         }
 
 
         //单位名称
         param.companyName = etDeclareCompany.text.toString()
+
         //申报条件
         param.cond = etDeclareCondition.text.toString()
         //createTime	string
@@ -601,6 +624,7 @@ class PersonDeclareActivity : BaseActivity() {
 
                 override fun failBiz(str: String) {
                     dismissLoadingDialog()
+                    LogUtil.e(TAG,">>>>>>>>>.2")
                     showErrorDialog(str)
                 }
             })
@@ -621,25 +645,47 @@ class PersonDeclareActivity : BaseActivity() {
         //性别，1:男 0:女
         param.gender = if (tvDeclareSex.text.contains("男")) "1" else "0"
 
+        //申报职业
+        param.job = etDeclareProfession.text.toString() ?: ""
+
+
         //工作开始时间，时间格式：yyyy年mm月dd日
         param.jobBeginTime =
             tvDeclareProfessionStart.text.toString()
                 .replaceFirst("-", "年")
                 .replaceFirst("-", "月") + "日"
 
+
         //职业资格证书
-        param.jobCert = etDeclareCertificate.text?.toString() ?: ""
+        if (etDeclareCertificate.text.isNullOrBlank()) {
+            param.jobCert = "无"
+        } else {
+            param.jobCert = etDeclareCertificate.text?.toString() ?: ""
+        }
 
         //职业资格等级
-        param.jobCertLevel = etDeclareCLevel.text?.toString() ?: ""
+        if (etDeclareCLevel.text.isNullOrBlank()) {
+            param.jobCertLevel = "无"
+        } else {
+            param.jobCertLevel = etDeclareCLevel.text?.toString() ?: ""
+        }
+
 
         //证书号码
-        param.jobCertNo = etDeclareCNum.text?.toString() ?: ""
+        if (etDeclareCNum.text.isNullOrBlank()) {
+            param.jobCertNo = "无"
+        } else {
+            param.jobCertNo = etDeclareCNum.text?.toString() ?: ""
+        }
 
         //获证日期，时间格式：yyyy年mm月dd日
-        param.jobCertTime = tvDeclareCertificate.text.toString()
-            .replaceFirst("-", "年")
-            .replaceFirst("-", "月") + "日"
+        if (tvDeclareCertificate.text.isNullOrBlank()) {
+            param.jobCertTime = "无"
+        } else {
+            param.jobCertTime = tvDeclareCertificate.text.toString()
+                .replaceFirst("-", "年")
+                .replaceFirst("-", "月") + "日"
+        }
 
 
         //工作结束时间，时间格式：yyyy年mm月dd日
@@ -661,6 +707,7 @@ class PersonDeclareActivity : BaseActivity() {
 
                 override fun failBiz(str: String) {
                     dismissLoadingDialog()
+                    LogUtil.e(TAG,">>>>>>>>>.3")
                     showErrorDialog(str)
                 }
             })
@@ -698,6 +745,7 @@ class PersonDeclareActivity : BaseActivity() {
 
                 override fun failBiz(str: String) {
                     dismissLoadingDialog()
+                    LogUtil.e(TAG,">>>>>>>>>.4")
                     showErrorDialog(str)
                 }
             })
@@ -711,6 +759,7 @@ class PersonDeclareActivity : BaseActivity() {
                 TAG,
                 ">>>>>>>>>> ${tvDeclareSubject.text?.toString() ?: ""}  : ${param.subject}"
             )
+
         } else {
             param.subject = ""
         }
@@ -740,9 +789,11 @@ class PersonDeclareActivity : BaseActivity() {
 
 
 
-        LogUtil.e(TAG, "个人申报申请: DeclareParam = $param")
+
+        LogUtil.e(TAG, "个人申报申请: DeclareParam = \n $param")
 
 
+        showLoadingDialog(tipContent = "正在上传数据...")
         //发送请求
         OkGoManager.instance.okGoRequestManage(
             com.tecsun.jc.demo.invigilation.zhanjiang.constant.Constants.URL_SAVE_DECLARE, param
@@ -752,12 +803,14 @@ class PersonDeclareActivity : BaseActivity() {
                     if (t != null && t.isSuccess) {
                         ResultSuccessTipsBuilder.showSuccessDialog(personDeclareActivity)
                     } else {
+                        LogUtil.e(TAG,">>>>>>>>>.5")
                         showErrorDialog(t?.message ?: "")
                     }
                 }
 
                 override fun onError(throwable: Throwable?) {
                     dismissLoadingDialog()
+                    LogUtil.e(TAG,">>>>>>>>>.6")
                     showErrorDialog(throwable?.toString() ?: "")
                 }
             })
@@ -791,13 +844,15 @@ class PersonDeclareActivity : BaseActivity() {
                         //下一步
                         declareNow()
                     }
-                    ResultFailTipsBuilder.showFailDialog(personDeclareActivity, t.message)
-
+                    else{
+                        showErrorDialog(t?.message?:"")
+                    }
                     LogUtil.e(">>>>>>>>>>>>>>>>> onSuccess $t")
                 }
 
                 override fun onError(throwable: Throwable?) {
                     dismissLoadingDialog()
+                    LogUtil.e(TAG,">>>>>>>>>.7")
                     showErrorDialog(throwable?.toString() ?: "")
                 }
             })

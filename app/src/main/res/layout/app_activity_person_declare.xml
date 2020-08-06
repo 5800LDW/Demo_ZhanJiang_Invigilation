@@ -175,12 +175,15 @@
 
                 <TextView
                     style="@style/base_text_left"
+                    android:inputType="number"
                     android:text="手机号码：" />
 
                 <EditText
                     android:id="@+id/etDeclarePhone"
                     style="@style/base_edit_text_right"
                     android:background="@null"
+                    android:inputType="number"
+                    android:maxLines="20"
                     android:hint="请输入手机号码" />
 
                 <ImageView style="@style/base_iv_input_right" />
