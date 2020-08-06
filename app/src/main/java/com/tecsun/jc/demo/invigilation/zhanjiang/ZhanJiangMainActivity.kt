@@ -66,19 +66,19 @@ class ZhanJiangMainActivity : BaseActivity() {
 
         ll01.setOnClickListener(object: SingleClickListener() {
             override fun onSingleClick(v: View?) {
-//                DeviceBuilder.skip(this@ZhanJiangMainActivity, getString(R.string.base_person_declare))
+                DeviceBuilder.skip(this@ZhanJiangMainActivity, getString(R.string.base_person_declare))
 
 
-                ARouter.getInstance().build(RouterHub.ROUTER_APP_PERSON_DECLARE)
-                    .withString(
-                        BaseConstant.STUDENT_SFZH,
-                        ""
-                    )
-                    .withString(
-                        BaseConstant.TITLE_NAME,
-                        resources.getString(com.tecsun.jc.demo.lib_readcard.R.string.base_student_Certification)
-                    )
-                    .greenChannel().navigation()
+//                ARouter.getInstance().build(RouterHub.ROUTER_APP_PERSON_DECLARE)
+//                    .withString(
+//                        BaseConstant.STUDENT_SFZH,
+//                        ""
+//                    )
+//                    .withString(
+//                        BaseConstant.TITLE_NAME,
+//                        resources.getString(com.tecsun.jc.demo.lib_readcard.R.string.base_student_Certification)
+//                    )
+//                    .greenChannel().navigation()
             }
         })
 

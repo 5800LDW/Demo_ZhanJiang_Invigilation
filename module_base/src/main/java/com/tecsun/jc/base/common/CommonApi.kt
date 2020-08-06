@@ -7,6 +7,7 @@ object CommonApi {
      */
 //    const val URL_TEST_ENVIRONMENT = "http://125.32.42.243:441"
     const val URL_TEST_ENVIRONMENT = "http://222.162.179.35:80"
+
     /**
      * 生产环境URL
      */
@@ -24,7 +25,7 @@ object CommonApi {
 
     //http://61.28.113.182:6726/#/login
 
-//    const val IP = "http://192.168.7.115:8089/tecsun-base-service/"
+    //    const val IP = "http://192.168.7.115:8089/tecsun-base-service/"
     const val IP = "http://61.28.113.182:6726/sisp/"
 
     const val IP_LIST = IP + "course/list"
@@ -32,4 +33,11 @@ object CommonApi {
     const val URL_UPLOAD_PICTURE = "course/uploadPicture"
 
     const val URL_SAVE_INFO = "course/savePersonInfo"
+
+    /**
+     * 培训管理-新增个人申报信息
+     */
+    const val URL_SAVE_APPLY = "/apply/saveApplyInfo"
+
+
 }

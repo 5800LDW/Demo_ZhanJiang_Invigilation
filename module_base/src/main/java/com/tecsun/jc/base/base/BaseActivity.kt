@@ -333,6 +333,8 @@ abstract class BaseActivity : AppCompatActivity(), HandlerCallback {
     open fun successCompareBiz(){
 
     }
+
+    open fun resubmit(){}
 }
 
 

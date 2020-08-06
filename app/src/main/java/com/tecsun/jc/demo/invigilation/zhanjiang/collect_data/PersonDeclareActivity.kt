@@ -1,6 +1,7 @@
 package com.tecsun.jc.demo.invigilation.zhanjiang.collect_data
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -8,10 +9,16 @@ import com.tecsun.jc.base.JinLinApp
 import com.tecsun.jc.base.base.BaseActivity
 import com.tecsun.jc.base.bean.db.invigilation.bean.ShowInfoBean
 import com.tecsun.jc.base.bean.filter.IFilter
+import com.tecsun.jc.base.builder.ResultFailTipsBuilder
+import com.tecsun.jc.base.builder.ResultSuccessTipsBuilder
 import com.tecsun.jc.base.builder.StudentOwnSFZImageBuilder
 import com.tecsun.jc.base.common.BaseConstant
 import com.tecsun.jc.base.common.OtherConstant
 import com.tecsun.jc.base.common.RouterHub
+import com.tecsun.jc.base.listener.IEvents
+import com.tecsun.jc.base.listener.IEvents2
+import com.tecsun.jc.base.listener.OkGoRequestCallback
+import com.tecsun.jc.base.utils.OkGoManager
 import com.tecsun.jc.base.utils.log.LogUtil
 import com.tecsun.jc.base.utils.time.TimeUtil
 import com.tecsun.jc.base.widget.SingleClickListener
@@ -19,6 +26,10 @@ import com.tecsun.jc.base.widget.TitleBar
 import com.tecsun.jc.base.widget.builder.TimePickerBuilder
 import com.tecsun.jc.demo.invigilation.R
 import com.tecsun.jc.demo.invigilation.ui.FilterItemActivity
+import com.tecsun.jc.demo.invigilation.ui.pic.MyBaseActivity
+import com.tecsun.jc.demo.invigilation.util.BitmapUtils2
+import com.tecsun.jc.demo.invigilation.zhanjiang.bean.*
+import com.tecsun.jc.demo.invigilation.zhanjiang.builder.DictionariesInfoBuilder
 import kotlinx.android.synthetic.main.app_activity_person_declare.*
 import java.io.Serializable
 import java.text.DateFormat
@@ -48,9 +59,13 @@ class PersonDeclareActivity : BaseActivity() {
 
     private var timeDeclareProfessionEnd: TimePickerBuilder? = null
 
-    private var timeDeclareTrainTime: TimePickerBuilder? = null
+    private var timeDeclareTrainTimeStart: TimePickerBuilder? = null
+
+    private var timeDeclareTrainTimeEnd: TimePickerBuilder? = null
 
     private var timeDeclareCertificate: TimePickerBuilder? = null
+
+    private val personDeclareActivity = this;
 
 
     /** 文化程度 */
@@ -172,15 +187,35 @@ class PersonDeclareActivity : BaseActivity() {
             }
         })
 
-        tvDeclareTrainTime.setOnClickListener(object : SingleClickListener() {
+        tvDeclareTrainTimeStart.setOnClickListener(object : SingleClickListener() {
             override fun onSingleClick(v: View?) {
-                timeDeclareTrainTime?.showView()
+                timeDeclareTrainTimeStart?.showView()
             }
         })
 
+        ivDeclareTrainTimeStart.setOnClickListener(object : SingleClickListener() {
+            override fun onSingleClick(v: View?) {
+                timeDeclareTrainTimeStart?.showView()
+            }
+        })
+
+        tvDeclareTrainTimeEnd.setOnClickListener(object : SingleClickListener() {
+            override fun onSingleClick(v: View?) {
+                timeDeclareTrainTimeEnd?.showView()
+            }
+        })
+
+        ivDeclareTrainTimeEnd.setOnClickListener(object : SingleClickListener() {
+            override fun onSingleClick(v: View?) {
+                timeDeclareTrainTimeEnd?.showView()
+            }
+        })
+
+
+
         ivDeclareTrainTime.setOnClickListener(object : SingleClickListener() {
             override fun onSingleClick(v: View?) {
-                timeDeclareTrainTime?.showView()
+                timeDeclareTrainTimeStart?.showView()
             }
         })
 
@@ -195,8 +230,13 @@ class PersonDeclareActivity : BaseActivity() {
                 timeDeclareCertificate?.showView()
             }
         })
-    }
+        btSure.setOnClickListener(object : SingleClickListener() {
+            override fun onSingleClick(v: View?) {
+                checkInfo()
+            }
+        })
 
+    }
 
     private fun skip(data: ArrayList<IFilter>, i: Int) {
         val intent = Intent(this, FilterItemActivity::class.java)
@@ -294,19 +334,63 @@ class PersonDeclareActivity : BaseActivity() {
                 }
             }
 
-        timeDeclareTrainTime = TimePickerBuilder()
+
+        timeDeclareTrainTimeStart = TimePickerBuilder()
             .setActivity(this)
-            .setDefaultDate(endDate)
-            .setTitleText("选择培训时间")
-            //.setDefaultDate(TimeUtil.getCurrentDateAccordingToFormat(OtherConstant.DEFAULT_FORMAT))
+            .setDefaultDate(startDate) //设置开始时间比结束时间少一年
+            .setTitleText("选择开始培训日期")
+            //.setDefaultDate(TimeUtil.getPastYear(OtherConstant.DEFAULT_FORMAT, 1))
             .setListener { date, v ->
 
-                timeDeclareProfessionEnd?.defaultDate = SimpleDateFormat(
-                    OtherConstant.DEFAULT_FORMAT,
-                    Locale.getDefault()
-                ).format(date)
-                tvDeclareTrainTime.text = timeDeclareProfessionEnd?.defaultDate
+                val b: Boolean =
+                    isErrorDate(
+                        SimpleDateFormat(
+                            OtherConstant.DEFAULT_FORMAT,
+                            Locale.getDefault()
+                        ).format(date),
+                        timeDeclareTrainTimeEnd?.defaultDate
+                            ?: TimeUtil.getCurrentDateAccordingToFormat(OtherConstant.DEFAULT_FORMAT)
+                    )
+                if (!b) {
+                    timeDeclareTrainTimeStart!!.defaultDate = SimpleDateFormat(
+                        OtherConstant.DEFAULT_FORMAT,
+                        Locale.getDefault()
+                    ).format(date)
+                    tvDeclareTrainTimeStart.text = timeDeclareTrainTimeStart?.defaultDate
+                } else {
+                    showToast(getString(R.string.base_error_time_select))
+                }
+            }
 
+
+
+        timeDeclareTrainTimeEnd = TimePickerBuilder()
+            .setActivity(this)
+            .setDefaultDate(endDate)
+            .setTitleText("选择结束培训日期")
+            //.setDefaultDate(TimeUtil.getCurrentDateAccordingToFormat(OtherConstant.DEFAULT_FORMAT))
+            .setListener { date, v ->
+                val b: Boolean =
+                    isErrorDate(
+                        timeDeclareTrainTimeStart?.defaultDate ?: TimeUtil.getPastYear(
+                            OtherConstant.DEFAULT_FORMAT,
+                            1
+                        ),
+                        SimpleDateFormat(
+                            OtherConstant.DEFAULT_FORMAT,
+                            Locale.getDefault()
+                        ).format(date)
+                    )
+
+                if (!b) {
+                    timeDeclareTrainTimeEnd?.defaultDate = SimpleDateFormat(
+                        OtherConstant.DEFAULT_FORMAT,
+                        Locale.getDefault()
+                    ).format(date)
+                    tvDeclareTrainTimeEnd.text = timeDeclareTrainTimeEnd?.defaultDate
+                } else {
+                    showToast(getString(R.string.base_error_time_select))
+                }
             }
 
         timeDeclareCertificate = TimePickerBuilder()
@@ -321,10 +405,7 @@ class PersonDeclareActivity : BaseActivity() {
                     Locale.getDefault()
                 ).format(date)
                 tvDeclareCertificate.text = timeDeclareProfessionEnd?.defaultDate
-
             }
-
-
     }
 
     /**
@@ -335,8 +416,8 @@ class PersonDeclareActivity : BaseActivity() {
         try {
             val d1 = df.parse(startDate)
             val d2 = df.parse(endDate)
-            LogUtil.e(TAG,"d1 = $d1")
-            LogUtil.e(TAG,"d2 = $d2")
+            LogUtil.e(TAG, "d1 = $d1")
+            LogUtil.e(TAG, "d2 = $d2")
             val diff = d1.time - d2.time
             return diff > 0
         } catch (e: Exception) {
@@ -344,6 +425,397 @@ class PersonDeclareActivity : BaseActivity() {
         }
         return false
     }
+
+
+    override fun onDestroy() {
+        ResultSuccessTipsBuilder.dismissTipsDialogAndRelease()
+        ResultFailTipsBuilder.dismissTipsDialogAndRelease()
+        super.onDestroy()
+    }
+
+    private fun checkInfo() {
+
+        if (tvDeclareName.text.isNullOrBlank()) {
+            showToast("姓名不能为空")
+            return
+        }
+
+        if (tvDeclareSex.text.isNullOrBlank()) {
+            showToast("性别不能为空")
+            return;
+        }
+
+        if (tvDeclareBirth.text.isNullOrBlank()) {
+            showToast("出生日期不能为空")
+            return;
+        }
+
+        if (tvDeclareSfzh.text.isNullOrBlank()) {
+            showToast("证件号码不能为空")
+            return;
+        }
+
+        if (tvCulture.text.isNullOrBlank()) {
+            showToast("文化程度不能为空")
+            return;
+        }
+
+        if (etDeclareCompany.text.isNullOrBlank()) {
+            showToast("单位名称不能为空")
+            return;
+        }
+
+        if (etDeclarePhone.text.isNullOrBlank()) {
+            showToast("手机号码不能为空")
+            return;
+        }
+
+        if (etDeclareAddress.text.isNullOrBlank()) {
+            showToast("通讯地址不能为空")
+            return;
+        }
+
+        if (etDeclareCondition.text.isNullOrBlank()) {
+            showToast("申报条件不能为空")
+            return;
+        }
+
+        if (etDeclareProfession.text.isNullOrBlank()) {
+            showToast("申报职业不能为空")
+            return;
+        }
+
+        if (tvRank.text.isNullOrBlank()) {
+            showToast("申报级别不能为空")
+            return;
+        }
+
+        if (tvExamType.text.isNullOrBlank()) {
+            showToast("考试类型不能为空")
+            return;
+        }
+
+        if (tvDeclareSubject.text.isNullOrBlank()) {
+            showToast("考核科目不能为空")
+            return;
+        }
+
+        if (tvDeclareTrain.text.isNullOrBlank()) {
+            showToast("请选择是否参加本地培训")
+            return;
+        }
+
+        if (tvDeclareTrainTimeStart.text.isNullOrBlank()) {
+            showToast("请选择开始培训日期")
+            return;
+        }
+
+        if (tvDeclareTrainTimeEnd.text.isNullOrBlank()) {
+            showToast("请选择结束培训日期")
+            return;
+        }
+
+        if (etDeclareTrainTotalTime.text.isNullOrBlank()) {
+            showToast("培训学时不能为空")
+            return;
+        }
+
+        if (tvDeclareProfessionStart.text.isNullOrBlank()) {
+            showToast("请选择开始年限")
+            return;
+        }
+
+        if (tvDeclareProfessionEnd.text.isNullOrBlank()) {
+            showToast("请选择结束年限")
+            return;
+        }
+
+        if (tvDeclareProfessionEnd.text.isNullOrBlank()) {
+            showToast("请选择结束年限")
+            return;
+        }
+
+        if (teDeclareYear.text.isNullOrBlank()) {
+            showToast("从事本职业工种年限不能为空w")
+            return;
+        }
+
+
+        //先上传图片获取id;
+        uploadSFZHPic()
+        //获取数据字典;
+        //declareNow()
+    }
+
+
+    private fun declareNow() {
+        var param = DeclareParam()
+        param.address = etDeclareAddress.text.toString()
+        param.birth = tvDeclareBirth.text.toString()
+
+
+        //证件类型，数据字典编码：CERT_TYPE
+        if (DictionariesInfoBuilder.data_CERT_TYPE.size == 0 || !DictionariesInfoBuilder.data_CERT_TYPE.contains(
+                tvDeclareType.text?.toString() ?: ""
+            )
+        ) {
+            //跳转到取获取字典
+            DictionariesInfoBuilder.getCERT_TYPE(object : IEvents2 {
+                override fun biz() {
+                    resubmit()
+                }
+
+                override fun failBiz(str: String) {
+                    dismissLoadingDialog()
+                    showErrorDialog(str)
+                }
+            })
+            return
+        }
+        //证件类型，数据字典编码：CERT_TYPE
+        if (DictionariesInfoBuilder.data_CERT_TYPE.contains(tvDeclareType.text?.toString() ?: "")) {
+            param.certNo = DictionariesInfoBuilder.data_CERT_TYPE[tvDeclareType.text.toString()]
+            LogUtil.e(TAG, ">>>>>>>>>> ${tvDeclareType.text?.toString() ?: ""}  : ${param.certNo}")
+        } else {
+            param.certNo = ""
+        }
+
+
+        //单位名称
+        param.companyName = etDeclareCompany.text.toString()
+        //申报条件
+        param.cond = etDeclareCondition.text.toString()
+        //createTime	string
+
+
+        //数据字典编码：EDU
+        if (DictionariesInfoBuilder.data_EDU.size == 0 || !DictionariesInfoBuilder.data_EDU.contains(
+                tvCulture.text?.toString() ?: ""
+            )
+        ) {
+            //跳转到取获取字典
+            DictionariesInfoBuilder.getEDU(object : IEvents2 {
+                override fun biz() {
+                    resubmit()
+                }
+
+                override fun failBiz(str: String) {
+                    dismissLoadingDialog()
+                    showErrorDialog(str)
+                }
+            })
+            return
+        }
+        //数据字典编码：EDU
+        if (DictionariesInfoBuilder.data_EDU.contains(tvCulture.text?.toString() ?: "")) {
+            param.education = DictionariesInfoBuilder.data_EDU[tvCulture.text.toString()]
+            LogUtil.e(TAG, ">>>>>>>>>> ${tvCulture.text?.toString() ?: ""}  : ${param.education}")
+        } else {
+            param.education = ""
+        }
+
+
+        //考试类型，1:正考 0:补考
+        param.examType = if (tvExamType.text.contains("正")) "1" else "0"
+
+        //性别，1:男 0:女
+        param.gender = if (tvDeclareSex.text.contains("男")) "1" else "0"
+
+        //工作开始时间，时间格式：yyyy年mm月dd日
+        param.jobBeginTime =
+            tvDeclareProfessionStart.text.toString()
+                .replaceFirst("-", "年")
+                .replaceFirst("-", "月") + "日"
+
+        //职业资格证书
+        param.jobCert = etDeclareCertificate.text?.toString() ?: ""
+
+        //职业资格等级
+        param.jobCertLevel = etDeclareCLevel.text?.toString() ?: ""
+
+        //证书号码
+        param.jobCertNo = etDeclareCNum.text?.toString() ?: ""
+
+        //获证日期，时间格式：yyyy年mm月dd日
+        param.jobCertTime = tvDeclareCertificate.text.toString()
+            .replaceFirst("-", "年")
+            .replaceFirst("-", "月") + "日"
+
+
+        //工作结束时间，时间格式：yyyy年mm月dd日
+        param.jobEndTime = tvDeclareProfessionEnd.text.toString()
+            .replaceFirst("-", "年")
+            .replaceFirst("-", "月") + "日"
+
+
+        //申报职业级别，数据字典编码：APPLY_LEVEL
+        if (DictionariesInfoBuilder.data_APPLY_LEVEL.size == 0 || !DictionariesInfoBuilder.data_APPLY_LEVEL.contains(
+                tvRank.text.toString() ?: ""
+            )
+        ) {
+            //跳转到取获取字典
+            DictionariesInfoBuilder.getAPPLY_LEVEL(object : IEvents2 {
+                override fun biz() {
+                    resubmit()
+                }
+
+                override fun failBiz(str: String) {
+                    dismissLoadingDialog()
+                    showErrorDialog(str)
+                }
+            })
+            return
+        }
+        //申报职业级别，数据字典编码：APPLY_LEVEL
+        if (DictionariesInfoBuilder.data_APPLY_LEVEL.contains(tvRank.text.toString())) {
+            param.jobLevel = DictionariesInfoBuilder.data_APPLY_LEVEL[tvRank.text.toString()]
+            LogUtil.e(TAG, ">>>>>>>>>> ${tvRank.text?.toString() ?: ""}  : ${param.jobLevel}")
+        } else {
+            param.jobLevel = ""
+        }
+
+
+        // 根据开始年限和结束年限进行计算
+        param.jobTime = teDeclareYear.text.toString() ?: ""
+
+
+        //手机号码
+        param.mobile = etDeclarePhone.text?.toString() ?: ""
+        //调用上传照片接口返回的id ; 需要先上传根据返回的结果来处理;
+        param.pic = sfzhPic
+
+
+        //数据字典编码：APPLY_SUBJECT 需要查数据字典
+        if (DictionariesInfoBuilder.data_APPLY_SUBJECT.size == 0 || !DictionariesInfoBuilder.data_APPLY_SUBJECT.contains(
+                tvDeclareSubject.text.toString() ?: ""
+            )
+        ) {
+            //跳转到取获取字典
+            DictionariesInfoBuilder.getAPPLY_SUBJECT(object : IEvents2 {
+                override fun biz() {
+                    resubmit()
+                }
+
+                override fun failBiz(str: String) {
+                    dismissLoadingDialog()
+                    showErrorDialog(str)
+                }
+            })
+            return
+        }
+        //申报职业级别，数据字典编码：APPLY_LEVEL
+        if (DictionariesInfoBuilder.data_APPLY_SUBJECT.contains(tvDeclareSubject.text.toString())) {
+            param.subject =
+                DictionariesInfoBuilder.data_APPLY_SUBJECT[tvDeclareSubject.text.toString()]
+            LogUtil.e(
+                TAG,
+                ">>>>>>>>>> ${tvDeclareSubject.text?.toString() ?: ""}  : ${param.subject}"
+            )
+        } else {
+            param.subject = ""
+        }
+
+
+        //是否参加本职业培训，1:已参加培训 0:未参加培训
+        param.train = if (tvDeclareTrain.text.contains("已")) "1" else "0"
+
+        //培训开始时间，时间格式：yyyy年mm月dd日
+        param.trainBeginTime = tvDeclareTrainTimeStart.text.toString()
+            .replaceFirst("-", "年")
+            .replaceFirst("-", "月") + "日"
+
+        //培训结束时间，时间格式：yyyy年mm月dd日
+        param.trainEndTime = tvDeclareTrainTimeEnd.text.toString()
+            .replaceFirst("-", "年")
+            .replaceFirst("-", "月") + "日"
+
+        //培训机构
+        param.trainOrg = "无"
+
+        //培训学时
+        param.trainTime = etDeclareTrainTotalTime.text.toString() ?: ""
+
+        //姓名
+        param.userName = tvDeclareName.text.toString() ?: ""
+
+
+
+        LogUtil.e(TAG, "个人申报申请: DeclareParam = $param")
+
+
+        //发送请求
+        OkGoManager.instance.okGoRequestManage(
+            com.tecsun.jc.demo.invigilation.zhanjiang.constant.Constants.URL_SAVE_DECLARE, param
+            , DeclareResultEntity::class.java, object : OkGoRequestCallback<DeclareResultEntity> {
+                override fun onSuccess(t: DeclareResultEntity) {
+                    dismissLoadingDialog()
+                    if (t != null && t.isSuccess) {
+                        ResultSuccessTipsBuilder.showSuccessDialog(personDeclareActivity)
+                    } else {
+                        showErrorDialog(t?.message ?: "")
+                    }
+                }
+
+                override fun onError(throwable: Throwable?) {
+                    dismissLoadingDialog()
+                    showErrorDialog(throwable?.toString() ?: "")
+                }
+            })
+    }
+
+
+    private var sfzhPic: String? = ""
+    fun uploadSFZHPic() {
+        if (!sfzhPic.isNullOrBlank()) {
+            //直接上传数据,因为图片已经有了
+            declareNow()
+            return
+        }
+        showLoadingDialog(tipContent = "正在上传照片...")
+        var param = UploadPicParam()
+        param.sfzh = JinLinApp.studentDetailsBean2?.sfzh ?: ""
+        param.name = JinLinApp.studentDetailsBean2?.name ?: ""
+        param.picBase64 = BitmapUtils2.bitmapToBase64(
+            StudentOwnSFZImageBuilder.getSFZBitmap(
+                JinLinApp.studentDetailsBean2?.sfzh ?: ""
+            )
+        )
+
+        OkGoManager.instance.okGoRequestManage(
+            com.tecsun.jc.demo.invigilation.zhanjiang.constant.Constants.URL_UPLOAD_PICTURE, param
+            , UploadPicEntity::class.java, object : OkGoRequestCallback<UploadPicEntity> {
+                override fun onSuccess(t: UploadPicEntity) {
+                    dismissLoadingDialog()
+                    if (t != null && t.statusCode == "200" && t.data != null && t.data.picId != null) {
+                        sfzhPic = t.data.picId.toString()
+                        //下一步
+                        declareNow()
+                    }
+                    ResultFailTipsBuilder.showFailDialog(personDeclareActivity, t.message)
+
+                    LogUtil.e(">>>>>>>>>>>>>>>>> onSuccess $t")
+                }
+
+                override fun onError(throwable: Throwable?) {
+                    dismissLoadingDialog()
+                    showErrorDialog(throwable?.toString() ?: "")
+                }
+            })
+    }
+
+
+    /**
+     * 重新提交
+     */
+    override fun resubmit() {
+        super.resubmit()
+        checkInfo()
+    }
+
+    private fun showErrorDialog(str: String) {
+        ResultFailTipsBuilder.showFailDialog(personDeclareActivity, str ?: "")
+    }
+
 }
 
 
