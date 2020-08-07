@@ -39,5 +39,10 @@ object CommonApi {
      */
     const val URL_SAVE_APPLY = "/apply/saveApplyInfo"
 
+    /**
+     * 培训管理-学员登记
+     */
+    const val URL_STUDENT_REGISTER = "/apply/saveTrainInfo"
+
 
 }

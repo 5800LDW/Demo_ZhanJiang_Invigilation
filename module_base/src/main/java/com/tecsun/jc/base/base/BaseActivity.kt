@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.launcher.ARouter
 import com.tecsun.jc.base.JinLinApp
 import com.tecsun.jc.base.R
+import com.tecsun.jc.base.builder.ResultFailTipsBuilder
 import com.tecsun.jc.base.collector.BaseActivityCollector
 import com.tecsun.jc.base.dialog.LoadingProgressDialog
 import com.tecsun.jc.base.listener.HandlerCallback
@@ -335,6 +336,11 @@ abstract class BaseActivity : AppCompatActivity(), HandlerCallback {
     }
 
     open fun resubmit(){}
+
+
+     fun showErrorDialog(str: String) {
+        ResultFailTipsBuilder.showFailDialog(this, str ?: "")
+    }
 }
 
 

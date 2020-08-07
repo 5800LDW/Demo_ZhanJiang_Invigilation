@@ -867,9 +867,7 @@ class PersonDeclareActivity : BaseActivity() {
         checkInfo()
     }
 
-    private fun showErrorDialog(str: String) {
-        ResultFailTipsBuilder.showFailDialog(personDeclareActivity, str ?: "")
-    }
+
 
 }
 

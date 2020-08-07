@@ -86,6 +86,6 @@ object BaseConstant {
     val DEFAULT_SEPARATOR = "-"
 
 
-
+    const val KEY_PARAM = "KEY_PARAM"
 
 }

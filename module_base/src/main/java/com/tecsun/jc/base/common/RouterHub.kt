@@ -165,6 +165,9 @@ object RouterHub {
 
     /**学员登记*/
     const val ROUTER_APP_STUDENT_REGISTER = "/MyAPP/StudentRegisterActivity"
+
+    /**学员登记确认内容*/
+    const val ROUTER_APP_STUDENT_REGISTER_CONFIRM = "/MyAPP/StudentRegisterConfirmActivity"
 }
 
 

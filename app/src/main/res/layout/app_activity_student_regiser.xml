@@ -8,572 +8,445 @@
 
     <com.tecsun.jc.base.widget.TitleBar style="@style/style_title_bar" />
 
-    <com.tecsun.jc.base.widget.ObservableScrollView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
-        <LinearLayout
+        <com.tecsun.jc.base.widget.ObservableScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:scrollbars="none">
 
-
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/c_fffbf1"
-                android:paddingLeft="10dp"
-                android:paddingTop="15dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="15dp">
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/llRegisterContent01"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center|left"
-                    android:gravity="center|left"
-                    android:text="温馨提示：为了更好的了解及服务你技能鉴定个人申报，请您认真填写以下信息。"
-                    android:textColor="@color/c_e7ac2a"
-                    android:textSize="15dp" />
+                    android:orientation="vertical">
 
-            </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/c_fffbf1"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp">
 
+                        <TextView
+                            android:id="@+id/tvRegisterTips"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:gravity="center|left"
+                            android:text="温馨提示：为了更好的了解及服务你的培训需求，请您认真填写以下信息。"
+                            android:textColor="@color/c_e7ac2a"
+                            android:textSize="15dp" />
 
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/base_shape_grey_square">
+                    </FrameLayout>
 
-                <ImageView
-                    android:id="@+id/appDeclarePic"
-                    android:layout_width="140dp"
-                    android:layout_height="172.4581dp"
-                    android:layout_gravity="center" />
-            </FrameLayout>
 
+                    <LinearLayout style="@style/base_text_item">
 
-            <include layout="@layout/base_line_grey" />
+                        <TextView
+                            style="@style/base_text_left"
+                            android:text="培训机构：" />
 
-            <LinearLayout style="@style/base_text_item">
+                        <EditText
+                            android:id="@+id/etCultivate"
+                            style="@style/base_edit_text_right"
+                            android:background="@null"
+                            android:hint="请输入培训机构" />
 
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="姓名：" />
+                        <ImageView
+                            android:id="@+id/ivRegister1"
+                            style="@style/base_iv_input_right" />
 
-                <TextView
-                    android:id="@+id/tvDeclareName"
-                    style="@style/base_text_right"
-                    tools:text="刘雪华" />
-            </LinearLayout>
+                    </LinearLayout>
 
 
-            <include layout="@layout/base_line_grey" />
+                    <LinearLayout style="@style/base_text_item">
 
-            <LinearLayout style="@style/base_text_item">
+                        <TextView
+                            style="@style/base_text_left"
+                            android:text="姓名：" />
 
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="性别：" />
+                        <TextView
+                            android:id="@+id/tvRegisterName"
+                            style="@style/base_text_right"
+                            tools:text="刘雪华" />
+                    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvDeclareSex"
-                    style="@style/base_text_right"
-                    tools:text="男" />
-            </LinearLayout>
 
+                    <include layout="@layout/base_line_grey" />
 
-            <include layout="@layout/base_line_grey" />
+                    <LinearLayout style="@style/base_text_item">
 
-            <LinearLayout style="@style/base_text_item">
+                        <TextView
+                            style="@style/base_text_left"
+                            android:text="性别：" />
 
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="出生年月：" />
+                        <TextView
+                            android:id="@+id/tvRegisterSex"
+                            style="@style/base_text_right"
+                            tools:text="男" />
+                    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvDeclareBirth"
-                    style="@style/base_text_right"
-                    tools:text="1992-10-10" />
-            </LinearLayout>
 
+                    <include layout="@layout/base_line_grey" />
 
-            <include layout="@layout/base_line_grey" />
+                    <LinearLayout style="@style/base_text_item">
 
-            <LinearLayout style="@style/base_text_item">
+                        <TextView
+                            style="@style/base_text_left"
+                            android:text="民族：" />
 
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="证件类型：" />
+                        <TextView
+                            android:id="@+id/tvNation"
+                            style="@style/base_text_right"
+                            tools:text="汉" />
+                    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvDeclareType"
-                    style="@style/base_text_right"
-                    android:text="身份证" />
-            </LinearLayout>
+                    <include layout="@layout/base_line_grey" />
 
+                    <LinearLayout style="@style/base_text_item">
 
-            <include layout="@layout/base_line_grey" />
+                        <TextView
+                            style="@style/base_text_left"
+                            android:text="身份证号：" />
 
-            <LinearLayout style="@style/base_text_item">
+                        <TextView
+                            android:id="@+id/tvRegisterSfzh"
+                            style="@style/base_text_right"
+                            tools:text="440223199911192222" />
+                    </LinearLayout>
 
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="证件号码：" />
 
-                <TextView
-                    android:id="@+id/tvDeclareSfzh"
-                    style="@style/base_text_right"
-                    tools:text="440223199911192222" />
-            </LinearLayout>
+                    <include layout="@layout/base_line_grey" />
 
-            <include layout="@layout/base_line_grey" />
+                    <LinearLayout style="@style/base_text_item">
 
-            <LinearLayout
-                android:id="@+id/llCulture"
-                style="@style/base_text_item">
+                        <TextView
+                            style="@style/base_text_left"
+                            android:text="出生年月：" />
 
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="文化程度：" />
+                        <TextView
+                            android:id="@+id/tvRegisterBirth"
+                            style="@style/base_text_right"
+                            tools:text="1992-10-10" />
+                    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvCulture"
-                    style="@style/base_text_right2"
-                    android:hint="请选择文化程度" />
 
-                <ImageView style="@style/base_iv_right" />
-            </LinearLayout>
+                    <include layout="@layout/base_line_grey" />
 
+                    <LinearLayout
+                        android:id="@+id/llRegisterCulture"
+                        style="@style/base_text_item">
 
-            <include layout="@layout/base_line_grey" />
+                        <TextView
+                            style="@style/base_text_left"
+                            android:text="学历：" />
 
-            <LinearLayout style="@style/base_text_item">
+                        <TextView
+                            android:id="@+id/tvRegisterCulture"
+                            style="@style/base_text_right2"
+                            android:hint="请选择学历" />
 
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="单位名称：" />
+                        <ImageView
+                            android:id="@+id/ivRegister2"
+                            style="@style/base_iv_right" />
+                    </LinearLayout>
 
-                <EditText
-                    android:id="@+id/etDeclareCompany"
-                    style="@style/base_edit_text_right"
-                    android:background="@null"
-                    android:hint="请输入单位名称" />
 
+                    <include layout="@layout/base_line_grey" />
 
-                <ImageView style="@style/base_iv_input_right" />
+                    <LinearLayout style="@style/base_text_item">
 
-            </LinearLayout>
+                        <TextView
+                            style="@style/base_text_left"
+                            android:inputType="number"
+                            android:text="联系电话：" />
 
+                        <EditText
+                            android:id="@+id/etRegisterPhone"
+                            style="@style/base_edit_text_right"
+                            android:background="@null"
+                            android:hint="请输入手机号码"
+                            android:inputType="number"
+                            android:maxLines="20" />
 
-            <include layout="@layout/base_line_grey" />
+                        <ImageView
+                            android:id="@+id/ivRegister3"
+                            style="@style/base_iv_input_right" />
 
-            <LinearLayout style="@style/base_text_item">
+                    </LinearLayout>
 
-                <TextView
-                    style="@style/base_text_left"
-                    android:inputType="number"
-                    android:text="手机号码：" />
 
-                <EditText
-                    android:id="@+id/etDeclarePhone"
-                    style="@style/base_edit_text_right"
-                    android:background="@null"
-                    android:inputType="number"
-                    android:maxLines="20"
-                    android:hint="请输入手机号码" />
+                    <include
+                        layout="@layout/base_line_grey"
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp" />
 
-                <ImageView style="@style/base_iv_input_right" />
 
-            </LinearLayout>
+                    <include layout="@layout/base_line_grey" />
 
+                    <LinearLayout
+                        android:id="@+id/llEmploymentIntention"
+                        style="@style/base_text_item">
 
-            <include layout="@layout/base_line_grey" />
+                        <TextView
+                            style="@style/base_text_left"
+                            android:text="就业意愿：" />
 
-            <LinearLayout style="@style/base_text_item">
+                        <TextView
+                            android:id="@+id/tvEmploymentIntention"
+                            style="@style/base_text_right2"
+                            android:hint="请选择就业意愿" />
 
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="通讯地址：" />
+                        <ImageView
+                            android:id="@+id/ivRegister4"
+                            style="@style/base_iv_right" />
+                    </LinearLayout>
 
-                <EditText
-                    android:id="@+id/etDeclareAddress"
-                    style="@style/base_edit_text_right"
-                    android:background="@null"
-                    android:hint="请输入通讯地址" />
+                    <include layout="@layout/base_line_grey" />
 
-                <ImageView style="@style/base_iv_input_right" />
+                    <LinearLayout
+                        android:id="@+id/llRegisterPurpose"
+                        style="@style/base_text_item">
 
+                        <TextView
+                            style="@style/base_text_left"
+                            android:text="就业意向：" />
 
-            </LinearLayout>
+                        <TextView
+                            android:id="@+id/tvRegisterPurpose"
+                            style="@style/base_text_right2"
+                            android:hint="请选择就业意向" />
 
+                        <ImageView
+                            android:id="@+id/ivRegister5"
+                            style="@style/base_iv_right" />
+                    </LinearLayout>
 
-            <include
-                layout="@layout/base_line_grey"
-                android:layout_width="match_parent"
-                android:layout_height="15dp" />
 
-            <LinearLayout style="@style/base_text_item">
+                    <include layout="@layout/base_line_grey" />
 
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="申报条件：" />
+                    <LinearLayout
+                        android:id="@+id/llRegisterState"
+                        style="@style/base_text_item">
 
-                <EditText
-                    android:id="@+id/etDeclareCondition"
-                    style="@style/base_edit_text_right"
-                    android:background="@null"
-                    android:hint="请输入申报条件"
-                    android:maxLength="500"
-                    android:maxLines="15" />
+                        <TextView
+                            style="@style/base_text_left"
+                            android:text="目前状态：" />
 
-                <ImageView style="@style/base_iv_input_right" />
+                        <TextView
+                            android:id="@+id/tvRegisterState"
+                            style="@style/base_text_right2"
+                            android:hint="请选择目前状态" />
 
+                        <ImageView
+                            android:id="@+id/ivRegister6"
+                            style="@style/base_iv_right" />
+                    </LinearLayout>
 
-            </LinearLayout>
+                    <include layout="@layout/base_line_grey" />
 
 
-            <include layout="@layout/base_line_grey" />
+                    <LinearLayout style="@style/base_text_item">
 
-            <LinearLayout style="@style/base_text_item">
+                        <TextView
+                            style="@style/base_text_left"
+                            android:text="户籍地址：" />
 
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="申报职业：" />
+                        <EditText
+                            android:id="@+id/etResidenceAddress"
+                            style="@style/base_edit_text_right"
+                            android:background="@null"
+                            android:hint="请输入户籍地址" />
 
-                <EditText
-                    android:id="@+id/etDeclareProfession"
-                    style="@style/base_edit_text_right"
-                    android:background="@null"
-                    android:hint="请输入申报职业" />
+                        <ImageView
+                            android:id="@+id/ivRegister7"
+                            style="@style/base_iv_input_right" />
+                    </LinearLayout>
 
-                <ImageView style="@style/base_iv_input_right" />
-            </LinearLayout>
 
+                    <include layout="@layout/base_line_grey" />
 
-            <include layout="@layout/base_line_grey" />
+                    <LinearLayout style="@style/base_text_item">
 
-            <LinearLayout
-                android:id="@+id/llRank"
-                style="@style/base_text_item">
+                        <TextView
+                            style="@style/base_text_left"
+                            android:text="现住地址：" />
 
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="申报级别：" />
+                        <EditText
+                            android:id="@+id/etAddress"
+                            style="@style/base_edit_text_right"
+                            android:background="@null"
+                            android:hint="请输入现住地址" />
 
-                <TextView
-                    android:id="@+id/tvRank"
-                    style="@style/base_text_right2"
-                    android:hint="请选择申报级别" />
 
-                <ImageView style="@style/base_iv_right" />
-            </LinearLayout>
+                        <ImageView
+                            android:id="@+id/ivRegister8"
+                            style="@style/base_iv_input_right" />
+                    </LinearLayout>
 
-            <include layout="@layout/base_line_grey" />
 
-            <LinearLayout
-                android:id="@+id/llExamType"
-                style="@style/base_text_item">
+                    <include layout="@layout/base_line_grey" />
 
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="考试类型：" />
+                    <LinearLayout
+                        android:id="@+id/llRegisterCertificate"
+                        style="@style/base_text_item">
 
-                <TextView
-                    android:id="@+id/tvExamType"
-                    style="@style/base_text_right2"
-                    android:hint="请选择考试类型" />
+                        <TextView
+                            style="@style/base_text_left"
+                            android:text="现有职业资格证书：" />
 
-                <ImageView style="@style/base_iv_right" />
-            </LinearLayout>
+                        <TextView
+                            android:id="@+id/tvRegisterCertificate"
+                            style="@style/base_text_right2"
+                            android:hint="请选择" />
 
+                        <ImageView
+                            android:id="@+id/ivRegister9"
+                            style="@style/base_iv_right" />
+                    </LinearLayout>
 
-            <include layout="@layout/base_line_grey" />
 
-            <LinearLayout
-                android:id="@+id/llDeclareSubject"
-                style="@style/base_text_item">
+                    <include layout="@layout/base_line_grey" />
 
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="考核科目：" />
+                    <LinearLayout style="@style/base_text_item">
 
-                <TextView
-                    android:id="@+id/tvDeclareSubject"
-                    style="@style/base_text_right2"
-                    android:hint="请选择考核科目" />
+                        <TextView
+                            style="@style/base_text_left"
+                            android:text="拥有证书工种：" />
 
-                <ImageView style="@style/base_iv_right" />
-            </LinearLayout>
+                        <EditText
+                            android:id="@+id/etProfession"
+                            style="@style/base_edit_text_right"
+                            android:background="@null"
+                            android:hint="请输入" />
 
-            <include layout="@layout/base_line_grey" />
 
-            <LinearLayout
-                android:id="@+id/llDeclareTrain"
-                style="@style/base_text_item">
+                        <ImageView
+                            android:id="@+id/ivRegister10"
+                            style="@style/base_iv_input_right" />
+                    </LinearLayout>
 
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="是否参加本职业培训：" />
 
-                <TextView
-                    android:id="@+id/tvDeclareTrain"
-                    style="@style/base_text_right2"
-                    android:hint="请选择" />
+                    <include layout="@layout/base_line_grey" />
 
-                <ImageView style="@style/base_iv_right" />
-            </LinearLayout>
+                    <LinearLayout style="@style/base_text_item">
 
-            <!--            <include layout="@layout/base_line_grey" />-->
+                        <TextView
+                            style="@style/base_text_left"
+                            android:text="报名培训工种：" />
 
-            <LinearLayout style="@style/base_text_item">
+                        <EditText
+                            android:id="@+id/etTrainProfession"
+                            style="@style/base_edit_text_right"
+                            android:background="@null"
+                            android:hint="请输入培训工种" />
 
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="培训时间：" />
+                        <ImageView
+                            android:id="@+id/ivRegister11"
+                            style="@style/base_iv_input_right" />
+                    </LinearLayout>
 
-                <TextView
-                    android:visibility="invisible"
-                    style="@style/base_text_right2"
-                    android:hint="请选择培训时间" />
 
-                <ImageView
-                    android:visibility="invisible"
-                    android:id="@+id/ivDeclareTrainTime"
-                    style="@style/base_iv_right" />
-            </LinearLayout>
+                    <include layout="@layout/base_line_grey" />
 
-            <LinearLayout style="@style/base_text_item">
+                    <LinearLayout
+                        android:id="@+id/llRegisterRank"
+                        style="@style/base_text_item">
 
-                <TextView
-                    android:id="@+id/tvDeclareTrainTimeStart"
-                    style="@style/base_text_right2"
-                    android:hint="请选择开始日期" />
+                        <TextView
+                            style="@style/base_text_left"
+                            android:text="报名培训级别：" />
 
-                <ImageView
-                    android:id="@+id/ivDeclareTrainTimeStart"
-                    style="@style/base_iv_right" />
+                        <TextView
+                            android:id="@+id/tvRegisterRank"
+                            style="@style/base_text_right2"
+                            android:hint="请选择培训级别" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="至"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/base_item_text_size" />
+                        <ImageView
+                            android:id="@+id/ivRegister12"
+                            style="@style/base_iv_right" />
+                    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvDeclareTrainTimeEnd"
-                    style="@style/base_text_right2"
-                    android:hint="请选择结束日期" />
 
-                <ImageView
-                    android:id="@+id/ivDeclareTrainTimeEnd"
-                    style="@style/base_iv_right" />
-            </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/llRegisterContent02"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:orientation="vertical">
 
+                        <include
+                            layout="@layout/base_line_grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="15dp" />
 
-            <LinearLayout style="@style/base_text_item">
 
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="培训学时：" />
+                        <ImageView
+                            android:id="@+id/ivRegisterNegative"
+                            android:layout_width="@dimen/x921"
+                            android:layout_height="@dimen/y623"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="5dp"
+                            android:background="@drawable/base_bg_negative_01"
+                            android:contentDescription="@null"
+                            android:scaleType="centerCrop" />
 
-                <EditText
-                    android:id="@+id/etDeclareTrainTotalTime"
-                    style="@style/base_edit_text_right"
-                    android:background="@null"
-                    android:inputType="numberDecimal"
-                    android:hint="请输入培训学时" />
+                        <ImageView
+                            android:id="@+id/ivRegisterPositive"
+                            android:layout_width="@dimen/x921"
+                            android:layout_height="@dimen/y623"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/base_bg_positive_01"
+                            android:contentDescription="@string/register_apply_take_id_positive_pic"
+                            android:scaleType="centerCrop" />
+                    </LinearLayout>
+                </LinearLayout>
 
-                <ImageView style="@style/base_iv_input_right" />
-
-
-            </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <include layout="@layout/base_line_grey" />
-
-            <LinearLayout style="@style/base_text_item">
-
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="从事本职业工种年限：" />
-
-<!--                <TextView-->
-<!--                    style="@style/base_text_right2"-->
-<!--                    android:hint="请选择工作年限" />-->
-
-<!--                <ImageView-->
-<!--                    style="@style/base_iv_right" />-->
-
-                <EditText
-                    android:id="@+id/teDeclareYear"
-                    style="@style/base_edit_text_right"
-                    android:background="@null"
-                    android:inputType="numberDecimal"
-                    android:hint="请输入" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="年"
-                    android:textSize="15dp"
-                    android:textColor="@color/black"/>
-
-                <ImageView style="@style/base_iv_input_right" />
-            </LinearLayout>
-
-
-
-
-
-
-
-            <LinearLayout style="@style/base_text_item">
-
-                <TextView
-                    android:id="@+id/tvDeclareProfessionStart"
-                    style="@style/base_text_right2"
-                    android:hint="请选择开始年限" />
-
-                <ImageView
-                    android:id="@+id/ivDeclareProfessionStart"
-                    style="@style/base_iv_right" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="至"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/base_item_text_size" />
-
-                <TextView
-                    android:id="@+id/tvDeclareProfessionEnd"
-                    style="@style/base_text_right2"
-                    android:hint="请选择结束年限" />
-
-                <ImageView
-                    android:id="@+id/ivDeclareProfessionEnd"
-                    style="@style/base_iv_right" />
-            </LinearLayout>
-
-
-
-            <include layout="@layout/base_line_grey" />
-
-            <LinearLayout style="@style/base_text_item">
-
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="已获职业资格名称：" />
-
-                <EditText
-                    android:id="@+id/etDeclareCertificate"
-                    style="@style/base_edit_text_right"
-                    android:background="@null"
-                    android:hint="请输入资格名称" />
-
-
-                <ImageView style="@style/base_iv_input_right" />
-
-            </LinearLayout>
-
-
-            <LinearLayout style="@style/base_text_item">
-
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="职业资格等级：" />
-
-                <EditText
-                    android:id="@+id/etDeclareCLevel"
-                    style="@style/base_edit_text_right"
-                    android:background="@null"
-                    android:hint="请输入资格等级" />
-
-
-                <ImageView style="@style/base_iv_input_right" />
-
-            </LinearLayout>
-
-
-            <LinearLayout style="@style/base_text_item">
-
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="获证日期：" />
-
-                <TextView
-                    android:id="@+id/tvDeclareCertificate"
-                    style="@style/base_text_right2"
-                    android:hint="请选择获证日期" />
-
-                <ImageView
-                    android:id="@+id/ivDeclareCertificate"
-                    style="@style/base_iv_right" />
-            </LinearLayout>
-
-            <LinearLayout style="@style/base_text_item">
-
-                <TextView
-                    style="@style/base_text_left"
-                    android:text="证书号码：" />
-
-                <EditText
-                    android:id="@+id/etDeclareCNum"
-                    style="@style/base_edit_text_right"
-                    android:background="@null"
-                    android:hint="请输入证书号码" />
-
-
-                <ImageView style="@style/base_iv_input_right" />
-            </LinearLayout>
-
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:background="@color/c_f3f3f3">
-
-                <Button
-                    android:id="@+id/btSure"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/btn_blue_10_selector"
-                    android:gravity="center"
-                    android:text="确认提交"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:background="@color/c_f3f3f3">
 
-            </FrameLayout>
+                    <Button
+                        android:id="@+id/btNext"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/btn_blue_10_selector"
+                        android:gravity="center"
+                        android:text="下一步"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                </FrameLayout>
 
 
-        </LinearLayout>
+            </LinearLayout>
 
 
-    </com.tecsun.jc.base.widget.ObservableScrollView>
+        </com.tecsun.jc.base.widget.ObservableScrollView>
 
+
+    </FrameLayout>
 
 </LinearLayout>
 

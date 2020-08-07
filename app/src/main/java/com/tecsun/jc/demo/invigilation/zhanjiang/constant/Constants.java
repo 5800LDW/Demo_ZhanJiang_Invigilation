@@ -26,6 +26,12 @@ public class Constants {
      * http://61.28.113.182:6726/sisp/apply/getDicByPid/CERT_TYPE
      */
     public static final String URL_DICTIONARIES = IP + "apply/getDicByPid/";
+
+
+    /**
+     * 培训管理-学员登记
+     */
+    public static final String URL_STUDENT_REGISTER = CommonApi.URL_STUDENT_REGISTER;
 }
 
 

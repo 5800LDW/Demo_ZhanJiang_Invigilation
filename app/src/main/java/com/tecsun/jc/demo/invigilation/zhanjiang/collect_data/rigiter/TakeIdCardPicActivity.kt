@@ -13,6 +13,9 @@ import com.tecsun.jc.base.JinLinApp
 import com.tecsun.jc.base.base.BaseActivity
 import com.tecsun.jc.base.bean.param.register.ApplyCardParam
 import com.tecsun.jc.base.builder.PermissionTipsShowBuilder
+import com.tecsun.jc.base.builder.ZhanJiangRegisterSFZImageBuilder
+import com.tecsun.jc.base.builder.ZhanJiangRegisterSFZImageBuilder.CONST_NEGATIVE_PIC_ID
+import com.tecsun.jc.base.builder.ZhanJiangRegisterSFZImageBuilder.CONST_POSITIVE_PIC_ID
 import com.tecsun.jc.base.common.BaseConstant
 import com.tecsun.jc.base.common.RouterHub
 import com.tecsun.jc.base.utils.PermissionsUtils
@@ -32,10 +35,12 @@ class TakeIdCardPicActivity : BaseActivity() {
     private var mIvIdNegative: ImageView? = null
     private var mLlNegative: TextView? = null
     private var mLlPositive: TextView? = null
+
     /**
      * 国徽面
      */
     private var mPositiveBitmap: Bitmap? = null
+
     /**
      * 人像面
      */
@@ -59,7 +64,8 @@ class TakeIdCardPicActivity : BaseActivity() {
         initData()
 
     }
-     fun initData() {
+
+    fun initData() {
 
         //        mApplyCardParam = ((BaseApplication) getApplication()).getApplyCardParam();
 
@@ -77,14 +83,14 @@ class TakeIdCardPicActivity : BaseActivity() {
         if (mNegativeBitmap == null || mPositiveBitmap == null) {
             findViewById<View>(R.id.btNextNormal).visibility = View.GONE
             findViewById<View>(R.id.btNotNext).visibility = View.VISIBLE
-        }
-        else{
+        } else {
             findViewById<View>(R.id.btNextNormal).visibility = View.VISIBLE
             findViewById<View>(R.id.btNotNext).visibility = View.GONE
         }
 
     }
 
+    var lastSkip = 0L
     fun applySubmit(view: View) {
         if (mNegativeBitmap == null) {
             showToast("请先拍摄身份证头像面")
@@ -95,14 +101,28 @@ class TakeIdCardPicActivity : BaseActivity() {
             return
         }
 
-        ARouter.getInstance().build(RouterHub.ROUTER_APP_STUDENT_REGISTER).greenChannel().navigation()
+        if (System.currentTimeMillis() - lastSkip > 3 * 1000) {
+            lastSkip = System.currentTimeMillis()
+            Thread(Runnable {
+                ZhanJiangRegisterSFZImageBuilder.savePic(mNegativeBitmap,CONST_NEGATIVE_PIC_ID)
+                ZhanJiangRegisterSFZImageBuilder.savePic(mPositiveBitmap,  CONST_POSITIVE_PIC_ID)
+            }).start()
+        }
+
+        ARouter.getInstance().build(RouterHub.ROUTER_APP_STUDENT_REGISTER).greenChannel()
+            .navigation()
 
     }
 
 
     fun takeIdPositivePic(view: View) {
         if (PermissionsUtils.isRequestPermission()) {
-            if (PermissionsUtils.startRequestPermission(this, PermissionsUtils.CAMERA_PERMISSIONS, 321)) {
+            if (PermissionsUtils.startRequestPermission(
+                    this,
+                    PermissionsUtils.CAMERA_PERMISSIONS,
+                    321
+                )
+            ) {
                 startActivityResult(Const.SOURCE_ID_POSITIVE)
             }
         } else {
@@ -112,7 +132,12 @@ class TakeIdCardPicActivity : BaseActivity() {
 
     fun takeIdNegativePic(view: View) {
         if (PermissionsUtils.isRequestPermission()) {
-            if (PermissionsUtils.startRequestPermission(this, PermissionsUtils.CAMERA_PERMISSIONS, 322)) {
+            if (PermissionsUtils.startRequestPermission(
+                    this,
+                    PermissionsUtils.CAMERA_PERMISSIONS,
+                    322
+                )
+            ) {
                 startActivityResult(Const.SOURCE_ID_NEGATIVE)
             }
         } else {
@@ -120,7 +145,11 @@ class TakeIdCardPicActivity : BaseActivity() {
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array< String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (PermissionsUtils.requestPermissionResult(this, permissions, grantResults)) {
             if (requestCode == 321) {
@@ -128,9 +157,8 @@ class TakeIdCardPicActivity : BaseActivity() {
             } else if (requestCode == 322) {
                 startActivityResult(Const.SOURCE_ID_NEGATIVE)
             }
-        }
-        else{
-            PermissionTipsShowBuilder.show(this,permissions)
+        } else {
+            PermissionTipsShowBuilder.show(this, permissions)
         }
     }
 
@@ -152,7 +180,7 @@ class TakeIdCardPicActivity : BaseActivity() {
                 if (mPositiveBitmap != null) {
                     mIvIdPositive!!.setImageBitmap(mPositiveBitmap)
 
-                    LogUtil.e("TAG","---------------- mIvIdPositive ------------------")
+                    LogUtil.e("TAG", "---------------- mIvIdPositive ------------------")
                 }
                 mLlPositive!!.visibility = View.GONE
             } else if (resultCode == Const.SOURCE_ID_NEGATIVE) {
@@ -160,7 +188,7 @@ class TakeIdCardPicActivity : BaseActivity() {
                 if (mNegativeBitmap != null) {
                     mIvIdNegative!!.setImageBitmap(mNegativeBitmap)
 
-                    LogUtil.e("TAG","---------------- mIvIdNegative ------------------")
+                    LogUtil.e("TAG", "---------------- mIvIdNegative ------------------")
                 }
                 mLlNegative!!.visibility = View.GONE
             }
@@ -169,19 +197,18 @@ class TakeIdCardPicActivity : BaseActivity() {
     }
 
 
-        override fun onDestroy() {
-            if (mNegativeBitmap != null && !mNegativeBitmap!!.isRecycled) {
-                mNegativeBitmap!!.recycle()
-                mNegativeBitmap = null
-            }
-            if (mPositiveBitmap != null && !mPositiveBitmap!!.isRecycled) {
-                mPositiveBitmap!!.recycle()
-                mPositiveBitmap = null
-            }
-            //        ((BaseApplication) getApplication()).recyclePicture();
-            super.onDestroy()
+    override fun onDestroy() {
+        if (mNegativeBitmap != null && !mNegativeBitmap!!.isRecycled) {
+            mNegativeBitmap!!.recycle()
+            mNegativeBitmap = null
         }
-
+        if (mPositiveBitmap != null && !mPositiveBitmap!!.isRecycled) {
+            mPositiveBitmap!!.recycle()
+            mPositiveBitmap = null
+        }
+        //        ((BaseApplication) getApplication()).recyclePicture();
+        super.onDestroy()
+    }
 
 
 }

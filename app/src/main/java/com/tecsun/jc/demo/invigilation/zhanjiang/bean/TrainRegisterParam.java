@@ -1,6 +1,8 @@
 package com.tecsun.jc.demo.invigilation.zhanjiang.bean;
 
-public class TrainRegisterParam {
+import java.io.Serializable;
+
+public class TrainRegisterParam implements Serializable {
 
 
     /**

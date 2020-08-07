@@ -37,6 +37,37 @@
         <item>未参加培训</item>
     </string-array>
 
+    <string-array name="arr_dataEmploymentIntention">
+        <item>是</item>
+        <item>否</item>
+    </string-array>
+
+    <string-array name="arr_dataState">
+        <item>无业</item>
+        <item>失业</item>
+        <item>务农</item>
+        <item>务工</item>
+    </string-array>
+
+    <string-array name="arr_dataCertificate">
+        <item>专项职业能力</item>
+        <item>初级</item>
+        <item>中技</item>
+        <item>高级</item>
+        <item>技师</item>
+        <item>高级技师</item>
+        <item>尚未取得职业资格证书</item>
+    </string-array>
+
+    <string-array name="arr_dataRegisterRank">
+        <item>基础知识普及</item>
+        <item>专项职业能力</item>
+        <item>初级</item>
+        <item>中级</item>
+        <item>高级</item>
+        <item>技师</item>
+        <item>高级技师</item>
+    </string-array>
 
 </resources>
 

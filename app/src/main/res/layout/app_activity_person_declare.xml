@@ -24,9 +24,9 @@
                 android:layout_height="wrap_content"
                 android:background="@color/c_fffbf1"
                 android:paddingLeft="10dp"
-                android:paddingTop="15dp"
+                android:paddingTop="10dp"
                 android:paddingRight="10dp"
-                android:paddingBottom="15dp">
+                android:paddingBottom="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"

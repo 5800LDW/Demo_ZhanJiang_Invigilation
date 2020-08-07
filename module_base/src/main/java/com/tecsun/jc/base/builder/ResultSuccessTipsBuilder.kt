@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatDialog
 import com.tecsun.jc.base.R
 import com.tecsun.jc.base.base.BaseActivity
+import com.tecsun.jc.base.listener.IEvents
 import com.tecsun.jc.base.utils.log.LogUtil
 import com.tecsun.jc.base.widget.SingleClickListener
 
@@ -20,7 +21,8 @@ object ResultSuccessTipsBuilder {
 
     var recognitionDialog: AppCompatDialog? = null
 
-    fun showSuccessDialog(activity: BaseActivity) {
+
+    fun showSuccessDialog(activity: BaseActivity, ev: IEvents = IEvents { }, info: String = "") {
         LogUtil.e(TAG, ">>>>>>>>>>>1")
         dismissTipsDialog()
 
@@ -72,7 +74,7 @@ object ResultSuccessTipsBuilder {
 
                 val tvFailTitle =
                     recognitionDialog?.findViewById<TextView>(R.id.tvFailTitle)
-                tvFailTitle?.text = "个人申报信息提交成功"
+                tvFailTitle?.text = if (info.isNullOrBlank()) "个人申报信息提交成功" else info
 
 
                 val btnSubmit = recognitionDialog!!.findViewById<TextView>(R.id.btnSubmit)
@@ -82,6 +84,7 @@ object ResultSuccessTipsBuilder {
                     override fun onSingleClick(v: View?) {
                         dismissTipsDialogAndRelease()
                         activity?.myFinish()
+                        ev?.biz()
                     }
                 })
 
