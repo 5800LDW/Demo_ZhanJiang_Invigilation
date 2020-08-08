@@ -52,7 +52,7 @@
     <string-array name="arr_dataCertificate">
         <item>专项职业能力</item>
         <item>初级</item>
-        <item>中技</item>
+        <item>中级</item>
         <item>高级</item>
         <item>技师</item>
         <item>高级技师</item>

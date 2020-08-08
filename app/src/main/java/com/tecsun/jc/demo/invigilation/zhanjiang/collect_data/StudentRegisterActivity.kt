@@ -1,7 +1,9 @@
 package com.tecsun.jc.demo.invigilation.zhanjiang.collect_data
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.tecsun.jc.base.JinLinApp
@@ -14,6 +16,8 @@ import com.tecsun.jc.base.common.BaseConstant.KEY_PARAM
 import com.tecsun.jc.base.common.RouterHub
 import com.tecsun.jc.base.listener.OkGoRequestCallback
 import com.tecsun.jc.base.utils.BaseRegexUtil
+import com.tecsun.jc.base.utils.BuildUtils
+import com.tecsun.jc.base.utils.KeyboardUtils
 import com.tecsun.jc.base.utils.OkGoManager
 import com.tecsun.jc.base.utils.log.LogUtil
 import com.tecsun.jc.base.widget.SingleClickListener
@@ -382,6 +386,46 @@ class StudentRegisterActivity: BaseActivity() {
         checkInfo()
     }
 
+
+    /**
+     * 初始化titlebar控件，可重写
+     */
+    override fun initTitleView() {
+//        super.initTitleView()
+        setImmersiveStatusBar()
+        val titleBar = findViewById<TitleBar>(com.tecsun.jc.base.R.id.title_bar)
+        if (titleBar == null) {
+            return
+        }
+
+        if (BuildUtils.hasKitKat()) {
+            titleBar.setImmersive(true)
+        }
+
+        titleBar.setBackgroundColor(resources.getColor(com.tecsun.jc.base.R.color.c_2358ff))
+
+        titleBar.setLeftImageResource(com.tecsun.jc.base.R.drawable.ic_title_back)//base_zhanjiang_back_left //
+        titleBar.setLeftTextColor(Color.WHITE)
+        titleBar.setLeftClickListener {
+            KeyboardUtils.hideSoftKeyboard(this)
+            // 处理返回按钮事件
+//            this.finish()
+            showExitDialog()
+        }
+
+        titleBar.setTitleColor(Color.WHITE)
+        titleBar.setSubTitleColor(Color.WHITE)
+        setTitleBar(titleBar)
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event?.action == KeyEvent.ACTION_DOWN) {
+
+            showExitDialog()
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
+    }
 }
 
 

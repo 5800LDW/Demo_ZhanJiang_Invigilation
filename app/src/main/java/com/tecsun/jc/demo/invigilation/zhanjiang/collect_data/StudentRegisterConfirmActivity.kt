@@ -181,7 +181,7 @@ class StudentRegisterConfirmActivity : BaseActivity() {
             )
         )
 
-        tvRegisterTips.text = "为了更好的了解及服务你的培训需求，请您认真核对以下信息"
+        tvRegisterTips.text = "温馨提示:为了更好的了解及服务你的培训需求，请您认真核对以下信息"
 
         llRegisterContent01.isClickable = false
         llRegisterContent01.isFocusable = false

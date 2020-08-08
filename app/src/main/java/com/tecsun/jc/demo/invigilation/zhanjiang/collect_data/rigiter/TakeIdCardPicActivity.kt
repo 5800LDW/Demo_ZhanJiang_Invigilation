@@ -1,23 +1,28 @@
 package com.tecsun.jc.demo.invigilation.zhanjiang.collect_data.rigiter
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
-import android.view.View
+import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatDialog
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.tecsun.jc.base.JinLinApp
 import com.tecsun.jc.base.base.BaseActivity
 import com.tecsun.jc.base.bean.param.register.ApplyCardParam
 import com.tecsun.jc.base.builder.PermissionTipsShowBuilder
+import com.tecsun.jc.base.builder.TakePhotoImgSureBuilder
 import com.tecsun.jc.base.builder.ZhanJiangRegisterSFZImageBuilder
 import com.tecsun.jc.base.builder.ZhanJiangRegisterSFZImageBuilder.CONST_NEGATIVE_PIC_ID
 import com.tecsun.jc.base.builder.ZhanJiangRegisterSFZImageBuilder.CONST_POSITIVE_PIC_ID
 import com.tecsun.jc.base.common.BaseConstant
 import com.tecsun.jc.base.common.RouterHub
+import com.tecsun.jc.base.listener.IEvents
+import com.tecsun.jc.base.listener.IEvents3
 import com.tecsun.jc.base.utils.PermissionsUtils
 import com.tecsun.jc.base.utils.log.LogUtil
 import com.tecsun.jc.base.widget.TitleBar
@@ -104,8 +109,8 @@ class TakeIdCardPicActivity : BaseActivity() {
         if (System.currentTimeMillis() - lastSkip > 3 * 1000) {
             lastSkip = System.currentTimeMillis()
             Thread(Runnable {
-                ZhanJiangRegisterSFZImageBuilder.savePic(mNegativeBitmap,CONST_NEGATIVE_PIC_ID)
-                ZhanJiangRegisterSFZImageBuilder.savePic(mPositiveBitmap,  CONST_POSITIVE_PIC_ID)
+                ZhanJiangRegisterSFZImageBuilder.savePic(mNegativeBitmap, CONST_NEGATIVE_PIC_ID)
+                ZhanJiangRegisterSFZImageBuilder.savePic(mPositiveBitmap, CONST_POSITIVE_PIC_ID)
             }).start()
         }
 
@@ -178,19 +183,42 @@ class TakeIdCardPicActivity : BaseActivity() {
             if (resultCode == Const.SOURCE_ID_POSITIVE) {
                 mPositiveBitmap = JinLinApp.instance.getInsertPicture()
                 if (mPositiveBitmap != null) {
-                    mIvIdPositive!!.setImageBitmap(mPositiveBitmap)
+//                    mIvIdPositive!!.setImageBitmap(mPositiveBitmap)
 
-                    LogUtil.e("TAG", "---------------- mIvIdPositive ------------------")
+
+                    TakePhotoImgSureBuilder.showSuccessDialog(this, object : IEvents3 {
+                        override fun complete() {
+                            mIvIdPositive!!.setImageBitmap(mPositiveBitmap)
+                            mLlPositive!!.visibility = View.GONE
+                        }
+
+                        override fun rephotography() {
+                            takeIdPositivePic(View(this@TakeIdCardPicActivity))
+                        }
+
+                    }, "身份证国徽面拍摄成功", b = mPositiveBitmap)
                 }
-                mLlPositive!!.visibility = View.GONE
+
+
+
             } else if (resultCode == Const.SOURCE_ID_NEGATIVE) {
                 mNegativeBitmap = JinLinApp.instance.getInsertPicture()
                 if (mNegativeBitmap != null) {
-                    mIvIdNegative!!.setImageBitmap(mNegativeBitmap)
+//                    mIvIdNegative!!.setImageBitmap(mNegativeBitmap)
 
-                    LogUtil.e("TAG", "---------------- mIvIdNegative ------------------")
+                    TakePhotoImgSureBuilder.showSuccessDialog(this, object : IEvents3 {
+                        override fun complete() {
+                            mIvIdNegative!!.setImageBitmap(mNegativeBitmap)
+                            mLlNegative!!.visibility = View.GONE
+                        }
+
+                        override fun rephotography() {
+                            takeIdNegativePic(View(this@TakeIdCardPicActivity))
+                        }
+
+                    }, "身份证人像面拍摄成功", b = mNegativeBitmap)
                 }
-                mLlNegative!!.visibility = View.GONE
+
             }
         }
         super.onActivityResult(requestCode, resultCode, data)
@@ -209,6 +237,7 @@ class TakeIdCardPicActivity : BaseActivity() {
         //        ((BaseApplication) getApplication()).recyclePicture();
         super.onDestroy()
     }
+
 
 
 }

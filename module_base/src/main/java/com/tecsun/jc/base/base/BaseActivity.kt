@@ -20,6 +20,7 @@ import com.tecsun.jc.base.JinLinApp
 import com.tecsun.jc.base.R
 import com.tecsun.jc.base.builder.ResultFailTipsBuilder
 import com.tecsun.jc.base.collector.BaseActivityCollector
+import com.tecsun.jc.base.dialog.DialogUtils
 import com.tecsun.jc.base.dialog.LoadingProgressDialog
 import com.tecsun.jc.base.listener.HandlerCallback
 import com.tecsun.jc.base.listener.IEvents
@@ -57,12 +58,12 @@ abstract class BaseActivity : AppCompatActivity(), HandlerCallback {
         initTitleView()
 
         //把activity加入到集合;
-        if(isCanAddToCollector()){
+        if (isCanAddToCollector()) {
             BaseActivityCollector.addActivity(this)
         }
     }
 
-    open fun isCanAddToCollector():Boolean{
+    open fun isCanAddToCollector(): Boolean {
         return true
     }
 
@@ -103,10 +104,10 @@ abstract class BaseActivity : AppCompatActivity(), HandlerCallback {
         titleBar.setTitleColor(Color.WHITE)
         titleBar.setSubTitleColor(Color.WHITE)
         setTitleBar(titleBar)
-
     }
 
-    fun initTitleView2(){
+
+    fun initTitleView2() {
 
         setImmersiveStatusBar()
         val titleBar = findViewById<TitleBar>(R.id.title_bar)
@@ -133,12 +134,6 @@ abstract class BaseActivity : AppCompatActivity(), HandlerCallback {
         setTitleBar(titleBar)
 
     }
-
-
-
-
-
-
 
 
     /**
@@ -171,8 +166,12 @@ abstract class BaseActivity : AppCompatActivity(), HandlerCallback {
     }
 
     @JvmOverloads
-    fun showLoadingDialogCanCancelable(l:DialogInterface.OnCancelListener  = DialogInterface.OnCancelListener {}) {
-        showLoadingDialog(tipContent = this.getString(R.string.base_tip_load),isCancelable = true,cancelListener = l)
+    fun showLoadingDialogCanCancelable(l: DialogInterface.OnCancelListener = DialogInterface.OnCancelListener {}) {
+        showLoadingDialog(
+            tipContent = this.getString(R.string.base_tip_load),
+            isCancelable = true,
+            cancelListener = l
+        )
     }
 
     @JvmOverloads
@@ -180,20 +179,20 @@ abstract class BaseActivity : AppCompatActivity(), HandlerCallback {
         isCancelable: Boolean = false,
         isCanceledOnTouchOutside: Boolean = false,
         tipContent: String?,
-        cancelListener:DialogInterface.OnCancelListener  = DialogInterface.OnCancelListener {}
+        cancelListener: DialogInterface.OnCancelListener = DialogInterface.OnCancelListener {}
     ) {
 
-        if(loadingProgressDialog != null){
+        if (loadingProgressDialog != null) {
             loadingProgressDialog?.dismiss()
         }
 
 //        if (loadingProgressDialog == null) {
-            loadingProgressDialog = LoadingProgressDialog.Builder(this)
-                .setCancelable(isCancelable)
-                .setCanceledOnTouchOutside(isCanceledOnTouchOutside)
-                .setDialogTip(tipContent)
-                .setCancelListener(cancelListener)
-                .build()
+        loadingProgressDialog = LoadingProgressDialog.Builder(this)
+            .setCancelable(isCancelable)
+            .setCanceledOnTouchOutside(isCanceledOnTouchOutside)
+            .setDialogTip(tipContent)
+            .setCancelListener(cancelListener)
+            .build()
 //        }
 
         runOnUiThread {
@@ -263,6 +262,7 @@ abstract class BaseActivity : AppCompatActivity(), HandlerCallback {
 
 
     private var singleDialog: BaseSingleDialog? = null
+
     @JvmOverloads
     fun showErrorMessageDialog(
         msg: String?,
@@ -297,7 +297,7 @@ abstract class BaseActivity : AppCompatActivity(), HandlerCallback {
         }
     }
 
-   open fun showToast(string: String){
+    open fun showToast(string: String) {
         ToastUtils.showGravityShortToast(JinLinApp.context!!, string)
     }
 
@@ -319,27 +319,42 @@ abstract class BaseActivity : AppCompatActivity(), HandlerCallback {
         showErrorMessageDialog(msg, false)
     }
 
-    fun cancelTagInActivity(tag:String){
+    fun cancelTagInActivity(tag: String) {
         OkGoManager.instance.myCancelTag(tag)
     }
 
-    open fun myStartActivity(cls:Class<*>){
-        ActivityUtil.startActivity(this,cls,null)
+    open fun myStartActivity(cls: Class<*>) {
+        ActivityUtil.startActivity(this, cls, null)
     }
 
-    open fun myFinish(){
-        Handler().postDelayed({finish()},200)
+    open fun myFinish() {
+        Handler().postDelayed({ finish() }, 200)
     }
 
-    open fun successCompareBiz(){
+    open fun successCompareBiz() {
 
     }
 
-    open fun resubmit(){}
+    open fun resubmit() {}
 
 
-     fun showErrorDialog(str: String) {
+    fun showErrorDialog(str: String) {
         ResultFailTipsBuilder.showFailDialog(this, str ?: "")
+    }
+
+     fun showExitDialog(){
+         DialogUtils.showDialog(
+             this,
+             "",
+             resources.getColor(R.color.c_e60012),
+             "确定返回?",
+             R.string.base_lbl_confirm,
+             R.string.base_cancel,
+             { dialog, which ->
+                 myFinish()
+             },
+             { dialog, which -> dialog.dismiss() }
+         )
     }
 }
 

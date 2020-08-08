@@ -1,8 +1,11 @@
 package com.tecsun.jc.demo.invigilation.zhanjiang.collect_data
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.tecsun.jc.base.JinLinApp
@@ -15,12 +18,13 @@ import com.tecsun.jc.base.builder.StudentOwnSFZImageBuilder
 import com.tecsun.jc.base.common.BaseConstant
 import com.tecsun.jc.base.common.OtherConstant
 import com.tecsun.jc.base.common.RouterHub
+import com.tecsun.jc.base.dialog.DialogUtils
+import com.tecsun.jc.base.event.GetMessage
+import com.tecsun.jc.base.event.SignOutEvent
 import com.tecsun.jc.base.listener.IEvents
 import com.tecsun.jc.base.listener.IEvents2
 import com.tecsun.jc.base.listener.OkGoRequestCallback
-import com.tecsun.jc.base.utils.BaseRegexUtil
-import com.tecsun.jc.base.utils.OkGoManager
-import com.tecsun.jc.base.utils.ToastUtils
+import com.tecsun.jc.base.utils.*
 import com.tecsun.jc.base.utils.log.LogUtil
 import com.tecsun.jc.base.utils.time.TimeUtil
 import com.tecsun.jc.base.widget.SingleClickListener
@@ -30,9 +34,11 @@ import com.tecsun.jc.demo.invigilation.R
 import com.tecsun.jc.demo.invigilation.ui.FilterItemActivity
 import com.tecsun.jc.demo.invigilation.ui.pic.MyBaseActivity
 import com.tecsun.jc.demo.invigilation.util.BitmapUtils2
+import com.tecsun.jc.demo.invigilation.util.MyFileUtil
 import com.tecsun.jc.demo.invigilation.zhanjiang.bean.*
 import com.tecsun.jc.demo.invigilation.zhanjiang.builder.DictionariesInfoBuilder
 import kotlinx.android.synthetic.main.app_activity_person_declare.*
+import org.greenrobot.eventbus.EventBus
 import java.io.Serializable
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -585,7 +591,7 @@ class PersonDeclareActivity : BaseActivity() {
 
                 override fun failBiz(str: String) {
                     dismissLoadingDialog()
-                    LogUtil.e(TAG,">>>>>>>>>.1")
+                    LogUtil.e(TAG, ">>>>>>>>>.1")
                     showErrorDialog(str)
                 }
             })
@@ -624,7 +630,7 @@ class PersonDeclareActivity : BaseActivity() {
 
                 override fun failBiz(str: String) {
                     dismissLoadingDialog()
-                    LogUtil.e(TAG,">>>>>>>>>.2")
+                    LogUtil.e(TAG, ">>>>>>>>>.2")
                     showErrorDialog(str)
                 }
             })
@@ -707,7 +713,7 @@ class PersonDeclareActivity : BaseActivity() {
 
                 override fun failBiz(str: String) {
                     dismissLoadingDialog()
-                    LogUtil.e(TAG,">>>>>>>>>.3")
+                    LogUtil.e(TAG, ">>>>>>>>>.3")
                     showErrorDialog(str)
                 }
             })
@@ -745,7 +751,7 @@ class PersonDeclareActivity : BaseActivity() {
 
                 override fun failBiz(str: String) {
                     dismissLoadingDialog()
-                    LogUtil.e(TAG,">>>>>>>>>.4")
+                    LogUtil.e(TAG, ">>>>>>>>>.4")
                     showErrorDialog(str)
                 }
             })
@@ -803,14 +809,14 @@ class PersonDeclareActivity : BaseActivity() {
                     if (t != null && t.isSuccess) {
                         ResultSuccessTipsBuilder.showSuccessDialog(personDeclareActivity)
                     } else {
-                        LogUtil.e(TAG,">>>>>>>>>.5")
+                        LogUtil.e(TAG, ">>>>>>>>>.5")
                         showErrorDialog(t?.message ?: "")
                     }
                 }
 
                 override fun onError(throwable: Throwable?) {
                     dismissLoadingDialog()
-                    LogUtil.e(TAG,">>>>>>>>>.6")
+                    LogUtil.e(TAG, ">>>>>>>>>.6")
                     showErrorDialog(throwable?.toString() ?: "")
                 }
             })
@@ -843,16 +849,15 @@ class PersonDeclareActivity : BaseActivity() {
                         sfzhPic = t.data.picId.toString()
                         //下一步
                         declareNow()
-                    }
-                    else{
-                        showErrorDialog(t?.message?:"")
+                    } else {
+                        showErrorDialog(t?.message ?: "")
                     }
                     LogUtil.e(">>>>>>>>>>>>>>>>> onSuccess $t")
                 }
 
                 override fun onError(throwable: Throwable?) {
                     dismissLoadingDialog()
-                    LogUtil.e(TAG,">>>>>>>>>.7")
+                    LogUtil.e(TAG, ">>>>>>>>>.7")
                     showErrorDialog(throwable?.toString() ?: "")
                 }
             })
@@ -867,6 +872,45 @@ class PersonDeclareActivity : BaseActivity() {
         checkInfo()
     }
 
+    /**
+     * 初始化titlebar控件，可重写
+     */
+    override fun initTitleView() {
+//        super.initTitleView()
+        setImmersiveStatusBar()
+        val titleBar = findViewById<TitleBar>(com.tecsun.jc.base.R.id.title_bar)
+        if (titleBar == null) {
+            return
+        }
+
+        if (BuildUtils.hasKitKat()) {
+            titleBar.setImmersive(true)
+        }
+
+        titleBar.setBackgroundColor(resources.getColor(com.tecsun.jc.base.R.color.c_2358ff))
+
+        titleBar.setLeftImageResource(com.tecsun.jc.base.R.drawable.ic_title_back)//base_zhanjiang_back_left //
+        titleBar.setLeftTextColor(Color.WHITE)
+        titleBar.setLeftClickListener {
+            KeyboardUtils.hideSoftKeyboard(this)
+            // 处理返回按钮事件
+//            this.finish()
+            showExitDialog()
+        }
+
+        titleBar.setTitleColor(Color.WHITE)
+        titleBar.setSubTitleColor(Color.WHITE)
+        setTitleBar(titleBar)
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event?.action == KeyEvent.ACTION_DOWN) {
+
+            showExitDialog()
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
+    }
 
 
 }

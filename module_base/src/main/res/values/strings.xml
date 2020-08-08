@@ -165,6 +165,8 @@
     <string name="base_student_register">学员登记</string>
     <string name="base_read_id_card">读身份证</string>
     <string name="base_error_time_select">开始时间不能大于结束时间</string>
+
+
 </resources>
 
 
